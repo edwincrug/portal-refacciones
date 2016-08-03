@@ -128,7 +128,7 @@ export function me(req, res, next) {
     attributes: [
       '_id',
       'name',
-      'email',
+      'rfc',
       'role',
       'provider'
     ]

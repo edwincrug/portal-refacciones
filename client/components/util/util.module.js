@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('baseApp.util', []);
+angular.module('refacciones.util', []);

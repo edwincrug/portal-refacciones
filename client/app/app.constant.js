@@ -1,5 +1,5 @@
 (function(angular, undefined) {
-  angular.module("baseApp.constants", [])
+  angular.module("refacciones.constants", [])
 
 .constant("appConfig", {
 	"userRoles": [

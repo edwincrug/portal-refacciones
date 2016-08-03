@@ -27,6 +27,6 @@
     };
   }
 
-  angular.module('baseApp.auth')
+  angular.module('refacciones.auth')
     .factory('authInterceptor', authInterceptor);
 })();

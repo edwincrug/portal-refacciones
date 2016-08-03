@@ -21,6 +21,6 @@
     });
   }
 
-  angular.module('baseApp.auth')
+  angular.module('refacciones.auth')
     .factory('User', UserResource);
 })();

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('baseApp')
+angular.module('refacciones')
   .directive('footer', function() {
     return {
       templateUrl: 'components/footer/footer.html',

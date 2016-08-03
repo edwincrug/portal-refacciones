@@ -23,5 +23,5 @@ class SettingsController {
   }
 }
 
-angular.module('baseApp')
+angular.module('refacciones')
   .controller('SettingsController', SettingsController);

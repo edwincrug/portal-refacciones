@@ -12,5 +12,5 @@ class NavbarController {
 
 }
 
-angular.module('baseApp')
+angular.module('refacciones')
   .controller('NavbarController', NavbarController);

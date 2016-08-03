@@ -15,12 +15,12 @@ class LoginController {
 
     if (form.$valid) {
       this.Auth.login({
-          email: this.user.email,
+          rfc: this.user.rfc,
           password: this.user.password
         })
         .then(() => {
           // Logged in, redirect to home
-          this.$state.go('main');
+          this.$state.go('user.cotizacion');
         })
         .catch(err => {
           this.errors.other = err.message;
@@ -29,5 +29,5 @@ class LoginController {
   }
 }
 
-angular.module('baseApp')
+angular.module('refacciones')
   .controller('LoginController', LoginController);

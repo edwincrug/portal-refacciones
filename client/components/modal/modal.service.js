@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('baseApp')
+angular.module('refacciones')
   .factory('Modal', function($rootScope, $uibModal) {
     /**
      * Opens a modal

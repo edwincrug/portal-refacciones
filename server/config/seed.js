@@ -49,13 +49,13 @@ User.sync()
     User.bulkCreate([{
       provider: 'local',
       name: 'Test User',
-      email: 'test@example.com',
+      rfc: 'PAGO910812ZZZ',
       password: 'test'
     }, {
       provider: 'local',
       role: 'admin',
       name: 'Admin',
-      email: 'admin@example.com',
+      rfc: 'PAGO910812AAA',
       password: 'admin'
     }])
     .then(() => {

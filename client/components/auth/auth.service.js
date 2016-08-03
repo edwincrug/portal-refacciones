@@ -20,12 +20,9 @@
        * @param  {Function} callback - optional, function(error, user)
        * @return {Promise}
        */
-      login({
-        email,
-        password
-      }, callback) {
+      login({rfc,password}, callback) {
         return $http.post('/auth/local', {
-            email: email,
+            rfc: rfc,
             password: password
           })
           .then(res => {
@@ -185,6 +182,6 @@
     return Auth;
   }
 
-  angular.module('baseApp.auth')
+  angular.module('refacciones.auth')
     .factory('Auth', AuthService);
 })();

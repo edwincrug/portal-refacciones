@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('baseApp', ['baseApp.auth', 'baseApp.admin', 'baseApp.constants', 'ngCookies',
+angular.module('refacciones', ['refacciones.auth',  'refacciones.constants', 'ngCookies',
     'ngResource', 'ngSanitize', 'btford.socket-io', 'ui.router', 'ui.bootstrap',
     'validation.match'
   ])
