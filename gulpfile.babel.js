@@ -421,7 +421,6 @@ gulp.task('wiredep:client', () => {
   return gulp.src(paths.client.mainView)
     .pipe(wiredep({
       exclude: [
-        /bootstrap.js/,
         '/json3/',
         '/es5-shim/'
       ],

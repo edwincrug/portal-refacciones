@@ -7,6 +7,5 @@ angular.module('refacciones')
         url: 'cotizacion',
         template: '<cotizacion></cotizacion>',
         authenticate:true
-
       });
   });
