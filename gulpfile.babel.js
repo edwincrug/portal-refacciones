@@ -237,12 +237,12 @@ gulp.task('inject:js', () => {
 gulp.task('inject:css', () => {
   return gulp.src(paths.client.mainView)
     .pipe(plugins.inject(
-      gulp.src(`${clientPath}/{app,components}/**/*.css`, {
+      gulp.src(paths.client.styles, {
         read: false
       }).pipe(plugins.sort()), {
         starttag: '<!-- injector:css -->',
-        endtag: '<!-- endinjector -->',
-        transform: (filepath) => '<link rel="stylesheet" href="' + filepath.replace(`/${clientPath}/`, '').replace('/.tmp/', '') + '">'
+        endtag: '<!-- endinjector -->'//,
+      //  transform: (filepath) => '<link rel="stylesheet" href="' + filepath.replace(`/${clientPath}/`, '').replace('/.tmp/', '') + '">'
       }))
     .pipe(gulp.dest(clientPath));
 });

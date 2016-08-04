@@ -3,7 +3,10 @@
 (function(){
 
 class CotizacionComponent {
-  constructor() {
+  constructor(Empresa) {
+    Empresa.query({user:3},function(data){
+      console.log(data[2].emp_nombre)
+    })
     this.message = 'Hello';
   }
 }
