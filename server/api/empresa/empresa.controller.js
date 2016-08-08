@@ -28,7 +28,7 @@ export function index(req, res) {
   var params = [];
   params.push({
     name: 'idUsuario',
-    value: req.body.user,
+    value: req.query.user,
     type: DataAccess.types.STRING
   })
   DataAccess.query('SEL_EMPRESA_SP', params, function(error, result) {

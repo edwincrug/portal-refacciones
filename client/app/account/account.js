@@ -4,13 +4,10 @@ angular.module('refacciones')
   .config(function($stateProvider) {
     $stateProvider.state('login', {
         url: '/',
-        views: {
-          admin: {
-            templateUrl: 'app/account/login/login.html',
-            controller: 'LoginController',
-            controllerAs: 'vm'
-          }
-        }
+        templateUrl: 'app/account/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+
       })
       .state('logout', {
         url: '/logout?referrer',

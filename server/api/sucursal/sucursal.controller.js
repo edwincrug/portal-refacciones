@@ -60,15 +60,16 @@ function handleError(res, statusCode) {
 
 // Gets a list of Sucursals
 export function index(req, res) {
+  console.log(req.query)
   var params = [];
   params.push({
     name: 'idUsuario',
-    value: req.body.user,
+    value: req.query.user,
     type: DataAccess.types.STRING
   })
   params.push({
     name: 'idEmpresa',
-    value: req.body.empresa,
+    value: req.query.empresa,
     type: DataAccess.types.STRING
   })
 
