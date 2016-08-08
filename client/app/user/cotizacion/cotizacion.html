@@ -13,27 +13,15 @@
             <div class="col-sm-6  col-xs-12">
               <div class="form-horizontal">
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Empresa: </label>
-                  <div class="col-sm-9">
-                    <select class="form-control">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                  <label class="col-sm-3 control-label">Empresa: </label>
+                  <div class="col-sm-8">
+                    <select ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_idempresa" ng-model="empresaActual"></select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword" class="col-sm-2 control-label">Sucursal: </label>
-                  <div class="col-sm-9">
-                    <select class="form-control">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
+                  <label for="inputPassword" class="col-sm-3 control-label">Sucursal: </label>
+                  <div class="col-sm-8">
+                    <select class="form-control" ng-options="sucursal.suc_nombre for sucursal in sucursales track by sucursal.suc_idsucursal" ng-model="sucursalActual"></select>
                   </div>
                 </div>
               </div>
@@ -42,7 +30,7 @@
               <div class="form-horizontal">
                 <div class="form-group">
                   <div class="col-sm-11">
-                    <div class="list-group">
+                    <div class="list-group"  ng-class="{'invisible': !sucursalActual }">
                       <div class="mar-btm">
                         <span class="label label-primary pull-right">Credito total: $20,000</span>
                         <p>Credito disponible: $20,000</p>
@@ -57,7 +45,7 @@
                 </div>
                 <div class="form-group">
                   <div style="margin-top: -15px;" class="col-sm-11 ">
-                    <button class="form-control btn btn-block btn-primary"  data-toggle="modal" data-target=".modal-cotizacion">Nueva cotizacion</button>
+                    <button ng-disabled="!sucursalActual  && sucursalActual.suc_idsucursal == 0" ui-sref='user.cotizacion.modal.busqueda' class="form-control btn btn-block btn-primary" >Nueva cotizacion</button>
                   </div>
                 </div>
               </div>
@@ -68,3 +56,4 @@
     </div>
   </div>
 </div>
+<div id="modal-cotizacion-container" ui-view></div>
