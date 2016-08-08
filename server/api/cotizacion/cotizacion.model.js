@@ -11,7 +11,10 @@ export default function(sequelize, DataTypes) {
     estatus: DataTypes.INTEGER,
     idUsuario: DataTypes.DECIMAL(18,0),
     descripcion: DataTypes.STRING,
-    folio: DataTypes.STRING
+    folio: DataTypes.STRING,
+    total: DataTypes.DECIMAL(18,2),
+    sucursal: DataTypes.STRING(10),
+    emp_idempresa: DataTypes.INTEGER
   },
   {
     freezeTableName: true,
