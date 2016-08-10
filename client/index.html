@@ -18,6 +18,7 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -27,6 +28,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="components/plugins/nifty/nifty.css" />
   <link rel="stylesheet" href="app/user/cotizacion/cotizacion.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/busqueda/busqueda.css" />
 </head>
 
 <body ng-app="refacciones">
@@ -35,7 +37,7 @@
     <![endif]-->
 
   <div ui-view></div>
-  
+
   <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -53,6 +55,8 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
   <script src="bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+  <script src="bower_components/bootbox.js/bootbox.js"></script>
+  <script src="bower_components/toastr/toastr.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -68,11 +72,9 @@
   <script src="app/app.constant.js"></script>
   <script src="app/user/cotizacion/cotizacion.controller.js"></script>
   <script src="app/user/cotizacion/cotizacion.router.js"></script>
-
   <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.controller.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.router.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/modalCotizacion.router.js"></script>
-
   <script src="app/user/user.router.js"></script>
   <script src="components/auth/auth.service.js"></script>
   <script src="components/auth/interceptor.service.js"></script>
@@ -84,8 +86,10 @@
   <script src="components/navbar/navbar.controller.js"></script>
   <script src="components/navbar/navbar.directive.js"></script>
   <script src="components/plugins/nifty/nifty.min.js"></script>
-  <script src="components/resources/empresa/empresa.service.js"></script>
-  <script src="components/resources/sucursal/sucursal.service.js"></script>
+  <script src="components/resources/cotizacion.service.js"></script>
+  <script src="components/resources/empresa.service.js"></script>
+  <script src="components/resources/refaccion.service.js"></script>
+  <script src="components/resources/sucursal.service.js"></script>
   <script src="components/socket/socket.service.js"></script>
   <script src="components/util/util.service.js"></script>
   <!-- endinjector -->

@@ -1,16 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /sucursal              ->  index
- * POST    /sucursal              ->  create
- * GET     /sucursal/:id          ->  show
- * PUT     /sucursal/:id          ->  update
- * DELETE  /sucursal/:id          ->  destroy
+ * GET     /api/refaccion              ->  index
+ * POST    /api/refaccion              ->  create
+ * GET     /api/refaccion/:id          ->  show
+ * PUT     /api/refaccion/:id          ->  update
+ * DELETE  /api/refaccion/:id          ->  destroy
  */
 
-'use strict';
+ 'use strict';
 
-import _ from 'lodash';
-import DataAccess from '../../sqldb/dataAccess';
+ import _ from 'lodash';
+ import DataAccess from '../../sqldb/dataAccess';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -58,21 +58,39 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Sucursals
+// Gets a list of Refaccions
 export function index(req, res) {
   var params = [];
   params.push({
-    name: 'idUsuario',
-    value: req.query.user,
+    name: 'descripcion',
+    value: req.query.query,
     type: DataAccess.types.STRING
   })
   params.push({
-    name: 'idEmpresa',
-    value: req.query.empresa,
+    name: 'PAR_IDENPARA',
+    value: 'GEN',
     type: DataAccess.types.STRING
   })
-  DataAccess.query('SEL_SUCURSAL_SP', params, function(error, result) {
+  params.push({
+    name: 'PAR_TIPOPARA',
+    value: 'SA',
+    type: DataAccess.types.STRING
+  })
+  DataAccess.query('SEL_REFACCION_SP', params, function(error, result) {
     if(error) return handleError(res)(error);
     return respondWithResult(res)(result[0])
   });
+}
+
+
+// Gets a single Refaccion from the DB
+export function show(req, res) {
+  return Refaccion.find({
+    where: {
+      _id: req.params.id
+    }
+  })
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
 }

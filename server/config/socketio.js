@@ -17,6 +17,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/refaccion/refaccion.socket').register(socket);
   require('../api/cotizacion/cotizacion.socket').register(socket);
   require('../api/sucursal/sucursal.socket').register(socket);
   require('../api/empresa/empresa.socket').register(socket);

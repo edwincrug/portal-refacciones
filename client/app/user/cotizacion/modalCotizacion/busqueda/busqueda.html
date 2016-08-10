@@ -1,120 +1,163 @@
-<div id="demo-step-wz">
-  <div class="wz-heading wz-w-label bg-info">
+<div id="demo-step-tab1" class="tab-pane pad-all  active in">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="inputRefacciones">Introduce numero de parte o descripcion:</label>
 
-    <!--Progress bar-->
-    <div class="progress progress-xs">
-      <div style="width: 75%; margin: 0px 12.5%;" class="progress-bar progress-bar-dark"></div>
+        <div class="input-group">
+          <input autocomplete="off" ng-change="buscarRefaccion()" ng-model="refaccionBusqueda" placeholder="Buscar" id="inputRefacciones" type="text" class="form-control">
+          <span class="input-group-btn">
+              <button ng-click="clearQuery()" class="btn btn-primary btn-small" type="button"><i class="fa fa-angle-double-left"></i></button>
+         </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+    <div style="margin-top: -15px;" class="col-sm-12">
+
+      <div ng-show="busquedaActual.length > 0" class="form-group query-container  ">
+        <table class="table table-hover encabezado">
+          <thead>
+            <tr>
+              <th style="width:20%">
+                No serie
+              </th>
+              <th  style="width:30%">
+                Descripcion
+              </th>
+              <th style="width:20%">
+                Precio
+              </th>
+              <th style="width:20%">
+                Cantidad
+              </th>
+              <th style="width:15%">
+                Agregar
+              </th
+            </tr>
+          </thead>
+        </table>
+        <table style="margin-top:35px;" class="table table-hover ">
+          <tbody>
+
+            <tr class="list-group-item-custom" ng-repeat="refaccion in busquedaActual">
+              <td style="width:20%">
+                {{refaccion.PTS_IDPARTE}}
+              </td>
+              <td style="width:27%">
+                {{refaccion.PTS_DESPARTE}}
+              </td>
+              <td style="width:20%">
+                {{refaccion.PTS_PCOLISTA | currency}}
+              </td>
+              <td style="width:20%">
+                <input ng-value="1" ng-model="refaccion.cantidad" autocomplete="off" size="5" class="show-hover text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
+              </td>
+
+              <td style="width:15%">
+                <button ng-click="agregarACotizacion(refaccion)" class="btn btn-primary show-hover" type="button" name="button">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-sm-12">
+      <div ng-show="cotizacionActual.length > 0" class="form-group ">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                No serie
+              </th>
+              <th>
+                Descripcion
+              </th>
+              <th>
+                Precio
+              </th>
+              <th>
+                Cantidad
+              </th>
+              <th>
+                Subtotal
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="refaccion in cotizacionActual">
+              <td>
+                {{refaccion.PTS_IDPARTE}}
+              </td>
+              <td>
+                {{refaccion.PTS_DESPARTE}}
+              </td>
+              <td>
+                {{refaccion.PTS_PCOLISTA | currency}}
+              </td>
+              <td>
+                <input ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
+              </td>
+              <td>
+                {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
+              </td>
+              <td>
+                <button ng-click="borrarCotizacion(refaccion)" class="btn btn-sm btn-danger" type="button" name="button">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div ng-show="cotizacionActual.length > 0" class="row">
+      <div class="col-xs-3 col-xs-push-9">
+        <b>Total:{{total | currency}}</b>
+      </div>
     </div>
 
-    <!--Nav-->
-    <ul class="wz-steps wz-icon-bw wz-nav-off text-lg">
-      <li class="col-xs-3 active">
-        <a data-toggle="tab" href="#demo-step-tab1" aria-expanded="false">
-          <span class="icon-wrap icon-wrap-xs icon-circle bg-gray mar-ver">
-					                                    <span class="wz-icon icon-txt text-bold">1</span>
-          <i class="wz-icon-done fa fa-check"></i>
-          </span>
-          <small class="wz-desc box-block text-semibold">Account</small>
-        </a>
-      </li>
-      <li class="col-xs-3">
-        <a data-toggle="tab" href="#demo-step-tab2" aria-expanded="false">
-          <span class="icon-wrap icon-wrap-xs icon-circle bg-gray mar-ver">
-					                                    <span class="wz-icon icon-txt text-bold">2</span>
-          <i class="wz-icon-done fa fa-check"></i>
-          </span>
-          <small class="wz-desc box-block text-semibold">Profile</small>
-        </a>
-      </li>
-      <li class="col-xs-3">
-        <a data-toggle="tab" href="#demo-step-tab3" aria-expanded="false">
-          <span class="icon-wrap icon-wrap-xs icon-circle bg-gray mar-ver">
-					                                    <span class="wz-icon icon-txt text-bold">3</span>
-          <i class="wz-icon-done fa fa-check"></i>
-          </span>
-          <small class="wz-desc box-block text-semibold">Address</small>
-        </a>
-      </li>
-      <li class="col-xs-3 ">
-        <a data-toggle="tab" href="#demo-step-tab4" aria-expanded="true">
-          <span class="icon-wrap icon-wrap-xs icon-circle bg-gray mar-ver">
-					                                    <span class="wz-icon icon-txt text-bold">4</span>
-          <i class="wz-icon-done fa fa-check"></i>
-          </span>
-          <small class="wz-desc box-block text-semibold">Finish</small>
-        </a>
-      </li>
-    </ul>
   </div>
-
-  <!--Form-->
-  <form class="form-horizontal">
-    <div class="panel-body">
-      <div class="tab-content">
-
-        <!--First tab-->
-        <div id="demo-step-tab1" class="tab-pane  active in">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Username</label>
-            <div class="col-lg-7">
-              <input type="text" class="form-control" name="username" placeholder="Username">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email address</label>
-            <div class="col-lg-7">
-              <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-          </div>
-        </div>
-
-        <!--Second tab-->
-        <div id="demo-step-tab2" class="tab-pane fade">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">First name</label>
-            <div class="col-lg-7">
-              <input type="text" placeholder="First name" name="firstName" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name</label>
-            <div class="col-lg-7">
-              <input type="text" placeholder="Last name" name="lastName" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <!--Third tab-->
-        <div id="demo-step-tab3" class="tab-pane">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Phone Number</label>
-            <div class="col-lg-7">
-              <input type="text" placeholder="Phone number" name="phoneNumber" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Address</label>
-            <div class="col-lg-7">
-              <input type="text" placeholder="Address" name="address" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <!--Fourth tab-->
-        <div id="demo-step-tab4" class="tab-pane  text-center">
-          <h4>Thank you</h4>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-        </div>
-      </div>
-    </div>
-
-    <!--Footer button-->
-    <div class="panel-footer text-right">
-      <div class="box-inline">
-        <button type="button" class="previous btn btn-info">Previous</button>
-        <button type="button" class="next btn btn-info disabled" style="display: none;">Next</button>
-        <button type="button" class="finish btn btn-info" style="display: inline-block;">Finish</button>
-      </div>
-    </div>
-  </form>
+  <button ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success btn-guardar" type="button" name="button">Guardar</button>
 </div>
+
+<!--div class="form-group">
+  <div class="list-group">
+    <div   class="list-group-item">
+      <div class="row ">
+        <div class="col-xs-2">
+          <p style="text-align:center" class="control-label ">
+            {{refaccion.PTS_IDPARTE}}
+          </p>
+        </div>
+        <div class="col-xs-4">
+          <p style="text-align:center" class="control-label">
+            {{refaccion.PTS_DESPARTE}}
+          </p>
+        </div>
+        <div class="col-xs-2">
+          <p style="text-align:center" class="control-label">
+              {{refaccion.PTS_PCOLISTA | currency}}
+          </p>
+        </div>
+        <div class="col-xs-2 show-hover">
+          <input  class="text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
+        </div>
+        <div class="col-xs-2 show-hover">
+          <button class="btn  btn-primary btn-block" type="button" name="button">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div-->

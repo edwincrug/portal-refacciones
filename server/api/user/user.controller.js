@@ -30,7 +30,8 @@ export function index(req, res) {
       'name',
       'email',
       'role',
-      'provider'
+      'provider',
+      'per_idpersona'
     ]
   })
     .then(users => {

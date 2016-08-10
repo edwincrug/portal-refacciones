@@ -50,7 +50,8 @@ User.sync()
       provider: 'local',
       name: 'Test User',
       rfc: 'PAGO910812ZZZ',
-      password: 'test'
+      password: 'test',
+      per_idpersona:11
     }, {
       provider: 'local',
       role: 'admin',
