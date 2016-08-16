@@ -3,7 +3,6 @@
     <div class="col-sm-6">
       <div class="form-group">
         <label for="inputRefacciones">Introduce numero de parte o descripcion:</label>
-
         <div class="input-group">
           <input autocomplete="off" ng-change="buscarRefaccion()" ng-model="refaccionBusqueda" placeholder="Buscar" id="inputRefacciones" type="text" class="form-control">
           <span class="input-group-btn">
@@ -15,149 +14,141 @@
     <div class="col-sm-6">
 
     </div>
-    <div style="margin-top: -15px;" class="col-sm-12">
-
+    <div style="margin-top: -15px;" class="col-xs-12">
       <div ng-show="busquedaActual.length > 0" class="form-group query-container  ">
         <table class="table table-hover encabezado">
           <thead>
             <tr>
-              <th style="width:20%">
+              <th style="width:23%">
                 No serie
               </th>
-              <th  style="width:30%">
+              <th style="width:32%">
                 Descripcion
               </th>
-              <th style="width:20%">
+              <th style="width:21.5%">
                 Precio
               </th>
-              <th style="width:20%">
+              <th style="width:15%">
                 Cantidad
               </th>
-              <th style="width:15%">
+              <th style="width:10%">
                 Agregar
-              </th
-            </tr>
+              </th </tr>
           </thead>
         </table>
         <table style="margin-top:35px;" class="table table-hover ">
           <tbody>
-
             <tr class="list-group-item-custom" ng-repeat="refaccion in busquedaActual">
               <td style="width:20%">
                 {{refaccion.PTS_IDPARTE}}
               </td>
-              <td style="width:27%">
+              <td style="width:30%">
                 {{refaccion.PTS_DESPARTE}}
               </td>
               <td style="width:20%">
                 {{refaccion.PTS_PCOLISTA | currency}}
               </td>
-              <td style="width:20%">
+              <td style="width:18%">
                 <input ng-value="1" ng-model="refaccion.cantidad" autocomplete="off" size="5" class="show-hover text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
               </td>
-
-              <td style="width:15%">
+              <td style="width:12%">
                 <button ng-click="agregarACotizacion(refaccion)" class="btn btn-primary show-hover" type="button" name="button">
                   <i class="fa fa-plus"></i>
                 </button>
               </td>
-
             </tr>
           </tbody>
         </table>
       </div>
-
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <div class="col-sm-12">
       <div ng-show="cotizacionActual.length > 0" class="form-group ">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                No serie
-              </th>
-              <th>
-                Descripcion
-              </th>
-              <th>
-                Precio
-              </th>
-              <th>
-                Cantidad
-              </th>
-              <th>
-                Subtotal
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="refaccion in cotizacionActual">
-              <td>
-                {{refaccion.PTS_IDPARTE}}
-              </td>
-              <td>
-                {{refaccion.PTS_DESPARTE}}
-              </td>
-              <td>
-                {{refaccion.PTS_PCOLISTA | currency}}
-              </td>
-              <td>
-                <input ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
-              </td>
-              <td>
-                {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
-              </td>
-              <td>
-                <button ng-click="borrarCotizacion(refaccion)" class="btn btn-sm btn-danger" type="button" name="button">
-                  <i class="fa fa-minus"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div style="max-height: 36px; overflow: hidden;">
+          <table style="margin-bottom:0px;" class="table table-striped ">
+            <thead>
+              <tr>
+                <th>
+                  No serie
+                </th>
+                <th>
+                  Descripcion
+                </th>
+                <th>
+                  Precio
+                </th>
+                <th>
+                  Cantidad
+                </th>
+                <th>
+                  Subtotal
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="refaccion in cotizacionActual">
+                <td>
+                  {{refaccion.PTS_IDPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_DESPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA | currency}}
+                </td>
+                <td>
+                  <input style="width:80px" ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
+                </td>
+                <td>
+                  <button ng-click="borrarCotizacion(refaccion)" class="btn btn-sm btn-danger" type="button" name="button">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="max-height: 38vh; overflow: auto;">
+          <table class="table table-striped ">
+            <tbody>
+              <tr ng-repeat="refaccion in cotizacionActual">
+                <td>
+                  {{refaccion.PTS_IDPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_DESPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA | currency}}
+                </td>
+                <td>
+                  <input style="width:80px" ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
+                </td>
+                <td>
+                  <button ng-click="borrarCotizacion(refaccion)" class="btn btn-sm btn-danger" type="button" name="button">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
     </div>
     <div ng-show="cotizacionActual.length > 0" class="row">
-      <div class="col-xs-3 col-xs-push-9">
-        <b>Total:{{total | currency}}</b>
+      <div class="col-xs-2 col-xs-push-7">
+        <h4>Total:</h4>
+      </div>
+      <div class="col-xs-2 col-xs-push-7">
+        <h4>{{total | currency}}</h4>
       </div>
     </div>
 
   </div>
-  <button ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success btn-guardar" type="button" name="button">Guardar</button>
+  <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success btn-guardar" type="button" name="button">{{folioActual != "TEMP"? "Guardar cambios": "Guardar"}}</button>
 </div>
-
-<!--div class="form-group">
-  <div class="list-group">
-    <div   class="list-group-item">
-      <div class="row ">
-        <div class="col-xs-2">
-          <p style="text-align:center" class="control-label ">
-            {{refaccion.PTS_IDPARTE}}
-          </p>
-        </div>
-        <div class="col-xs-4">
-          <p style="text-align:center" class="control-label">
-            {{refaccion.PTS_DESPARTE}}
-          </p>
-        </div>
-        <div class="col-xs-2">
-          <p style="text-align:center" class="control-label">
-              {{refaccion.PTS_PCOLISTA | currency}}
-          </p>
-        </div>
-        <div class="col-xs-2 show-hover">
-          <input  class="text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
-        </div>
-        <div class="col-xs-2 show-hover">
-          <button class="btn  btn-primary btn-block" type="button" name="button">Agregar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div-->

@@ -21,7 +21,7 @@
                 <div class="form-group">
                   <label for="inputPassword" class="col-sm-3 control-label">Sucursal: </label>
                   <div class="col-sm-8">
-                    <select ng-disabled="empresaActual.emp_idempresa==0"  class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
+                    <select ng-change="cambioSucursal()" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
                   </div>
                 </div>
               </div>
@@ -30,7 +30,7 @@
               <div class="form-horizontal">
                 <div class="form-group">
                   <div class="col-sm-11">
-                    <div class="list-group"  ng-class="{'invisible': !sucursalActual || sucursalActual.AGENCIA == 0 }">
+                    <div class="list-group" ng-class="{'invisible': !sucursalActual || sucursalActual.AGENCIA == 0 }">
                       <div class="mar-btm">
 
                         <span style="font-size:14px;" class="label label-primary pull-right">Credito total: {{sucursalActual.Con_LimCredito | currency }}</span>
@@ -47,11 +47,56 @@
                 </div>
                 <div class="form-group">
                   <div style="margin-top: -15px;" class="col-sm-11 ">
-                    <a ng-disabled="!sucursalActual || sucursalActual.AGENCIA == 0" href="cotizacion/nueva/busqueda"  class="form-control btn btn-block btn-primary" >Nueva cotizacion</a>
+                    <a ng-disabled="!sucursalActual || sucursalActual.AGENCIA == 0" href="cotizacion/nueva/busqueda" class="form-control btn btn-block btn-primary">Nueva cotizacion</a>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div style="margin-top: 30px;" ng-show="listaCotizaciones.length > 0" class=" col-xs-12">
+            <table st-table="cotizaciones" st-safe-src="listaCotizaciones" id="tabla-cotizacion" class="table">
+              <thead>
+                <tr>
+                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio">
+                    Cotizacion
+                  </th>
+                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
+                    Descripcion
+                  </th>
+                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total">
+                    Total
+                  </th>
+                  <th>
+
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="cotizacion in cotizaciones">
+                  <td>
+                    {{cotizacion.folio}}
+                  </td>
+                  <td>
+                    {{cotizacion.descripcion}}
+                  </td>
+                  <td>
+                    {{cotizacion.total | currency}}
+                  </td>
+                  <td>
+                    <a href="{{'/cotizacion/'+cotizacion.idCotizacion+'/busqueda'}}" class="btn btn-success btn-icon"><i class="fa fa-pencil"></i></a>
+                    <button ng-click="borrarCotizacion(cotizacion)" class="btn btn-danger btn-icon"><i class="fa fa-trash-o"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ import DataAccess from '../../sqldb/dataAccess';
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
-    console.log("entity",entity)
+    console.log("entity", entity)
     if (entity) {
       res.status(statusCode).json(entity);
     }
@@ -62,29 +62,56 @@ function handleError(res, statusCode) {
 
 // Gets a list of Cotizacions
 export function index(req, res) {
-  return Cotizacion.findAll()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  var params = [];
+  params.push({
+    name: 'idUsuario',
+    value: req.query.user,
+    type: DataAccess.types.INT
+  })
+  params.push({
+    name: 'sucursal',
+    value: req.query.sucursal,
+    type: DataAccess.types.STRING
+  })
+  params.push({
+    name: 'empresa',
+    value: req.query.empresa,
+    type: DataAccess.types.STRING
+  })
+  console.log(params)
+  DataAccess.query('SEL_COTIZACION_SP', params, function(error, result) {
+    console.log(error)
+    console.log(result)
+    if (error) return handleError(res)(error);
+    return respondWithResult(res)(result[0])
+  })
 }
 
 // Gets a single Cotizacion from the DB
 export function show(req, res) {
-  return Cotizacion.find({
-      where: {
-        _id: req.params.id
-      }
-    })
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  var params = [];
+  params.push({
+    name: 'idCotizacion',
+    value: req.params.id,
+    type: DataAccess.types.INT
+  })
+  console.log(params)
+  DataAccess.query('SEL_COTIZACIONDETALLE_SP', params, function(error, result) {
+    console.log(error)
+    console.log(result)
+    if (error) return handleError(res)(error);
+    return respondWithResult(res)({data:result[0]})
+  })
+
 }
 
 // Creates a new Cotizacion in the DB
 export function create(req, res) {
   for (var i = 0; i < req.body.refacciones.length; i++) {
-    req.body.refacciones[i] = {refaccion:req.body.refacciones[i]}
+    req.body.refacciones[i] = {
+      refaccion: req.body.refacciones[i]
+    }
   }
-  console.log(req.body);
   var params = [];
   params.push({
     name: 'idUsuario',
@@ -93,7 +120,9 @@ export function create(req, res) {
   })
   params.push({
     name: 'refacciones',
-    value: jsonxml({refacciones:req.body.refacciones}),
+    value: jsonxml({
+      refacciones: req.body.refacciones
+    }),
     type: DataAccess.types.STRING
   })
   params.push({
@@ -122,11 +151,7 @@ export function create(req, res) {
     type: DataAccess.types.STRING
   })
 
-  console.log(params)
   DataAccess.query('INS_COTIZACION_SP', params, function(error, result) {
-    console.log(error)
-    console.log(result)
-
     if (error) return handleError(res)(error);
     return respondWithResult(res, 201)(result[0][0])
   });
@@ -135,28 +160,52 @@ export function create(req, res) {
 
 // Updates an existing Cotizacion in the DB
 export function update(req, res) {
-  if (req.body._id) {
-    delete req.body._id;
+  for (var i = 0; i < req.body.refacciones.length; i++) {
+    req.body.refacciones[i] = {
+      refaccion: req.body.refacciones[i]
+    }
   }
-  return Cotizacion.find({
-      where: {
-        _id: req.params.id
-      }
-    })
-    .then(handleEntityNotFound(res))
-    .then(saveUpdates(req.body))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  var params = [];
+  params.push({
+    name: 'idCotizacion',
+    value: req.body.idCotizacion,
+    type: DataAccess.types.INT
+  })
+  params.push({
+    name: 'refacciones',
+    value: jsonxml({
+      refacciones: req.body.refacciones
+    }),
+    type: DataAccess.types.STRING
+  })
+
+  params.push({
+    name: 'total',
+    value: req.body.total,
+    type: DataAccess.types.DECIMAL
+  })
+  console.log(params)
+
+  DataAccess.query('UPD_COTIZACION_SP', params, function(error, result) {
+    if (error) return handleError(res)(error);
+    return respondWithResult(res, 201)(result[0][0])
+  });
+
 }
 
 // Deletes a Cotizacion from the DB
 export function destroy(req, res) {
-  return Cotizacion.find({
-      where: {
-        _id: req.params.id
-      }
-    })
-    .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
-    .catch(handleError(res));
+  var params = [];
+  params.push({
+    name: 'idCotizacion',
+    value: req.params.id,
+    type: DataAccess.types.INT
+  })
+  console.log(params)
+  DataAccess.query('DEL_ESTATUS_COTIZACION_SP', params, function(error, result) {
+    console.log(error)
+    console.log(result)
+    if (error) return handleError(res)(error);
+    return respondWithResult(res)(result[0][0])
+  })
 }
