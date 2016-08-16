@@ -9,6 +9,7 @@
       $scope.cotizacionActual = [];
       $scope.$parent.$parent.guardarModal = false
       $scope.guardar = false;
+      $scope.templateActual = null;
     }
 
 
@@ -120,6 +121,53 @@
             $scope.$parent.$parent.guardarModal = false
             $scope.guardar = false;
 
+          })
+
+        }
+      }
+      // Guardado del template
+      $scope.guadarTemplateBack = function() {
+        console.log($scope.templateActual)
+        if ($scope.$scope.templateActual == null) {
+          bootbox.prompt({
+            title: "Introduce un nombre para el nuevo pedido recurrente",
+            callback: function(result) {
+              if (result != null && result != "") {
+                var cotizacionGuardar = {
+                  idUsuario: 11,
+                  refacciones: $scope.cotizacionActual,
+                  descripcion: result,
+                  total: $scope.total,
+                  empresa: $scope.empresaActual.emp_nombrecto,
+                  sucursal: $scope.sucursalActual.suc_nombrecto,
+                  base: "GAZM_Zaragoza"
+
+                }
+                Cotizacion.save(cotizacionGuardar, function(data) {
+                  $state.go("user.cotizacion.modal.busqueda", {
+                    id: data.idCotizacion
+                  })
+                  $scope.$parent.$parent.$parent.cambioSucursal()
+                  toastr.success(data.mensaje)
+
+                  $scope.$parent.$parent.guardarModal = false
+                  $scope.guardar = false;
+
+                })
+              }
+            }
+          })
+        }else{
+          var cotizacionGuardar = {
+            idCotizacion: $scope.folioActual,
+            refacciones: $scope.cotizacionActual,
+            total: $scope.total,
+          }
+          Cotizacion.update(cotizacionGuardar, function(data) {
+            $scope.$parent.$parent.$parent.cambioSucursal()
+            toastr.success(data.mensaje)
+            $scope.$parent.$parent.guardarModal = false
+            $scope.guardar = false;
           })
 
         }

@@ -48,12 +48,13 @@
 .list-group-item-custom td {
   line-height: 26px!important;
 }
-.btn-guardar {
+.btn-container {
   position: absolute;
   bottom: 10px;
-  left: 15px;
-  z-index: 6;
+  left: 16px;
+  z-index: 10;
 }
+
 .encabezado thead {
   position: fixed;
   background-color: whitesmoke;

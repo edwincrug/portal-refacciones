@@ -11,8 +11,17 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
-
+    <div class="col-sm-push-1 col-sm-5">
+      <div class="form-group">
+        <label for="inputRefacciones">Templates:</label>
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
     </div>
     <div style="margin-top: -15px;" class="col-xs-12">
       <div ng-show="busquedaActual.length > 0" class="form-group query-container  ">
@@ -150,5 +159,9 @@
     </div>
 
   </div>
-  <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success btn-guardar" type="button" name="button">{{folioActual != "TEMP"? "Guardar cambios": "Guardar"}}</button>
+  <div class="btn-container">
+    <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success" type="button" name="button">{{folioActual != "TEMP"? "Guardar cambios": "Guardar"}}</button>
+    <button ng-disabled="!guardar" ng-click="guadarTemplayeBack()" ng-show="cotizacionActual.length>0" class="btn btn-info" type="button" name="button">{{templateActual == null ? "Guardar como plantilla": "Actualizar plantilla"}}</button>
+  </div>
+
 </div>

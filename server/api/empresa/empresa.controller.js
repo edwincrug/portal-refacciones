@@ -28,11 +28,15 @@ export function index(req, res) {
   var params = [];
   params.push({
     name: 'idUsuario',
-    value: req.body.user,
+    value: req.query.user,
     type: DataAccess.types.STRING
   })
+  console.log(params)
   DataAccess.query('SEL_EMPRESA_SP', params, function(error, result) {
     if(error) return handleError(res)(error);
+    console.log(error)
+    console.log(result)
+
     return respondWithResult(res)(result[0])
   });
 }

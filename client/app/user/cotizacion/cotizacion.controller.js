@@ -32,6 +32,7 @@
             });
             $scope.sucursales = data;
             $scope.sucursalActual = $scope.sucursales[0];
+            $scope.cambioSucursal();
           })
         } else {
           $scope.sucursales = $scope.sucursalActual = null;
