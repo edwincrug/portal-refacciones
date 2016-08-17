@@ -4,7 +4,7 @@ angular.module('refacciones')
   .config(function($stateProvider) {
     $stateProvider
       .state('user.cotizacion.modal.busqueda', {
-        url:'/busqueda',
+        url: '/busqueda/:template',
         template: '<busqueda></busqueda>'
       });
   });

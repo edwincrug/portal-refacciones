@@ -18,7 +18,6 @@ class ModalCotizacionComponent {
       })
 
       $('.modal-cotizacion').on('hide.bs.modal', function(e) {
-        console.log($scope.guardarModal )
         if ($scope.guardarModal && !$scope.salir ) {
           e.preventDefault()
           bootbox.confirm("<h4>Se perderan los cambios no guardados en la cotizacion actual, ¿Esta seguro de salir?</h4>", function(result) {
@@ -49,6 +48,7 @@ class ModalCotizacionComponent {
         $('#demo-step-wz').find('.finish').hide().prop('disabled', true);
       },
       onTabShow: function(tab, navigation, index) {
+        console.log("Hey")
         var $total = navigation.find('li').length;
         var $current = index + 1;
         var $percent = (index / $total) * 100;

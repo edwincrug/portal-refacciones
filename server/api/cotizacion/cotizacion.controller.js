@@ -16,42 +16,12 @@ import DataAccess from '../../sqldb/dataAccess';
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
-    console.log("entity", entity)
     if (entity) {
       res.status(statusCode).json(entity);
     }
   };
 }
 
-function saveUpdates(updates) {
-  return function(entity) {
-    return entity.updateAttributes(updates)
-      .then(updated => {
-        return updated;
-      });
-  };
-}
-
-function removeEntity(res) {
-  return function(entity) {
-    if (entity) {
-      return entity.destroy()
-        .then(() => {
-          res.status(204).end();
-        });
-    }
-  };
-}
-
-function handleEntityNotFound(res) {
-  return function(entity) {
-    if (!entity) {
-      res.status(404).end();
-      return null;
-    }
-    return entity;
-  };
-}
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -78,10 +48,7 @@ export function index(req, res) {
     value: req.query.empresa,
     type: DataAccess.types.STRING
   })
-  console.log(params)
   DataAccess.query('SEL_COTIZACION_SP', params, function(error, result) {
-    console.log(error)
-    console.log(result)
     if (error) return handleError(res)(error);
     return respondWithResult(res)(result[0])
   })
@@ -95,10 +62,7 @@ export function show(req, res) {
     value: req.params.id,
     type: DataAccess.types.INT
   })
-  console.log(params)
   DataAccess.query('SEL_COTIZACIONDETALLE_SP', params, function(error, result) {
-    console.log(error)
-    console.log(result)
     if (error) return handleError(res)(error);
     return respondWithResult(res)({data:result[0]})
   })
@@ -184,7 +148,6 @@ export function update(req, res) {
     value: req.body.total,
     type: DataAccess.types.DECIMAL
   })
-  console.log(params)
 
   DataAccess.query('UPD_COTIZACION_SP', params, function(error, result) {
     if (error) return handleError(res)(error);
@@ -201,10 +164,7 @@ export function destroy(req, res) {
     value: req.params.id,
     type: DataAccess.types.INT
   })
-  console.log(params)
   DataAccess.query('DEL_ESTATUS_COTIZACION_SP', params, function(error, result) {
-    console.log(error)
-    console.log(result)
     if (error) return handleError(res)(error);
     return respondWithResult(res)(result[0][0])
   })
