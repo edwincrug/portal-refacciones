@@ -18,7 +18,7 @@ class ModalCotizacionComponent {
       })
 
       $('.modal-cotizacion').on('hide.bs.modal', function(e) {
-        if ($scope.guardarModal && !$scope.salir ) {
+        if ($scope.guardarModal && !$scope.salir) {
           e.preventDefault()
           bootbox.confirm("<h4>Se perderan los cambios no guardados en la cotizacion actual, ¿Esta seguro de salir?</h4>", function(result) {
             if (result) {
@@ -48,7 +48,6 @@ class ModalCotizacionComponent {
         $('#demo-step-wz').find('.finish').hide().prop('disabled', true);
       },
       onTabShow: function(tab, navigation, index) {
-        console.log("Hey")
         var $total = navigation.find('li').length;
         var $current = index + 1;
         var $percent = (index / $total) * 100;
@@ -60,7 +59,19 @@ class ModalCotizacionComponent {
           'margin': 0 + 'px ' + margin + '%'
         });
 
+        if ($current == 1) {
+          $('#demo-step-wz').find('.previous').hide();
+        } else {
+          $('#demo-step-wz').find('.previous').show();
+        }
 
+        if ($current == 1) {
+          $scope.next = "cotizacion/"+$stateParams.id+"/entrega/"
+          $scope.previous = "none"
+        } else if ($current == 2) {
+          $scope.next = "cotizacion/"+$stateParams.id+"/entrega/"
+          $scope.previous = "cotizacion/"+$stateParams.id+"/busqueda/"
+        }
         // If it's the last tab then hide the last button and show the finish instead
         if ($current >= $total) {
           $('#demo-step-wz').find('.next').hide();

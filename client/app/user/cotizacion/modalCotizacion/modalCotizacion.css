@@ -1,0 +1,29 @@
+.modal-header > span {
+  position: absolute;
+  right: 32px;
+  top: 26px;
+  font-size: 1.1em;
+  width: 300px;
+}
+.modal-header .progress {
+  width: 300px;
+  margin-right: 20px;
+  position: relative;
+  top: 34px;
+}
+.modal-header .progress .restante {
+  font-size: 14px;
+  position: absolute;
+  left: 8px;
+  color: white;
+}
+
+.modal-header h3{
+    margin-top:2px;
+}
+.modal-header .close{
+  top:14px;
+  right: 16px;
+  margin: 0;
+  font-size: 2em;
+}

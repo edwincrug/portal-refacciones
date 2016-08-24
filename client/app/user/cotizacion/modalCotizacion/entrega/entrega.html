@@ -1,0 +1,21 @@
+<div id="demo-step-tab2" class="tab-pane pad-all  active in">
+  <div class="row map-container">
+    <div class="col-xs-6 col-md-5">
+      <h4>Selecciona una direccion de entrega:</h4>
+      <div ng-repeat="direccion in direcciones" class="radio">
+        <label>
+          <input ng-click="elegirDireccion(direccion)" type="radio" name="direcciones"  value="{{}}" >
+          {{direccion.RTD_CALLE1}} NO. {{direccion.RTD_NUMEXTER}} COL. {{direccion.RTD_COLONIA}},
+          {{ direccion.RTD_DELEGAC}}, {{direccion.RTD_CIUDAD}} C.P. {{direccion.RTD_CODPOS}}
+
+        </label>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-7">
+      <iframe width="100%" height="100%" frameborder="0" style="border:0" ng-src="{{mapaActual | trusted}}">
+      </iframe>
+
+    </div>
+  </div>
+
+</div>

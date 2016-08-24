@@ -63,12 +63,12 @@
  export function show(req, res) {
    var params = [];
    params.push({
-     name: 'idCotizacion',
+     name: 'idCotizacionPlantilla',
      value: req.params.id,
      type: DataAccess.types.INT
    })
    console.log(params)
-   DataAccess.query('SEL_COTIZACIONDETALLE_SP', params, function(error, result) {
+   DataAccess.query('SEL_PLANTILLADETALLE_SP', params, function(error, result) {
      console.log(error)
      console.log(result)
      if (error) return handleError(res)(error);
@@ -143,8 +143,8 @@
    }
    var params = [];
    params.push({
-     name: 'idCotizacion',
-     value: req.body.idCotizacion,
+     name: 'idCotizacionPlantilla',
+     value: req.body.idCotizacionPlantilla,
      type: DataAccess.types.INT
    })
    params.push({
@@ -155,14 +155,11 @@
      type: DataAccess.types.STRING
    })
 
-   params.push({
-     name: 'total',
-     value: req.body.total,
-     type: DataAccess.types.DECIMAL
-   })
    console.log(params)
 
-   DataAccess.query('UPD_COTIZACION_SP', params, function(error, result) {
+   DataAccess.query('UPD_PLANTILLA_SP', params, function(error, result) {
+     console.log(error)
+     console.log(result)
      if (error) return handleError(res)(error);
      return respondWithResult(res, 201)(result[0][0])
    });
@@ -173,12 +170,18 @@
  export function destroy(req, res) {
    var params = [];
    params.push({
-     name: 'idCotizacion',
+     name: 'idCotizacionPlantilla',
      value: req.params.id,
      type: DataAccess.types.INT
    })
+   params.push({
+     name: 'idEstatu',
+     value: 0,
+     type: DataAccess.types.INT
+   })
+
    console.log(params)
-   DataAccess.query('DEL_ESTATUS_COTIZACION_SP', params, function(error, result) {
+   DataAccess.query('DEL_ESTATUS_PLANTILLA_SP', params, function(error, result) {
      console.log(error)
      console.log(result)
      if (error) return handleError(res)(error);

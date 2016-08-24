@@ -15,15 +15,12 @@
       <div class="form-group">
         <label for="inputRefacciones">Plantillas:</label>
         <div style="margin-top:-16px;" class="pull-right">
-          <button ng-show="templateActual.idCotizacionPlantilla == 0  && cotizacionActual.length>0" type="button" class="btn btn-success btn-icon "
-          data-toggle="tooltip" data-placement="top" title="Guardar como plantilla" ng-click="guadarTemplateBack()">
+          <button ng-show="templateActual.idCotizacionPlantilla == 0  && cotizacionActual.length>0" type="button" class="btn btn-success btn-icon " data-toggle="tooltip" data-placement="top" title="Guardar como plantilla" ng-click="guadarTemplateBack()">
             <i class="fa fa-save"></i>
           </button>
-          <button ng-show="templateActual.idCotizacionPlantilla != 0" type="button" class="btn btn-primary btn-icon "
-          data-toggle="tooltip" data-placement="top" title="Actualizar plantilla"><i class="fa fa-refresh"></i></button>
-          <button ng-show="templateActual.idCotizacionPlantilla != 0" type="button" class="btn btn-danger btn-icon "
-          data-toggle="tooltip" data-placement="top" title="Eliminar plantilla" ng-click="eliminarPlantilla" ><i class="fa fa-trash"></i></button>
-          </div>
+          <button ng-show="templateActual.idCotizacionPlantilla != 0" type="button" class="btn btn-primary btn-icon " data-toggle="tooltip" data-placement="top" title="Actualizar plantilla" ng-click="guadarTemplateBack()"><i class="fa fa-refresh"></i></button>
+          <button ng-show="templateActual.idCotizacionPlantilla != 0" type="button" class="btn btn-danger btn-icon " data-toggle="tooltip" data-placement="top" title="Eliminar plantilla" ng-click="eliminarTemplate()"><i class="fa fa-trash"></i></button>
+        </div>
         <select ng-change="cargarTemplate()" class="form-control" ng-options="template as template.descripcion for template in listaTemplates track by template.idCotizacionPlantilla" ng-model="templateActual"></select>
       </div>
     </div>
@@ -164,7 +161,7 @@
 
   </div>
   <div class="btn-container">
-    <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success" type="button" name="button">{{folioActual != "TEMP"? "Guardar cambios": "Guardar"}}</button>
+    <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success" type="button" name="button">{{folioActual != "TEMP"? "Actualizar cotización": "Guardar cotización"}}</button>
   </div>
 
 </div>

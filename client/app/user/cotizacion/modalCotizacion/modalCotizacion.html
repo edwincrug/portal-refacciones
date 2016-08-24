@@ -2,16 +2,17 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div style="width: 300px; margin-right: 12px;position: relative;" class="progress progress-lg pull-right">
-          <div style="font-size:14px;position:absolute; left:0; right:0;color:white" class="text-center">
-              Saldo disponible: {{sucursalActual.Con_LimCredito- total | currency }}
+        <span>Credito disponible: {{sucursalActual.Con_LimCredito | currency}}</span>
+        <div  class="progress progress-lg pull-right">
+          <div class="restante">
+            Credito restante: {{sucursalActual.Con_LimCredito- total | currency }}
           </div>
           <div style="width: {{((sucursalActual.Con_LimCredito- total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-success"></div>
           <div style="width: {{((total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-danger"></div>
         </div>
-        <!--label style="font-size: 16px; " class="label label-success pull-right">Saldo disponible: {{sucursalActual.Con_LimCredito- total | currency }}</label-->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
+        <h3 >{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>
+        <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
       </div>
       <div style="padding:0px" class="modal-body">
         <div id="demo-step-wz">
@@ -64,56 +65,16 @@
             <div style="height: 65vh;" class="panel-body">
               <div class="tab-content">
                 <div ui-view></div>
-                <!--First tab>
 
-
-
-                <div id="demo-step-tab2" class="tab-pane fade">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">First name</label>
-                    <div class="col-lg-7">
-                      <input type="text" placeholder="First name" name="firstName" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name</label>
-                    <div class="col-lg-7">
-                      <input type="text" placeholder="Last name" name="lastName" class="form-control">
-                    </div>
-                  </div>
-                </div>
-
-
-                <div id="demo-step-tab3" class="tab-pane">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Phone Number</label>
-                    <div class="col-lg-7">
-                      <input type="text" placeholder="Phone number" name="phoneNumber" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Address</label>
-                    <div class="col-lg-7">
-                      <input type="text" placeholder="Address" name="address" class="form-control">
-                    </div>
-                  </div>
-                </div>
-
-
-                <div id="demo-step-tab4" class="tab-pane  text-center">
-                  <h4>Thank you</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-                </div>
-                  <!--Fourth tab-->
               </div>
             </div>
 
             <!--Footer button-->
             <div class="panel-footer text-right">
               <div class="box-inline">
-                <button type="button" class="previous btn btn-info">Anterior</button>
-                <button type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</button>
-                <button type="button" class="finish btn btn-info" style="display: inline-block;">Hacer pedido</button>
+                <a href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
+                <a href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
+                <a type="button" class="finish btn btn-info" style="display: inline-block;">Hacer pedido</a>
               </div>
             </div>
           </form>
