@@ -1,0 +1,131 @@
+<div id="demo-step-tab3" class="tab-pane pad-all  active in">
+  <div class="row">
+    <div class="col-sm-12">
+      <div ng-show="cotizacionActual.length > 0" class="form-group ">
+        <h4>
+          Dirección de entrega
+        </h4>
+        <div class="row">
+          <div class="col-sm-4">
+            Calle: <b>{{direccionActual.RTD_CALLE1}} {{direccionActual.RTD_NUMEXTER}}</b>
+          </div>
+          <div class="col-sm-4">
+            Colonia: <b>{{direccionActual.RTD_COLONIA}}</b>
+          </div>
+          <div class="col-sm-4">
+            Delegación: <b>{{ direccionActual.RTD_DELEGAC}}</b>
+          </div>
+          <div class="col-sm-4">
+            Ciudad: <b>{{direccionActual.RTD_CIUDAD}}</b>
+          </div>
+          <div class="col-sm-4">
+            Ciudad: <b>{{direccionActual.RTD_CODPOS}}</b>
+          </div>
+        </div>
+        <br>
+        <div ng-show="cotizacionActual.length > 0" class="row">
+          <div class="col-xs-6">
+            <h4>
+              Lista de refacciones
+            </h4>
+
+          </div>
+          <div class="col-xs-2 col-xs-push-2">
+            <h4>Total:</h4>
+          </div>
+          <div class="col-xs-2 col-xs-push-2">
+            <h4>{{total | currency}}</h4>
+          </div>
+        </div>
+        <div style="max-height: 39px; overflow: hidden;">
+          <table style="margin-bottom:0px;" class="table table-striped ">
+            <thead>
+              <tr>
+                <th>
+                  No serie
+                </th>
+                <th>
+                  Descripcion
+                </th>
+                <th>
+                  Precio
+                </th>
+                <th>
+                  Cantidad
+                </th>
+                <th>
+                  Subtotal
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="refaccion in cotizacionActual">
+                <td>
+                  {{refaccion.PTS_IDPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_DESPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA | currency}}
+                </td>
+                <td>
+                  {{refaccion.cantidad}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="max-height: 35vh; overflow: auto;">
+          <table style="margin-top:-36px;" class="table table-striped ">
+            <thead>
+              <tr style="visibility: hidden;">
+                <th>
+                  No serie
+                </th>
+                <th>
+                  Descripcion
+                </th>
+                <th>
+                  Precio
+                </th>
+                <th>
+                  Cantidad
+                </th>
+                <th>
+                  Subtotal
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="refaccion in cotizacionActual">
+                <td>
+                  {{refaccion.PTS_IDPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_DESPARTE}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA | currency}}
+                </td>
+                <td>
+                  {{refaccion.cantidad}}
+                </td>
+                <td>
+                  {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

@@ -5,11 +5,15 @@ class ModalCotizacionComponent {
     $scope.total = 0;
     $scope.salir = false;
     $scope.guardarModal = false;
+    $scope.cotizacionActual = [];
+    $scope.direccionActual;
+    $scope.page = 1;
     if ($scope.empresaActual == null || $scope.sucursalActual == null) {
       $state.go("user.cotizacion")
     } else {
       $scope.folioActual = $stateParams.id == "nueva" ? "TEMP" : $stateParams.id;
       $('.modal-cotizacion').modal('show')
+
       $('.modal-cotizacion').on('shown.bs.modal', function(e) {
         var moveIt = $(".modal-backdrop").remove();
         $("#modal-cotizacion-container").append(moveIt);
@@ -37,6 +41,8 @@ class ModalCotizacionComponent {
 
     }
 
+  
+
     $('#demo-step-wz').bootstrapWizard({
       tabClass: 'wz-steps',
       nextSelector: '.next',
@@ -50,6 +56,7 @@ class ModalCotizacionComponent {
       onTabShow: function(tab, navigation, index) {
         var $total = navigation.find('li').length;
         var $current = index + 1;
+        $scope.page =  $current;
         var $percent = (index / $total) * 100;
         var wdt = 100 / $total;
         var lft = wdt * index;
@@ -65,12 +72,14 @@ class ModalCotizacionComponent {
           $('#demo-step-wz').find('.previous').show();
         }
 
-        if ($current == 1) {
+        if ($current == 1) { //Busqueda
           $scope.next = "cotizacion/"+$stateParams.id+"/entrega/"
           $scope.previous = "none"
-        } else if ($current == 2) {
-          $scope.next = "cotizacion/"+$stateParams.id+"/entrega/"
+        } else if ($current == 2) { //Entrega
           $scope.previous = "cotizacion/"+$stateParams.id+"/busqueda/"
+          $scope.next = "cotizacion/"+$stateParams.id+"/confirmacion/"
+        } else if ($current == 3) { //Confirmacion
+          $scope.previous = "cotizacion/"+$stateParams.id+"/entrega/"
         }
         // If it's the last tab then hide the last button and show the finish instead
         if ($current >= $total) {

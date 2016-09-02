@@ -1,22 +1,7 @@
-.alert {
-  text-align: center;
-  padding: 8px;
-  margin-bottom: 0px;
+#tabla-pedido td{
+  line-height: 32px;
 }
-.padding-fix {
-  padding-left: 0px!important;
-}
-#tabla-cotizacion th {
-  cursor: pointer;
-}
-.chart canvas {
-  display: block;
-  margin: 0 auto;
-}
-.chart span {
-  line-height: 900%;
-  position: absolute;
-  text-align: center;
-  right: 0;
-  left: 0;
+
+#tabla-pedido td:last-child{
+  line-height: 0px;
 }

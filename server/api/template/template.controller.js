@@ -17,7 +17,6 @@
  function respondWithResult(res, statusCode) {
    statusCode = statusCode || 200;
    return function(entity) {
-     console.log("entity", entity)
      if (entity) {
        res.status(statusCode).json(entity);
      }
@@ -50,10 +49,7 @@
      value: req.query.empresa,
      type: DataAccess.types.STRING
    })
-   console.log(params)
    DataAccess.query('SEL_PLANTILLA_SP', params, function(error, result) {
-     console.log(error)
-     console.log(result)
      if (error) return handleError(res)(error);
      return respondWithResult(res)(result[0])
    })
@@ -67,10 +63,7 @@
      value: req.params.id,
      type: DataAccess.types.INT
    })
-   console.log(params)
    DataAccess.query('SEL_PLANTILLADETALLE_SP', params, function(error, result) {
-     console.log(error)
-     console.log(result)
      if (error) return handleError(res)(error);
      return respondWithResult(res)({data:result[0]})
    })
@@ -124,10 +117,7 @@
      value: req.body.sucursal,
      type: DataAccess.types.STRING
    })
-  console.log(params)
    DataAccess.query('INS_COTIZACIONPLANTILLA_SP', params, function(error, result) {
-     console.log(error)
-     console.log(result)
      if (error) return handleError(res)(error);
      return respondWithResult(res, 201)(result[0][0])
    });
@@ -155,11 +145,9 @@
      type: DataAccess.types.STRING
    })
 
-   console.log(params)
 
    DataAccess.query('UPD_PLANTILLA_SP', params, function(error, result) {
-     console.log(error)
-     console.log(result)
+
      if (error) return handleError(res)(error);
      return respondWithResult(res, 201)(result[0][0])
    });
@@ -180,10 +168,7 @@
      type: DataAccess.types.INT
    })
 
-   console.log(params)
    DataAccess.query('DEL_ESTATUS_PLANTILLA_SP', params, function(error, result) {
-     console.log(error)
-     console.log(result)
      if (error) return handleError(res)(error);
      return respondWithResult(res)(result[0][0])
    })

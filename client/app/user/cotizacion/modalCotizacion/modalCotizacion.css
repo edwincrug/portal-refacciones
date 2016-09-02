@@ -27,3 +27,7 @@
   margin: 0;
   font-size: 2em;
 }
+
+.wz-heading.wz-w-label .progress {
+    margin-top: -4.5px;
+}

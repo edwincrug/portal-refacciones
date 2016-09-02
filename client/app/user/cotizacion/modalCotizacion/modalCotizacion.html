@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <span>Credito disponible: {{sucursalActual.Con_LimCredito | currency}}</span>
-        <div  class="progress progress-lg pull-right">
+        <div class="progress progress-lg pull-right">
           <div class="restante">
             Credito restante: {{sucursalActual.Con_LimCredito- total | currency }}
           </div>
@@ -11,17 +11,17 @@
           <div style="width: {{((total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-danger"></div>
         </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 >{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>
+        <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>
         <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
       </div>
       <div style="padding:0px" class="modal-body">
         <div id="demo-step-wz">
           <div class="wz-heading wz-w-label bg-info">
-            <div class="progress progress-xs">
-              <div style="width: 75%; margin: 0px 12.5%;" class="progress-bar progress-bar-dark"></div>
+            <div class="progress progress-sm">
+              <div style="width: 75%; margin: 0px 12.5%;" class="progress-bar progress-bar-dark bg-gray"></div>
             </div>
             <ul class="wz-steps wz-icon-bw wz-nav-off text-lg">
-              <li class="col-xs-3 active">
+              <li class="col-xs-4 active">
                 <a data-toggle="tab" href="#demo-step-tab1" aria-expanded="false">
                   <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
         					                                    <span class="wz-icon icon-txt text-bold">1</span>
@@ -30,7 +30,7 @@
                   <small class="wz-desc box-block text-semibold">Busqueda de refacciones</small>
                 </a>
               </li>
-              <li class="col-xs-3">
+              <li class="col-xs-4">
                 <a data-toggle="tab" href="#demo-step-tab2" aria-expanded="false">
                   <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
                     <span class="wz-icon icon-txt text-bold">2</span>
@@ -39,24 +39,16 @@
                   <small class="wz-desc box-block text-semibold">Datos de entrega</small>
                 </a>
               </li>
-              <li class="col-xs-3">
+              <li class="col-xs-4">
                 <a data-toggle="tab" href="#demo-step-tab3" aria-expanded="false">
                   <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
         					                                    <span class="wz-icon icon-txt text-bold">3</span>
                   <i class="wz-icon-done fa fa-check"></i>
                   </span>
-                  <small class="wz-desc box-block text-semibold">Address</small>
+                  <small class="wz-desc box-block text-semibold">Confirmacion de pedido</small>
                 </a>
               </li>
-              <li class="col-xs-3 ">
-                <a data-toggle="tab" href="#demo-step-tab4" aria-expanded="true">
-                  <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
-        					                                    <span class="wz-icon icon-txt text-bold">4</span>
-                  <i class="wz-icon-done fa fa-check"></i>
-                  </span>
-                  <small class="wz-desc box-block text-semibold">Finish</small>
-                </a>
-              </li>
+
             </ul>
           </div>
 
@@ -73,8 +65,12 @@
             <div class="panel-footer text-right">
               <div class="box-inline">
                 <a href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
-                <a href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
-                <a type="button" class="finish btn btn-info" style="display: inline-block;">Hacer pedido</a>
+                <a ng-disabled="(page == 1 && cotizacionActual.length == 0) ||(!direccionActual &&  page == 2)" href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
+                <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Cancelar</a>
+                <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Pedido con backorder</a>
+                <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Pedido sin backorder</a>
+
+                <a ng-click="hacerPedido(0)" type="button" class="finish btn btn-info" style="display: inline-block;">Realizar pedido</a>
               </div>
             </div>
           </form>

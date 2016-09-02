@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
   <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
   <link rel="stylesheet" href="bower_components/bootstrap-table/src/bootstrap-table.css" />
+  <link rel="stylesheet" href="bower_components/magic-check/css/magic-check.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -32,6 +33,10 @@
   <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/busqueda/busqueda.css" />
   <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/modalCotizacion.css" />
   <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/entrega/entrega.css" />
+  <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.css" />
+  <link rel="stylesheet" href="app/user/pedido/pedido.css" />
+
+
 </head>
 
 <body ng-app="refacciones">
@@ -80,11 +85,14 @@
   <script src="app/user/cotizacion/cotizacion.router.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.controller.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.router.js"></script>
+  <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.controller.js"></script>
+  <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.router.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.controller.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.router.js"></script>
   <script src="app/user/cotizacion/modalCotizacion/modalCotizacion.router.js"></script>
   <script src="app/user/historial/historial.controller.js"></script>
   <script src="app/user/historial/historial.router.js"></script>
+  <script src="app/user/pedido/modalPedido/modalPedido.router.js"></script>
   <script src="app/user/pedido/pedido.controller.js"></script>
   <script src="app/user/pedido/pedido.router.js"></script>
   <script src="app/user/user.router.js"></script>
@@ -102,6 +110,7 @@
   <script src="components/resources/direccion.service.js"></script>
   <script src="components/resources/empresa.service.js"></script>
   <script src="components/resources/geocoding.service.js"></script>
+  <script src="components/resources/pedido.service.js"></script>
   <script src="components/resources/refaccion.service.js"></script>
   <script src="components/resources/sucursal.service.js"></script>
   <script src="components/resources/template.service.js"></script>
