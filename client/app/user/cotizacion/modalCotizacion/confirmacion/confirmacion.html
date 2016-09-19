@@ -1,6 +1,13 @@
 <div id="demo-step-tab3" class="tab-pane pad-all  active in">
   <div class="row">
     <div class="col-sm-12">
+      <div ng-show="spinner" class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
       <div ng-show="cotizacionActual.length > 0" class="form-group ">
         <h4>
           Dirección de entrega
@@ -53,6 +60,9 @@
                 <th>
                   Cantidad
                 </th>
+                <th ng-show="backorder">
+                  Faltante
+                </th>
                 <th>
                   Subtotal
                 </th>
@@ -69,8 +79,11 @@
                 <td>
                   {{refaccion.PTS_PCOLISTA | currency}}
                 </td>
-                <td>
+                <td class="text-center">
                   {{refaccion.cantidad}}
+                </td>
+                <td class="text-center" ng-show="backorder">
+                  {{refaccion.faltante}}
                 </td>
                 <td>
                   {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
@@ -95,6 +108,9 @@
                 <th>
                   Cantidad
                 </th>
+                <th ng-show="backorder">
+                  Faltante
+                </th>
                 <th>
                   Subtotal
                 </th>
@@ -102,7 +118,7 @@
             </thead>
 
             <tbody>
-              <tr ng-repeat="refaccion in cotizacionActual">
+              <tr ng-class="" ng-repeat="refaccion in cotizacionActual">
                 <td>
                   {{refaccion.PTS_IDPARTE}}
                 </td>
@@ -112,8 +128,13 @@
                 <td>
                   {{refaccion.PTS_PCOLISTA | currency}}
                 </td>
-                <td>
+                <td class="text-center">
                   {{refaccion.cantidad}}
+                </td>
+                <td ng-show="backorder" class="text-center">
+                  {{refaccion.faltante}}
+
+                  <i ng-show="refaccion.faltante > 0" style="color:red"  class="fa fa-exclamation-triangle"></i>
                 </td>
                 <td>
                   {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}

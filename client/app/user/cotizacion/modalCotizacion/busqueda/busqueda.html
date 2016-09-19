@@ -1,4 +1,4 @@
-<div id="demo-step-tab1"  class="tab-pane   active in">
+<div id="demo-step-tab1" class="tab-pane   active in">
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
@@ -14,7 +14,7 @@
     <div class="col-sm-push-1 col-sm-5">
       <div class="form-group">
         <label for="inputRefacciones">Plantillas:</label>
-        <div style="margin-top:-16px;" class="pull-right">
+        <div style="margin-top:-9px;" class="pull-right">
           <button ng-show="templateActual.idCotizacionPlantilla == 0  && cotizacionActual.length>0" type="button" class="btn btn-success btn-icon " data-toggle="tooltip" data-placement="top" title="Guardar como plantilla" ng-click="guadarTemplateBack()">
             <i class="fa fa-save"></i>
           </button>
@@ -70,6 +70,13 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div ng-show="spinner" class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
     </div>
     <div class="col-sm-12">
       <div ng-show="cotizacionActual.length > 0" class="form-group ">

@@ -32,12 +32,12 @@
       $scope.empresaActual = $scope.$parent.$parent.$parent.empresaActual;
       $scope.sucursalActual = $scope.$parent.$parent.$parent.sucursalActual;
       $scope.folioActual = $scope.$parent.$parent.folioActual;
-
+      $scope.spinner = true;
 
 
       User.get(function(data) {
         $scope.user = data;
-      //Carga los templates asociados
+        //Carga los templates asociados
         Template.query({
           user: $scope.user.per_idpersona,
           empresa: $scope.empresaActual.emp_nombrecto,
@@ -65,6 +65,7 @@
         if ($scope.$parent.$parent.cotizacionActual.length > 0) {
           setTimeout(function() {
             $scope.cotizacionActual = $scope.$parent.$parent.cotizacionActual
+            $scope.spinner = false;
           }, 1)
         } else {
           if ($scope.folioActual != "TEMP") {
@@ -75,10 +76,14 @@
               setTimeout(function() {
                 $scope.$parent.$parent.guardarModal = false
                 $scope.guardar = false;
+                $scope.spinner = false;
                 $scope.$apply()
+
               }, 10)
 
             })
+          }else{
+              $scope.spinner = false;
           }
         }
 

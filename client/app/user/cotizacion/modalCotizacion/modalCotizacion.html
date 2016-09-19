@@ -67,10 +67,9 @@
                 <a href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
                 <a ng-disabled="(page == 1 && cotizacionActual.length == 0) ||(!direccionActual &&  page == 2)" href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
                 <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Cancelar</a>
-                <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Pedido con backorder</a>
-                <a ng-click="hacerPedido()" type="button" class="finish btn btn-info" style="display: inline-block;">Pedido sin backorder</a>
-
-                <a ng-click="hacerPedido(0)" type="button" class="finish btn btn-info" style="display: inline-block;">Realizar pedido</a>
+                <a ng-show="backorder" ng-click="hacerPedido(2)" type="button" class="finish btn btn-success" style="display: inline-block;">Pedido con backorder</a>
+                <a ng-show="backorder" ng-click="hacerPedido(1)" type="button" class="finish btn btn-success" style="display: inline-block;">Pedido sin backorder</a>
+                <a ng-show="!backorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-success" style="display: inline-block;">Realizar pedido</a>
               </div>
             </div>
           </form>

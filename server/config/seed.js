@@ -5,7 +5,6 @@
 
 'use strict';
 import sqldb from '../sqldb';
-var Thing = sqldb.Thing;
 var User = sqldb.User;
 
 
