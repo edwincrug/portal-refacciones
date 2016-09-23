@@ -1,4 +1,3 @@
-
 'use strict';
 
 (function() {
@@ -14,6 +13,7 @@
       $scope.direccionActual = $scope.$parent.$parent.direccionActual;
       $scope.total = $scope.$parent.$parent.total;
       $scope.backorder = $scope.$parent.$parent.backorder = false;;
+      $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = false;;
       $scope.spinner = true;
 
       User.get(function(data) {
@@ -42,8 +42,29 @@
           }
         }
 
+        $scope.calcularTotal = function(op)  {
+          var totaltemp = 0;
+          $scope.cotizacionActual.forEach(function(e) {
+            console.log(e)
+            if (op == 0) {
+              totaltemp += e.PTS_PCOLISTA * e.cantidad
+            } else if (op == 1) {
+              totaltemp += e.PTS_PCOLISTA * (e.cantidad- e.faltante)
+            }
+          })
+          $scope.total = $scope.$parent.$parent.total = totaltemp;
+        }
+        $scope.selectBackorder = function() {
+          $scope.backorder = $scope.$parent.$parent.backorder = true;
+          $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = false;
+          $scope.calcularTotal(0)
+        }
+        $scope.selectSinBackorder = function() {
+          $scope.backorder = $scope.$parent.$parent.backorder = false;
+          $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = true;
+          $scope.calcularTotal(1)
+        }
         $scope.$parent.$parent.hacerPedido = function(op) {
-          console.log("Hacer pedido")
           new Promise(function(resolve, reject) {
             if (op == 0) {
               bootbox.confirm("<h4>Esta a punto de realizar un pedido. ¿Esta seguro que la direccion de entrega y su cotización es correcta?</h4>",
@@ -75,13 +96,14 @@
             }).then(function(idCotizacion) {
               console.log($scope.direccionActual)
               Pedido.save({
+                idUsuario: $scope.user.per_idpersona,
                 idCotizacion: idCotizacion,
                 idPersona: $scope.direccionActual.RTD_IDPERSONA,
                 concecutivo: $scope.direccionActual.RTD_CONSEC,
                 entrega: $scope.direccionActual.RTD_RTENTREGA,
                 operacion: op,
                 idPedido: 0,
-                respuesta: 0
+                respuesta: 1
               }, function(data) {
                 if (data.data.length > 0) {
                   $scope.backorder = $scope.$parent.$parent.backorder = true;

@@ -15,12 +15,14 @@
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(client) app/vendor.css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
   <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
   <link rel="stylesheet" href="bower_components/bootstrap-table/src/bootstrap-table.css" />
   <link rel="stylesheet" href="bower_components/magic-check/css/magic-check.css" />
+  <link rel="stylesheet" href="bower_components/switchery/dist/switchery.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css({.tmp,client}) app/app.css -->
@@ -68,6 +70,9 @@
   <script src="bower_components/bootstrap-table/src/bootstrap-table.js"></script>
   <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
   <script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+  <script src="bower_components/transitionize/dist/transitionize.js"></script>
+  <script src="bower_components/fastclick/lib/fastclick.js"></script>
+  <script src="bower_components/switchery/dist/switchery.js"></script>
   <!-- endbower -->
   <script src="socket.io-client/socket.io.js"></script>
   <!-- endbuild -->
@@ -103,6 +108,24 @@
   <script src="components/footer/footer.directive.js"></script>
   <script src="components/modal/modal.service.js"></script>
   <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+  <script src="components/navbar/navbar.controller.js"></script>
+  <script src="components/navbar/navbar.directive.js"></script>
+  <script src="components/plugins/nifty/nifty.min.js"></script>
+  <script src="components/resources/cotizacion.service.js"></script>
+  <script src="components/resources/direccion.service.js"></script>
+  <script src="components/resources/empresa.service.js"></script>
+  <script src="components/resources/geocoding.service.js"></script>
+  <script src="components/resources/pedido.service.js"></script>
+  <script src="components/resources/refaccion.service.js"></script>
+  <script src="components/resources/sucursal.service.js"></script>
+  <script src="components/resources/template.service.js"></script>
+  <script src="components/socket/socket.service.js"></script>
+  <script src="components/util/util.service.js"></script>
+  <!-- endinjector -->
+  <!-- endbuild -->
+</body>
+
+</html>
   <script src="components/navbar/navbar.controller.js"></script>
   <script src="components/navbar/navbar.directive.js"></script>
   <script src="components/plugins/nifty/nifty.min.js"></script>
