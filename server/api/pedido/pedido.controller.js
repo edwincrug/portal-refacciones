@@ -108,19 +108,11 @@ export function create(req, res) {
     value: req.body.idPedido,
     type: DataAccess.types.INT
   })
-  params.push({
-    name: 'resBPRO',
-    value: req.body.respuesta,
-    type: DataAccess.types.INT
-  })
+
 
   DataAccess.query('INS_PEDIDO_SP', params, function(error, result) {
-    console.log(error)
-
     if (error) return handleError(res)(error);
-    //result[0][0].data = result[0][1]
-    console.log(result)
-    console.log(result[0][1])
+    result[0][0].data = result[1]
     return respondWithResult(res, 201)(result[0][0])
   });
 
