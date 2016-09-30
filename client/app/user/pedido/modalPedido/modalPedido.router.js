@@ -7,6 +7,7 @@ class ModalPedidoComponent {
       $state.go("user.pedido")
     })
     $scope.user = $scope.$parent.$parent.$parent.user;
+    if($scope.user== null)  $state.go("user.pedido")
     console.log($stateParams)
     if ($stateParams.id) {
       console.log($scope.user)
@@ -14,7 +15,7 @@ class ModalPedidoComponent {
         id: $stateParams.id,
         user: $scope.user.per_idpersona
       }, function(data) {
-
+        console.log(data)
       })
     } else {
 

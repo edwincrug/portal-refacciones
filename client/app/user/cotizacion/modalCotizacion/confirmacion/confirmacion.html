@@ -21,163 +21,153 @@
         </div>
         <br>
         <div ng-show="backorder || sinbackorder" class="row">
-          <!--div class="col-xs-12">
+          <div class="col-xs-12">
             <p style="color:red;">
-              Nota: Actualmente, no contamos con todas las piezas que solicitaste, selecciona "Pedido con backorder" para programar las
-              piezas faltantes en backorder, o "Pedido sin backorder" para enviarte las piezas en existencia.
+                <i class="fa fa-exclamation-triangle"></i> Actualmente, no contamos con todas las piezas que solicitaste, selecciona "Pedido con backorder" para programar las
+              piezas faltantes en backorder, o "Pedido sin backorder" para enviarte las piezas en actual existencia.
             </p>
           </div>
-        </div-->
-        <div ng-show="cotizacionActual.length > 0" class="row">
-          <div class="col-xs-4">
-            <h4>
+        </div>
+          <div ng-show="cotizacionActual.length > 0" class="row">
+            <div class="col-xs-4">
+              <h4>
               Lista de refacciones
             </h4>
-          </div>
-          <!--div ng-show="backorder || sinbackorder"  class="col-xs-8">
-            <div style="float:right;" id="radioBtn" class="btn-group">
-              <a ng-click="selectBackorder()" class="btn" ng-class="{'btn-primary':backorder}">Pedido con backorder</a>
-              <a ng-click="selectSinBackorder()" class="btn" ng-class="{'btn-primary':sinbackorder}">Pedido sin backorder</a>
             </div>
-          </div-->
-        </div>
-        <div style="max-height: 39px; overflow: hidden;">
-          <table style="margin-bottom:0px;" class="table table-striped ">
-            <thead>
-              <tr>
-                <th>
-                  No serie
-                </th>
-                <th>
-                  Descripción
-                </th>
-                <th>
-                  Precio
-                </th>
-                <th>
-                  Cant. Pedido
-                </th>
-                <th>
-                  Cant. Backorder
-                </th>
-                <th>
-                  Subtotal
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="refaccion in cotizacionActual">
-                <td>
-                  {{refaccion.PTS_IDPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_DESPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA | currency}}
-                </td>
-                <td>
-                  {{refaccion.cantidad}}
-                </td>
-                <td>
-                  {{refaccion.faltante}}
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div style="max-height: 32vh; overflow: auto;">
-          <table style="margin-top:-36px;" class="table table-striped ">
-            <thead>
-              <tr style="visibility: hidden;">
-                <th>
-                  No serie
-                </th>
-                <th>
-                  Descripción
-                </th>
-                <th>
-                  Precio
-                </th>
-                <th>
-                  Cantidad
-                </th>
-                <th>
-                  Subtotal
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <!--Muestra todos los elementos que se van a entregar en el pedido -->
-              <tr ng-class="{success:backorder || sinbackorder}" ng-repeat="refaccion in cotizacionActual" ng-show="refaccion.cantidad>0">
-                <td>
-                  {{refaccion.PTS_IDPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_DESPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA | currency}}
-                </td>
-                <td ng-show="!sinbackorder">
-                  <span style="width:25px; display: inline-block;">{{refaccion.cantidad}}</span>
-                  <i ng-show="refaccion.faltante > 0" style="color:red" class="fa fa-exclamation-triangle"></i> <span ng-show="refaccion.faltante>0">{{refaccion.faltante}}</span>
-                  <i ng-show="refaccion.faltante == 0" style="color:green" class="fa fa fa-check"></i>
-                </td>
-                <td ng-show="sinbackorder">
-                  <span style="width:25px; display: inline-block;">{{refaccion.cantidad-refaccion.faltante}}</span>
-                  <i style="color:green" class="fa fa fa-check"></i>
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA*(refaccion.cantidad- refaccion.faltante) | currency}}
-                </td>
-              </tr>
-
-              <!--Muestra todos los elementos que se van a entregar en el backorder -->
-              <tr ng-show="backorder">
-                <td colspan="5">
-                  Pedido backorder
-                </td>
-              </tr>
-              <tr ng-class="{danger:backorder}" ng-repeat="refaccion in cotizacionActual" ng-show="refaccion.faltante>0 && !sinbackorder">
-                <td>
-                  {{refaccion.PTS_IDPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_DESPARTE}}
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA | currency}}
-                </td>
-                <td>
-                  <span style="width:25px; display: inline-block;">{{refaccion.faltante}}</span>
-                </td>
-                <td>
-                  {{refaccion.PTS_PCOLISTA*refaccion.faltante | currency}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div ng-show="cotizacionActual.length > 0" class="row">
-          <div class="col-xs-6">
-
           </div>
-          <div class="col-xs-2 col-xs-push-2">
-            <h4>Total:</h4>
+          <div style="max-height: 39px; overflow: hidden;">
+            <table style="margin-bottom:0px;" class="table table-striped ">
+              <thead>
+                <tr>
+                  <th>
+                    No serie
+                  </th>
+                  <th>
+                    Descripción
+                  </th>
+                  <th>
+                    Precio
+                  </th>
+                  <th ng-show="!backorder && !sinbackorder">
+                    Cantidad
+                  </th>
+                  <th ng-show="backorder">
+                    Cant. Pedido
+                  </th>
+                  <th ng-show="sinbackorder">
+                    Cant. Backorder
+                  </th>
+                  <th>
+                    Subtotal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="refaccion in cotizacionActual" ng-show="refaccion.cantidad>0">
+                  <td>
+                    {{refaccion.PTS_IDPARTE}}
+                  </td>
+                  <td>
+                    {{refaccion.PTS_DESPARTE}}
+                  </td>
+                  <td>
+                    {{refaccion.PTS_PCOLISTA | currency}}
+                  </td>
+                  <th class="text-center" ng-show="!backorder && !sinbackorder">
+                    {{refaccion.cantidad}}
+                  </th>
+                  <th class="text-center" ng-show="backorder">
+                    {{refaccion.cantidad-refaccion.faltante}}
+                  </th>
+                  <th class="text-center" ng-show="sinbackorder">
+                    <i ng-show="refaccion.faltante > 0" style="color:red" class="fa fa-exclamation-triangle"></i> <span>{{refaccion.faltante}}</span>
+                  </th>
+                  <td>
+                    <span ng-show="!backorder && !sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.cantidad | currency}}</span>
+                    <span ng-show="backorder && !sinbackorder">{{refaccion.PTS_PCOLISTA*(refaccion.cantidad- refaccion.faltante) | currency}}</span>
+                    <span ng-show="!backorder && sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.faltante | currency}}</span>
+                    <span ng-show="backorder && sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.cantidad  | currency}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="col-xs-2 col-xs-push-2">
-            <h4>{{total | currency}}</h4>
+          <div style="max-height: 32vh; overflow: auto;">
+            <table style="margin-top:-36px;" class="table table-striped ">
+              <thead>
+                <tr style="visibility: hidden;">
+                  <th>
+                    No serie
+                  </th>
+                  <th>
+                    Descripción
+                  </th>
+                  <th>
+                    Precio
+                  </th>
+                  <th ng-show="!backorder && !sinbackorder">
+                    Cantidad
+                  </th>
+                  <th ng-show="backorder">
+                    Cant. Pedido
+                  </th>
+                  <th ng-show="sinbackorder">
+                    Cant. Backorder
+                  </th>
+                  <th>
+                    Subtotal
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!--Muestra todos los elementos que se van a entregar en el pedido -->
+                <tr ng-repeat="refaccion in cotizacionActual" ng-show="refaccion.cantidad>0">
+                  <td>
+                    {{refaccion.PTS_IDPARTE}}
+                  </td>
+                  <td>
+                    {{refaccion.PTS_DESPARTE}}
+                  </td>
+                  <td>
+                    {{refaccion.PTS_PCOLISTA | currency}}
+                  </td>
+                  <th ng-show="!backorder && !sinbackorder">
+                    {{refaccion.cantidad}}
+                  </th>
+                  <th ng-show="backorder">
+                    {{refaccion.cantidad-refaccion.faltante}}
+                  </th>
+                  <th ng-show="sinbackorder">
+                    <i ng-show="refaccion.faltante > 0" style="color:red" class="fa fa-exclamation-triangle"></i> <span>{{refaccion.faltante}}</span>
+                  </th>
+                  <td>
+                    <span ng-show="!backorder && !sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.cantidad | currency}}</span>
+                    <span ng-show="backorder && !sinbackorder">{{refaccion.PTS_PCOLISTA*(refaccion.cantidad- refaccion.faltante) | currency}}</span>
+                    <span ng-show="!backorder && sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.faltante | currency}}</span>
+                    <span ng-show="backorder && sinbackorder">{{refaccion.PTS_PCOLISTA* refaccion.cantidad  | currency}}</span>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div ng-show="cotizacionActual.length > 0" class="row">
+            <div class="col-xs-6">
+
+            </div>
+            <div class="col-xs-2 col-xs-push-2">
+              <h4>Total:</h4>
+            </div>
+            <div class="col-xs-2 col-xs-push-2">
+              <h4>{{total | currency}}</h4>
+            </div>
           </div>
         </div>
       </div>
+
+
     </div>
 
-
   </div>
-
 </div>

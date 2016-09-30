@@ -63,7 +63,7 @@ export function show(req, res) {
     type: DataAccess.types.INT
   })
   console.log(params)
-  DataAccess.query('SEL_COTIZACIONDETALLE_SP', params, function(error, result) {
+  DataAccess.query('SEL_PEDIDO_USUARIODETALLE_SP', params, function(error, result) {
     if (error) return handleError(res)(error);
     return respondWithResult(res)({
       data: result[0]
@@ -118,9 +118,9 @@ export function create(req, res) {
     console.log(error)
 
     if (error) return handleError(res)(error);
-    result[0][0].data = result[1]
-
-    console.log(result[0][0])
+    //result[0][0].data = result[0][1]
+    console.log(result)
+    console.log(result[0][1])
     return respondWithResult(res, 201)(result[0][0])
   });
 

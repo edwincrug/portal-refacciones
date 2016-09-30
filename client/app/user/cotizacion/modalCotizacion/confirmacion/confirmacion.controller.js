@@ -15,6 +15,8 @@
       $scope.backorder = $scope.$parent.$parent.backorder = false;;
       $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = false;;
       $scope.spinner = true;
+      $scope.spinner = true;
+      $scope.idPedidoBP = 0;
 
       User.get(function(data) {
         $scope.user = data;
@@ -42,18 +44,19 @@
           }
         }
 
-        $scope.calcularTotal = function(op)  {
+        $scope.calcularTotal = function(op) {
           var totaltemp = 0;
           $scope.cotizacionActual.forEach(function(e) {
             console.log(e)
             if (op == 0) {
               totaltemp += e.PTS_PCOLISTA * e.cantidad
             } else if (op == 1) {
-              totaltemp += e.PTS_PCOLISTA * (e.cantidad- e.faltante)
+              totaltemp += e.PTS_PCOLISTA * (e.cantidad - e.faltante)
             }
           })
           $scope.total = $scope.$parent.$parent.total = totaltemp;
         }
+
         $scope.selectBackorder = function() {
           $scope.backorder = $scope.$parent.$parent.backorder = true;
           $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = false;
@@ -76,10 +79,30 @@
                 }
               )
             }
+            if (op == 1) {
+              bootbox.confirm("<h4>Esta a punto de realizar un pedido sin backorder. ¿Esta seguro que la direccion de entrega y su cotización es correcta?</h4>",
+                function(result) {
+                  if (result)
+                    resolve(op)
+                  else
+                    reject(op)
+                }
+              )
+            } else if (op == 3) {
+              resolve(op)
+            }
           }).then(function(op) {
             new Promise(function(resolve, reject) {
               if ($scope.folioActual != "TEMP") {
-                resolve($scope.folioActual)
+                var cotizacionGuardar = {
+                  idCotizacion: $scope.folioActual,
+                  refacciones: $scope.cotizacionActual,
+                  total: $scope.total,
+                }
+                Cotizacion.update(cotizacionGuardar, function(data) {
+                  resolve($scope.folioActual)
+                })
+
               } else {
                 Cotizacion.save({
                   idUsuario: $scope.user.per_idpersona,
@@ -102,18 +125,26 @@
                 concecutivo: $scope.direccionActual.RTD_CONSEC,
                 entrega: $scope.direccionActual.RTD_RTENTREGA,
                 operacion: op,
-                idPedido: 0,
-                respuesta: 1
+                idPedido: $scope.idPedidoBP,
               }, function(data) {
-                if (data.data.length > 0) {
-                  $scope.backorder = $scope.$parent.$parent.backorder = true;
-                  $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;
-                } else {
-                  bootbox.alert("<h4>Su pedido fue realizado correctamente</h4>" +
-                    "<h4>Su numero de entrega es 340211</h4>",
-                    function() {
-                      $state.go("user.cotizacion")
-                    });
+                if (data) {
+                  console.log(data)
+                  if (data.estatus == "ok") {
+                    bootbox.alert("<h4>" + data.mensaje + "</h4>" +
+                      "<h4>Su token de entrega es " + data.token + "</h4>",
+                      function() {
+                        $state.go("user.cotizacion")
+                      });
+                  } else if (data.estatus == "ko") {
+                    toastr.info(data.mensaje)
+                    $scope.backorder = $scope.$parent.$parent.backorder = true;
+                    $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = true;
+                    $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;
+                    $scope.idPedidoBP = data.idPedidoRef;
+                  } else if (data.estatus == "cancelado") {
+                    toastr.info(data.mensaje)
+                    $state.go("user.cotizacion")
+                  }
                 }
               })
 

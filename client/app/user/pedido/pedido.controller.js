@@ -13,7 +13,7 @@
 
         Pedido.query({
             user: $scope.user.per_idpersona,
-            estatus: 0,
+            estatus: 2,
           },
           function(data) {
             $scope.listaPedidos = data

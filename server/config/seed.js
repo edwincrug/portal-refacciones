@@ -17,6 +17,12 @@ User.sync()
       rfc: 'ATO911125I32',
       password: '1234',
       per_idpersona:11
+    },{
+      provider: 'local',
+      name: 'RISP AUTOMOTRIZ',
+      rfc: 'RAU990308DZ0',
+      password: '1234',
+      per_idpersona:74825
     }, {
       provider: 'local',
       role: 'admin',
