@@ -52,6 +52,13 @@ export function index(req, res) {
 // Gets a single Cotizacion from the DB
 export function show(req, res) {
   var params = [];
+  //LQMA ADD 1110016
+  /*params.push({
+    name: 'idPedidoBPRO',
+    value: req.params.idBPRO,
+    type: DataAccess.types.STRING
+  })*/
+  //LQMA ADD 1110016
   params.push({
     name: 'idPedido',
     value: req.params.id,
@@ -61,15 +68,22 @@ export function show(req, res) {
     name: 'idUsuario',
     value: req.query.user,
     type: DataAccess.types.INT
-  })
+  })  
+
+  console.log('bunny server side');
   console.log(params)
   DataAccess.query('SEL_PEDIDO_USUARIODETALLE_SP', params, function(error, result) {
-    if (error) return handleError(res)(error);
-    return respondWithResult(res)({
-      data: result[0]
-    })
-  })
+    
+    //console.log(result)
+    //console.log(result[0])
 
+    if (error) return handleError(res)(error);
+    return respondWithResult(res)({      
+      data: result[0]      
+    })
+    /*if (error) return handleError(res)(error);
+    return respondWithResult(res)(res.json(result))*/
+  })
 }
 
 // Creates a new Cotizacion in the DB
@@ -108,7 +122,12 @@ export function create(req, res) {
     value: req.body.idPedido,
     type: DataAccess.types.INT
   })
-
+  //LQMA ADD 05102016  
+  params.push({
+    name: 'idUsuario',
+    value: req.body.idUsuario,
+    type: DataAccess.types.INT
+  })
 
   DataAccess.query('INS_PEDIDO_SP', params, function(error, result) {
     if (error) return handleError(res)(error);

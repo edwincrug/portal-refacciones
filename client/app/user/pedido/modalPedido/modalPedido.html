@@ -3,28 +3,65 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>Pedido {{folioActual}}</h3>
+        <h3>Pedido</h3>
       </div>
       <div class="modal-body">
-        <table class="table">
-          <thead>
+        <table class="table">          
             <tr>
               <th>
-                No serie
+                No Serie
               </th>
               <th>
-                Descripcion
+                Descripción
               </th>
               <th>
-                Precio
+                Precio/Pz
               </th>
               <th>
-                Cantidad
+                No. Piezas
+              </th>              
+              <th>
+                Total
+              </th>              
+              <th>
+                Fecha Solicitado
               </th>
             </tr>
-          </thead>
+          <tbody>
+                <tr ng-repeat="detalle in detalles" ng-class="{'info': detalle.estatus == 0,'success': detalle.estatus == 1,'warning':detalle.estatus == 2}">
+                  <td>
+                    <span>{{detalle.PTS_IDPARTE}}</span>
+                  </td>
+                  <td>
+                    {{detalle.PTS_DESPARTE}}
+                  </td>
+                  <td>
+                    {{detalle.PTS_PCOLISTA | currency}}
+                  </td>
+                  <td align="center">
+                    {{detalle.prd_cantidadsolicitada}}
+                  </td>                  
+                  <td align="right">
+                    {{detalle.totalItem | currency}}
+                  </td>                  
+                  <td>
+                    {{detalle.fecha}}
+                  </td>
+                </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="4" align="right">
+                    <b>Total
+                  </td>
+                  <td align="right">
+                      {{totalPedido | currency}}
+                  </td>
+                  <td>
+                  </td>                  
+              </tr>
+          </tfoot>
         </table>
-
       </div>
     </div>
   </div>

@@ -41,11 +41,13 @@
                           <div class="col-xs-6">
                             <p class="text-lg text-bold"><i class="demo-pli-check icon-fw"></i>Crédito</p>
                             <p>Total: <span class="pull-right text-semibold">{{sucursalActual.Con_LimCredito | currency }}</span></p>
-                            <p>Consumido: <span class="pull-right  text-semibold">{{0 | currency }}</span></p>
-                            <p>Disponible: <span class="pull-right  text-semibold"> {{sucursalActual.Con_LimCredito  - 0| currency }}</span></p>
+                            <p>Consumido: <span class="pull-right  text-semibold"><font color='#D50819'>{{sucursalActual.descuento | currency }}</font></span></p>
+                            <p>Cartera: <span class="pull-right  text-semibold"><font color='#D50819'>{{sucursalActual.importe | currency }}</font></span></p>
+                            <hr>
+                            <p>Disponible: <span class="pull-right  text-semibold"> {{sucursalActual.Con_LimCredito  - sucursalActual.descuento| currency }}</span></p>
                           </div>
                           <div class="col-xs-6">
-                            <div class="chart"><span >{{((sucursalActual.Con_LimCredito-0)/sucursalActual.Con_LimCredito)*100}}%</span></div>
+                            <div class="chart"><span >{{((sucursalActual.Con_LimCredito-sucursalActual.descuento)/sucursalActual.Con_LimCredito)*100 | number:2}}%</span></div>
                           </div>
                         </div>
                       </div>

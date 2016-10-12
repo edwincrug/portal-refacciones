@@ -10,14 +10,13 @@
       User.get(function(data) {
         $scope.user = data;
 
-
         Pedido.query({
             user: $scope.user.per_idpersona,
-            estatus: 2,
+            estatus: 1,
           },
           function(data) {
             $scope.listaPedidos = data
-            console.log(data)
+            console.log(data)            
           })
 
         Empresa.query({
@@ -33,6 +32,12 @@
         })
       });
 
+      //LQMA ADD 05102016 obtiene detalle pedido
+      $scope.muestraDetallePedido = function(idPedido)
+      {
+
+
+      }
 
       $scope.cambioEmpresa = function() {
         if ($scope.empresaActual.emp_idempresa != 0) {

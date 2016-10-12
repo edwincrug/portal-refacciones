@@ -73,7 +73,7 @@
             function(data) {
               $scope.listaCotizaciones = data
               if ($scope.sucursalActual.Con_LimCredito) {
-                $('.chart').data('easyPieChart').update((($scope.sucursalActual.Con_LimCredito) / $scope.sucursalActual.Con_LimCredito) * 100);
+                $('.chart').data('easyPieChart').update((($scope.sucursalActual.Con_LimCredito - $scope.sucursalActual.descuento) / $scope.sucursalActual.Con_LimCredito) * 100);
               }
             })
         }

@@ -10,8 +10,7 @@
       <div class="panel ">
         <div class="panel-body pad-top mar-top">
           <div ng-show="listaPedidos.length > 0" class=" col-xs-12">
-            <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">
-              <thead>
+            <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">              
                 <tr>
                   <th colspan="2">
                     <div class="form-group">
@@ -25,20 +24,19 @@
                       <select  st-search="empresa" st-input-event="change" st-delay="0"  ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_nombrecto" ng-model="empresaActual"></select>
                     </div>
                   </th>
-                  <th colspan="3">
+                  <th colspan="4">
                     <div class="form-group">
                       <label>Sucursal </label>
                       <select  st-search="sucursal" st-delay="0" st-input-event="change"  ng-change="cambioSucursal()" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.suc_nombrecto" ng-model="sucursalActual"></select>
                     </div>
                   </th>
                 </tr>
-
                 <tr>
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio">
                     No. Pedido
                   </th>
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
-                    Descripcion
+                    Descripción
                   </th>
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
                     Empresa
@@ -49,6 +47,9 @@
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total">
                     Total
                   </th>
+                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total">
+                    Estatus
+                  </th>
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="token">
                     Token
                   </th>
@@ -56,8 +57,6 @@
 
                   </th>
                 </tr>
-              </thead>
-              <tbody>
                 <tr ng-repeat="pedido in pedidos">
                   <td>
                     <span>{{pedido.folioPedido}}</span>
@@ -74,25 +73,24 @@
                   <td>
                     {{pedido.total | currency}}
                   </td>
+                  <td ng-style="{ 'background-color':'{{pedido.color}}' }">
+                    {{pedido.estatus}}
+                  </td>
                   <td>
                     {{pedido.pre_token}}
                   </td>
                   <td>
-                    <a href="{{'/pedido/'+pedido.folioPedido}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
+                    <a href="{{'/pedido/'+pedido.idPedidoRef}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
                   </td>
                 </tr>
-              </tbody>
-              <tfoot>
                 <tr>
-                  <td colspan="7" class="text-center">
+                  <td colspan="8" class="text-center">
                     <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
                   </td>
                 </tr>
-              </tfoot>
             </table>
           </div>
         </div>
-
       </div>
     </div>
   </div>

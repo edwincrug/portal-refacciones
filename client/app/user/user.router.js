@@ -7,7 +7,7 @@ angular.module('refacciones')
 
       templateUrl: 'app/user/user.html',
       authenticate: true,
-      controller:function($scope,User){
+      controller:function($scope,$state,User,Auth){
         User.get(function(data){
           $scope.user = data;
           $scope.classMenu = "mainnav-sm"
@@ -20,6 +20,14 @@ angular.module('refacciones')
           }
 
         })
+
+       $scope.cerrarSession = function()
+       {
+          Auth.logout();
+          $state.go('login');
+          
+       } 
+
 
       }
     });

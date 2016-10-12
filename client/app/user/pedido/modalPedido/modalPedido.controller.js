@@ -2,12 +2,18 @@
 
 (function() {
 
-  class ConfirmacionComponent {
+  class ModalPedidoComponent {
+
+    initial($scope) {
+     $scope.bunny = 'laura';
+     
+    }
 
     constructor($scope, $location, $state, User, Refaccion, Cotizacion, Pedido) {
       //Variables iniciales
       var self = this;
-      $scope.empresaActual = $scope.$parent.$parent.$parent.empresaActual;
+
+      /*$scope.empresaActual = $scope.$parent.$parent.$parent.empresaActual;
       $scope.sucursalActual = $scope.$parent.$parent.$parent.sucursalActual;
       $scope.folioActual = $scope.$parent.$parent.folioActual;
       $scope.direccionActual = $scope.$parent.$parent.direccionActual;
@@ -16,7 +22,7 @@
       $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = false;;
       $scope.spinner = true;
       $scope.spinner = true;
-      $scope.idPedidoBP = 0;
+      $scope.idPedidoBP = 0;*/
 
       User.get(function(data) {
         $scope.user = data;
@@ -34,7 +40,7 @@
             }, function(data) {
               $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;
               setTimeout(function() {
-                $scope.$parent.$parent.guardarModal = false;
+                $scope.$parent.$parent.guardarModal = false
                 $scope.guardar = false;
                 $scope.spinner = $scope.spinner2 = false;
                 $scope.$apply()
@@ -44,6 +50,7 @@
           }
         }
 
+        /*
         $scope.calcularTotal = function(op) {
           var totaltemp = 0;
           $scope.cotizacionActual.forEach(function(e) {
@@ -130,11 +137,8 @@
                 if (data) {
                   console.log(data)
                   if (data.estatus == "ok") {
-
-                    var folioBPRO = (data.idPedBPRO == 0)?'Pendiente. Pedido en BACKORDER.':data.idPedBPRO;
-
                     bootbox.alert("<h4>" + data.mensaje + "</h4>" +
-                      "<p><h4>Folio Pedido BPRO: <font color='#1827F2'><B> " + folioBPRO + "</B></font></h4>" +
+                      "<p><h4>Folio Pedido BPRO: <font color='#1827F2'><B>" + data.idPedBPRO + "</B></font></h4>" +
                       "<p><h4>Su token de entrega es <font color='#1827F2'><B>" + data.token + "</B></font></h4>",
                       function() {
                         $state.go("user.cotizacion")
@@ -160,16 +164,17 @@
             }, function() {});
           })
         }
+        */  
+
       })
     }
   }
 
 
   angular.module('refacciones')
-    .component('confirmacion', {
-      templateUrl: 'app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.html',
-      controller: ConfirmacionComponent,
-      controllerAs: 'confirmacionCtrl'
+    .component('modalPedido', {
+      templateUrl: 'app/user/pedido/modalPedido/modalPedido.html',
+      controller: ModalPedidoComponent
     });
 
 })();

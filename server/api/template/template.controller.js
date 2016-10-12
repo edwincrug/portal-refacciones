@@ -163,7 +163,7 @@
      type: DataAccess.types.INT
    })
    params.push({
-     name: 'idEstatu',
+     name: 'idEstatus',
      value: 0,
      type: DataAccess.types.INT
    })

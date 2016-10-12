@@ -364,8 +364,8 @@ gulp.task('watch', () => {
   gulp.watch('bower.json', ['wiredep:client']);
 });
 
-gulp.task('serve', cb => {
-  runSequence(['clean:tmp', 'constant', 'env:all'], ['lint:scripts', 'inject'], ['wiredep:client'], ['transpile:client', 'styles'], ['start:server', 'start:client'],
+gulp.task('serve', cb => {  //, ['wiredep:client']
+  runSequence(['clean:tmp', 'constant', 'env:all'], ['lint:scripts', 'inject'], ['transpile:client', 'styles'], ['start:server', 'start:client'],
     'watch',
     cb);
 });
