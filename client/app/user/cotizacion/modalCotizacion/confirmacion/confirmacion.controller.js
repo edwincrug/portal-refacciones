@@ -70,7 +70,7 @@
         $scope.$parent.$parent.hacerPedido = function(op) {
           new Promise(function(resolve, reject) {
             if (op == 0) {
-              bootbox.confirm("<h4>Esta a punto de realizar un pedido. ¿Esta seguro que la direccion de entrega y su cotización es correcta?</h4>",
+              bootbox.confirm("<h4>Está a punto de realizar un pedido. ¿Está seguro que la dirección de entrega y su cotización es correcta?</h4>",
                 function(result) {
                   if (result)
                     resolve(op)
@@ -80,7 +80,7 @@
               )
             }
             if (op == 1) {
-              bootbox.confirm("<h4>Esta a punto de realizar un pedido sin backorder. ¿Esta seguro que la direccion de entrega y su cotización es correcta?</h4>",
+              bootbox.confirm("<h4>Está a punto de realizar un pedido sin backorder. ¿Está seguro que la dirección de entrega y su cotización es correcta?</h4>",
                 function(result) {
                   if (result)
                     resolve(op)
@@ -134,7 +134,7 @@
                     var folioBPRO = (data.idPedBPRO == 0)?'Pendiente. Pedido en BACKORDER.':data.idPedBPRO;
 
                     bootbox.alert("<h4>" + data.mensaje + "</h4>" +
-                      "<p><h4>Folio Pedido BPRO: <font color='#1827F2'><B> " + folioBPRO + "</B></font></h4>" +
+                      "<p><h4>Folio Pedido: <font color='#1827F2'><B> " + folioBPRO + "</B></font></h4>" +
                       "<p><h4>Su token de entrega es <font color='#1827F2'><B>" + data.token + "</B></font></h4>",
                       function() {
                         $state.go("user.cotizacion")

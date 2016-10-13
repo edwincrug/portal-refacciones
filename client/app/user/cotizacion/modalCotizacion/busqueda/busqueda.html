@@ -90,13 +90,13 @@
                 <th>
                   Descripcion
                 </th>
-                <th>
+                <th style="text-align:right">
                   Precio
                 </th>
                 <th>
                   Cantidad
                 </th>
-                <th>
+                <th style="text-align:right">
                   Subtotal
                 </th>
               </tr>
@@ -109,13 +109,13 @@
                 <td>
                   {{refaccion.PTS_DESPARTE}}
                 </td>
-                <td>
+                <td style="text-align:right">
                   {{refaccion.PTS_PCOLISTA | currency}}
                 </td>
                 <td>
                   <input style="width:80px" ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
                 </td>
-                <td>
+                <td style="text-align:right">
                   {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
                 </td>
                 <td>
@@ -137,13 +137,13 @@
                 <td>
                   {{refaccion.PTS_DESPARTE}}
                 </td>
-                <td>
+                <td style="text-align:right">
                   {{refaccion.PTS_PCOLISTA | currency}}
                 </td>
                 <td>
                   <input style="width:80px" ng-model="refaccion.cantidad" autocomplete="off" size="5" class=" text-center form-control" type="number" value="1" name="cantidad" min="1" max="9999">
                 </td>
-                <td>
+                <td style="text-align:right">
                   {{refaccion.PTS_PCOLISTA*refaccion.cantidad | currency}}
                 </td>
                 <td>
@@ -165,10 +165,8 @@
         <h4>{{total | currency}}</h4>
       </div>
     </div>
-
   </div>
   <div class="btn-container">
     <button ng-disabled="!guardar" ng-click="guadarCotizacionBack()" ng-show="cotizacionActual.length>0" class="btn btn-success" type="button" name="button">{{folioActual != "TEMP"? "Actualizar cotización": "Guardar cotización"}}</button>
   </div>
-
 </div>

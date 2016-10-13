@@ -2,10 +2,10 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <span>Crédito disponible: {{sucursalActual.Con_LimCredito | currency}}</span>
+        <span>Crédito autorizado: {{sucursalActual.Con_LimCredito | currency}}</span>
         <div class="progress progress-lg pull-right">
           <div class="restante">
-              Crédito restante: {{sucursalActual.Con_LimCredito- total | currency }}
+              Crédito disponible: {{sucursalActual.Con_LimCredito- total | currency }}
           </div>
           <div style="width: {{((sucursalActual.Con_LimCredito- total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-success"></div>
           <div style="width: {{((total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-danger"></div>
@@ -45,7 +45,7 @@
         					                                    <span class="wz-icon icon-txt text-bold">3</span>
                   <i class="wz-icon-done fa fa-check"></i>
                   </span>
-                  <small class="wz-desc box-block text-semibold">Confirmacion de pedido</small>
+                  <small class="wz-desc box-block text-semibold">Confirmación de pedido</small>
                 </a>
               </li>
 
@@ -66,10 +66,10 @@
               <div class="box-inline">
                 <a ng-hide="backorder || sinbackorder" href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
                 <a ng-disabled="(page == 1 && cotizacionActual.length == 0) ||(!direccionActual &&  page == 2)" href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
-                <a ng-show="backorder || sinbackorder" ng-click="hacerPedido(3)" type="button" class="finish btn btn-success" style="display: inline-block;">Cancelar pedido</a>
+                <a ng-show="backorder || sinbackorder" ng-click="hacerPedido(3)" type="button" class="finish btn btn-warning" style="display: inline-block;">Cancelar pedido</a>
                 <a ng-show="backorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-success" style="display: inline-block;">Confirmar pedido <b>con</b> backorder</a>
-                <a ng-show="sinbackorderTotal" ng-click="hacerPedido(1)" type="button" class="finish btn btn-success" style="display: inline-block;">Confirmar pedido <b>sin</b> backorder</a>
-                <a ng-hide="backorder || sinbackorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-success" style="display: inline-block;">Realizar pedido</a>
+                <a ng-show="sinbackorderTotal" ng-click="hacerPedido(1)" type="button" class="finish btn btn-info" style="display: inline-block;">Confirmar pedido <b>sin</b> backorder</a>
+                <a ng-hide="backorder || sinbackorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-primary" style="display: inline-block;">Realizar pedido</a>
               </div>
             </div>
           </form>
