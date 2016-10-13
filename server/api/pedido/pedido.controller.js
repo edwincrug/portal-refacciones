@@ -33,6 +33,7 @@ function handleError(res, statusCode) {
 // Gets a list of Cotizacions
 export function index(req, res) {
   var params = [];
+  //console.log('Si entre anda anda por favor');
   params.push({
     name: 'idUsuario',
     value: req.query.user,
@@ -41,6 +42,16 @@ export function index(req, res) {
   params.push({
     name: 'estatus',
     value: req.query.estatus,
+    type: DataAccess.types.STRING
+  })
+  params.push({
+    name: 'idEmpresa',
+    value: req.query.empresa,
+    type: DataAccess.types.INT
+  })
+  params.push({
+    name: 'idSucursal',
+    value: req.query.sucursal,
     type: DataAccess.types.STRING
   })
   DataAccess.query('SEL_PEDIDO_USUARIO_SP', params, function(error, result) {

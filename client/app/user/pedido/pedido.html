@@ -1,98 +1,107 @@
 <div id="page-content">
-  <div class="row ">
-    <div class="col-sm-10 col-sm-push-1 mar-top">
-      <div id="">
-        <h1 class="page-header text-overflow">Pedidos</h1>
-        </h1>
-      </div>
-    </div>
-    <div  class="col-sm-10 col-sm-push-1 mar-top ">
-      <div class="panel ">
-        <div class="panel-body pad-top mar-top">
-          <div ng-show="listaPedidos.length > 0" class=" col-xs-12">
-            <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">              
-                <tr>
-                  <th colspan="2">
-                    <div class="form-group">
-                      <label>Buscar</label>
-                      <input st-search class="form-control" type="text" name="name" value="">
-                    </div>
-                  </th>
-                  <th colspan="2">
-                    <div class="form-group">
-                      <label>Empresa</label>
-                      <select  st-search="empresa" st-input-event="change" st-delay="0"  ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_nombrecto" ng-model="empresaActual"></select>
-                    </div>
-                  </th>
-                  <th colspan="4">
-                    <div class="form-group">
-                      <label>Sucursal </label>
-                      <select  st-search="sucursal" st-delay="0" st-input-event="change"  ng-change="cambioSucursal()" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.suc_nombrecto" ng-model="sucursalActual"></select>
-                    </div>
-                  </th>
-                </tr>
-                <tr>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio">
-                    No. Pedido
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
-                    Descripción
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
-                    Empresa
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="sucursalNombre">
-                    Sucursal
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total">
-                    Total
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total">
-                    Estatus
-                  </th>
-                  <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="token">
-                    Token
-                  </th>
-                  <th>
-
-                  </th>
-                </tr>
-                <tr ng-repeat="pedido in pedidos">
-                  <td>
-                    <span>{{pedido.folioPedido}}</span>
-                  </td>
-                  <td>
-                    {{pedido.descripcion}}
-                  </td>
-                  <td>
-                    {{pedido.empresaNombre}}
-                  </td>
-                  <td>
-                    {{pedido.sucursalNombre}}
-                  </td>
-                  <td>
-                    {{pedido.total | currency}}
-                  </td>
-                  <td ng-style="{ 'background-color':'{{pedido.color}}' }">
-                    {{pedido.estatus}}
-                  </td>
-                  <td>
-                    {{pedido.pre_token}}
-                  </td>
-                  <td>
-                    <a href="{{'/pedido/'+pedido.idPedidoRef}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="8" class="text-center">
-                    <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
-                  </td>
-                </tr>
-            </table>
-          </div>
+    <div class="row ">
+        <div class="col-sm-10 col-sm-push-1 mar-top">
+            <div id="">
+                <h1 class="page-header text-overflow">Pedidos</h1>
+                </h1>
+            </div>
         </div>
-      </div>
+        <div class="col-sm-10 col-sm-push-1 mar-top ">
+            <div class="panel ">
+                <div class="panel-body pad-top mar-top">
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 ">Empresa: </label>
+                        <div class="col-sm-8">
+                            <select ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_idempresa" ng-model="empresaActual"></select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="inputPassword" class="col-sm-3 ">Sucursal: </label>
+                        <div class="col-sm-8">
+                            <select ng-change="cambioSucursal(empresaActual,sucursalActual)" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
+                        </div>
+                    </div>
+                    
+                    <div ng-show="listaPedidos.length > 0" class=" col-xs-12">
+                        <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="7" class="col-sm-12">
+                                          <div class="col-sm-4">                                         
+                                            <input st-search="folioPedido" placeholder="Buscar por N° de folio" class="input-sm form-control" type="search"/>
+                                          </div>
+                                          <div class="col-sm-4">
+                                            <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search"/>                                            
+                                          </div>
+                                          <div class="col-sm-4">
+                                            <input st-search="estatus" placeholder="Buscar por estatus" class="input-sm form-control" type="search"/>
+                                          </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
+                                        No. Pedido
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
+                                        Descripción
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
+                                        Empresa
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="sucursalNombre">
+                                        Sucursal
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total">
+                                        Total
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="estatus">
+                                        Estatus
+                                    </th>
+                                    <!-- <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="token">
+                                        Token
+                                    </th> -->
+                                    <th>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="pedido in pedidos">
+                                    <td>
+                                        <span>{{pedido.folioPedido}}</span>
+                                    </td>
+                                    <td>
+                                        {{pedido.descripcion}}
+                                    </td>
+                                    <td>
+                                        {{pedido.empresaNombre}}
+                                    </td>
+                                    <td>
+                                        {{pedido.sucursalNombre}}
+                                    </td>
+                                    <td>
+                                        {{pedido.total | currency}}
+                                    </td>
+                                    <td ng-style="{ 'background-color':'{{pedido.color}}' }">
+                                        {{pedido.estatus}}
+                                    </td>
+                                    <!-- <td>
+                                        {{pedido.pre_token}}
+                                    </td> -->
+                                    <td>
+                                        <a href="{{'/pedido/'+pedido.idPedidoRef}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <div id="modal-pedido-container" ui-view></div>

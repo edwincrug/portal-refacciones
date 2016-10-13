@@ -12,6 +12,9 @@
                 No Serie
               </th>
               <th>
+                Fecha Solicitado
+              </th>
+              <th>
                 Descripción
               </th>
               <th>
@@ -22,15 +25,15 @@
               </th>              
               <th>
                 Total
-              </th>              
-              <th>
-                Fecha Solicitado
               </th>
             </tr>
           <tbody>
                 <tr ng-repeat="detalle in detalles" ng-class="{'info': detalle.estatus == 0,'success': detalle.estatus == 1,'warning':detalle.estatus == 2}">
                   <td>
                     <span>{{detalle.PTS_IDPARTE}}</span>
+                  </td>
+                  <td>
+                    {{detalle.fecha}}
                   </td>
                   <td>
                     {{detalle.PTS_DESPARTE}}
@@ -43,15 +46,12 @@
                   </td>                  
                   <td align="right">
                     {{detalle.totalItem | currency}}
-                  </td>                  
-                  <td>
-                    {{detalle.fecha}}
                   </td>
                 </tr>
           </tbody>
           <tfoot>
               <tr>
-                  <td colspan="4" align="right">
+                  <td colspan="5" align="right">
                     <b>Total
                   </td>
                   <td align="right">

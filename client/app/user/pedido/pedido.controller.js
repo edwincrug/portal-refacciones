@@ -10,21 +10,21 @@
       User.get(function(data) {
         $scope.user = data;
 
-        Pedido.query({
-            user: $scope.user.per_idpersona,
-            estatus: 1,
-          },
-          function(data) {
-            $scope.listaPedidos = data
-            console.log(data)            
-          })
+        // Pedido.query({
+        //     user: $scope.user.per_idpersona,
+        //     estatus: 1,
+        //   },
+        //   function(data) {
+        //     $scope.listaPedidos = data
+        //     console.log(data)            
+        //   })
 
         Empresa.query({
           user: $scope.user.per_idpersona
         }, function(data) {
           data.unshift({
             emp_idempresa: 0,
-            emp_nombre: "Selecciona ...",
+            emp_nombre: "Seleccioné ...",
             emp_nombrecto: ""
           })
           $scope.empresas = data;
@@ -47,7 +47,7 @@
           }, function(data) {
             data.unshift({
               AGENCIA: "0",
-              NOMBRE_AGENCIA: "Selecciona ...",
+              NOMBRE_AGENCIA: "Seleccioné ...",
               suc_nombrecto: ""
             });
             $scope.sucursales = data;
@@ -57,6 +57,21 @@
           $scope.sucursales = $scope.sucursalActual = null;
         }
       }
+
+      $scope.cambioSucursal = function(empresa,sucursal) {
+        Pedido.query({
+            user: $scope.user.per_idpersona,
+            estatus: 1,
+            empresa: empresa.emp_idempresa,
+            sucursal: sucursal.AGENCIA
+          },
+          function(data) {
+            $scope.listaPedidos = data
+            //console.log(data)            
+          })
+
+          
+        }
 
     }
   }
