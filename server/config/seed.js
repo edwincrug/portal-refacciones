@@ -7,16 +7,16 @@
 import sqldb from '../sqldb';
 var User = sqldb.User;
 
-/*
+
 User.sync()
   .then(() => User.destroy({ where: {} }))
   .then(() => {
     User.bulkCreate([{
       provider: 'local',
-      name: 'AUTOMOTRIZ EL TOREO, S.A. DE C.V.',
-      rfc: 'ATO911125I32',
+      name: 'AUTOPARTES CORREA SA DE CV',
+      rfc: 'ACO990517TF1',
       password: '1234',
-      per_idpersona:11
+      per_idpersona:75380
     },{
       provider: 'local',
       name: 'RISP AUTOMOTRIZ',
@@ -28,9 +28,16 @@ User.sync()
       role: 'admin',
       name: 'Admin',
       rfc: 'PAGO910812AAA',
-      password: 'admin'
+      password: 'admin',
+      per_idpersona:10
+    },{
+      provider: 'local',
+      name: 'CENTRO AUTOMOTRIZ DE LA LAGUNA, S.A. DE C.V.',
+      rfc: 'CAL7401045S9',
+      password: '1234',
+      per_idpersona:74861
     }])
     .then(() => {
       console.log('finished populating users');
     });
-  });*/
+  });

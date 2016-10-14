@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="form-group">
-        <label for="inputRefacciones">Introduce numero de parte o descripcion:</label>
+        <label for="inputRefacciones">Introduce número de parte o descripción:</label>
         <div class="input-group">
           <input autocomplete="off" ng-change="buscarRefaccion()" ng-model="refaccionBusqueda" placeholder="Buscar" id="inputRefacciones" type="text" class="form-control">
           <span class="input-group-btn">
@@ -80,7 +80,7 @@
     </div>
     <div class="col-sm-12">
       <div ng-show="cotizacionActual.length > 0" class="form-group ">
-        <div style="max-height: 36px; overflow: hidden;">
+        <div style="max-height: 30px; overflow: hidden;">
           <table style="margin-bottom:0px;" class="table table-striped ">
             <thead>
               <tr>
@@ -88,7 +88,7 @@
                   No serie
                 </th>
                 <th>
-                  Descripcion
+                  Descripción
                 </th>
                 <th style="text-align:right">
                   Precio
@@ -158,11 +158,11 @@
       </div>
     </div>
     <div ng-show="cotizacionActual.length > 0" class="row">
-      <div class="col-xs-2 col-xs-push-7">
-        <h4>Total:</h4>
+      <div class="col-xs-2 col-xs-push-7" style="text-align: right;">
+        <h5>Total:</h5>
       </div>
-      <div class="col-xs-2 col-xs-push-7">
-        <h4>{{total | currency}}</h4>
+      <div class="col-xs-2 col-xs-push-7" style="text-align: right;">
+        <h5>{{total | currency}}</h5>
       </div>
     </div>
   </div>

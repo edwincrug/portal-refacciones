@@ -30,16 +30,16 @@
         </div>
         <div ng-show="cotizacionActual.length > 0" class="row">
             <div class="col-xs-4">
-              <h4>
-              Lista de refacciones
-            </h4>
+              <h4>  
+                Lista de refacciones
+              </h4>
             </div>
         </div>
-
         <div class="col-sm-12">
           <div class="form-group ">
-              <div style="max-height: 39px; overflow: hidden;">
-                  <table style="margin-bottom:0px;" class="table table-striped ">
+              <div style="max-height: 30px; overflow: hidden;">
+                  <!--Encabezado, se muestra siempre-->
+                  <table style="margin-bottom:30px;" class="table table-striped ">
                     <thead>
                       <tr>
                         <th>
@@ -51,13 +51,13 @@
                         <th style="text-align:right">
                           Precio
                         </th>
-                        <th ng-show="!backorder && !sinbackorder">
+                        <th ng-show="!backorder && !sinbackorder" style="text-align:center">
                           Cantidad
                         </th>
-                        <th ng-show="backorder">
+                        <th ng-show="backorder" style="text-align:center">
                           Cant. Pedido
                         </th>
-                        <th ng-show="sinbackorder">
+                        <th ng-show="sinbackorder" style="text-align:center">
                           Cant. Backorder
                         </th>
                         <th style="text-align:right">
@@ -79,10 +79,10 @@
                         <th class="text-center" ng-show="!backorder && !sinbackorder" style="text-align:center">
                           {{refaccion.cantidad}}
                         </th>
-                        <th class="text-center" ng-show="backorder">
+                        <th class="text-center" ng-show="backorder" style="text-align:center">
                           {{refaccion.cantidad-refaccion.faltante}}
                         </th>
-                        <th class="text-center" ng-show="sinbackorder">
+                        <th class="text-center" ng-show="sinbackorder" style="text-align:center">
                           <i ng-show="refaccion.faltante > 0" style="color:red" class="fa fa-exclamation-triangle"></i> <span>{{refaccion.faltante}}</span>
                         </th>
                         <td style="text-align:right">
@@ -95,7 +95,7 @@
                     </tbody>
                   </table>
               </div>
-              <div style="max-height: 32vh; overflow: auto;">
+              <div style="max-height: 20vh; overflow: auto;">
                   <table style="margin-top:-36px;" class="table table-striped ">
                     <thead>
                       <tr style="visibility: hidden;">
@@ -108,10 +108,10 @@
                         <th style="text-align:right">
                           Precio
                         </th>
-                        <th ng-show="!backorder && !sinbackorder">
+                        <th ng-show="!backorder && !sinbackorder" style="text-align:center">
                           Cantidad
                         </th>
-                        <th ng-show="backorder">
+                        <th ng-show="backorder" style="text-align:center">
                           Cant. Pedido
                         </th>
                         <th ng-show="sinbackorder" style="text-align:center">
@@ -134,7 +134,7 @@
                         <td style="text-align:right">
                           {{refaccion.PTS_PCOLISTA | currency}}
                         </td>
-                        <th ng-show="!backorder && !sinbackorder">
+                        <th ng-show="!backorder && !sinbackorder" style="text-align:center">
                           {{refaccion.cantidad}}
                         </th>
                         <th ng-show="backorder" style="text-align:center">
@@ -156,15 +156,30 @@
           </div>
         </div>
         <div ng-show="cotizacionActual.length > 0" class="row">
-            <div class="col-xs-6">
+            <!--div class="col-xs-6">
+            </div-->
+            <!--div class="col-xs-2 col-xs-push-2" style="text-align:right"-->
+            <div class="col-xs-2 col-xs-push-7" style="text-align:right">
+              <h7>Subtotal:</h7>
+            </div>
+            <div class="col-xs-2 col-xs-push-7" style="text-align:right">
+              <h7>{{total | currency}}</h7>
+            </div>
+            <div class="col-xs-10">
+            </div>
+            <div class="col-xs-2 col-xs-push-7" style="text-align:right" ng-show="backorder">
+              <h7>Iva:</h7>
+            </div>
+            <div class="col-xs-2 col-xs-push-7" style="text-align:right" ng-show="backorder">
+              <h7>{{total * .16 | currency}}</h7>
+            </div>
+            <!--div class="col-xs-2 col-xs-push-2" style="text-align:right" ng-show="backorder">
+              <h7>Total:</h7>
+            </div>
+            <div class="col-xs-2 col-xs-push-2" style="text-align:right" ng-show="backorder">
+              <h7>{{(total * .16) + total | currency}}</h7>
+            </div-->
 
-            </div>
-            <div class="col-xs-2 col-xs-push-2" style="text-align:right">
-              <h4>Total:</h4>
-            </div>
-            <div class="col-xs-2 col-xs-push-2" style="text-align:right">
-              <h4>{{total | currency}}</h4>
-            </div>
           </div>
         </div>
       </div>
