@@ -83,7 +83,7 @@ class ModalCotizacionComponent {
         }
         // If it's the last tab then hide the last button and show the finish instead
         if ($current >= $total) {
-          //$('#demo-step-wz').find('.next').hide();
+          $('#demo-step-wz').find('.next').hide();
           $('#demo-step-wz').find('.finish').show();
           $('#demo-step-wz').find('.finish').prop('disabled', false);
         } else {
