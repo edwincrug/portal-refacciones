@@ -39,15 +39,15 @@
                         <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th colspan="7" class="col-sm-12">
+                                    <th colspan="9" class="col-sm-12">
                                         <div class="col-sm-4">
-                                            <input st-search="folioPedido" placeholder="Buscar por N° de folio" class="input-sm form-control" type="search" />
+                                            <input st-search="folioPedido" placeholder="Buscar por N° de pedido" class="input-sm form-control" type="search" />
                                         </div>
                                         <div class="col-sm-4">
                                             <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search" />
                                         </div>
                                         <div class="col-sm-4">
-                                            <input st-search="estatus" placeholder="Buscar por estatus" class="input-sm form-control" type="search" />
+                                            <input st-search="factura" placeholder="Buscar por factura" class="input-sm form-control" type="search" />
                                         </div>
                                     </th>
                                 </tr>
@@ -70,9 +70,12 @@
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="estatus">
                                         Estatus
                                     </th>
-                                    <!-- <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="token">
-                                        Token
-                                    </th> -->
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="factura">
+                                        Factura
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="fechaFactura">
+                                        Fecha
+                                    </th>
                                     <th>
                                     </th>
                                 </tr>
@@ -97,9 +100,12 @@
                                     <td ng-style="{ 'background-color':'{{pedido.color}}' }">
                                         {{pedido.estatus}}
                                     </td>
-                                    <!-- <td>
-                                        {{pedido.pre_token}}
-                                    </td> -->
+                                    <td>
+                                        {{pedido.factura}}
+                                    </td> 
+                                    <td>
+                                        {{pedido.fechaFactura}}
+                                    </td> 
                                     <td>
                                         <a href="{{'/historial/'+pedido.idPedidoRef}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
                                     </td>
