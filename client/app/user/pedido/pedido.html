@@ -1,3 +1,4 @@
+
 <div id="page-content">
     <div class="row ">
         <div class="col-sm-10 col-sm-push-1 mar-top">
@@ -9,33 +10,46 @@
         <div class="col-sm-10 col-sm-push-1 mar-top ">
             <div class="panel ">
                 <div class="panel-body pad-top mar-top">
-                    <div class="form-group col-sm-6">
-                        <label class="col-sm-3 ">Empresa: </label>
-                        <div class="col-sm-8">
-                            <select ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_idempresa" ng-model="empresaActual"></select>
+                    <div class="col-sm-6  col-xs-12">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 ">Empresa: </label>
+                                <div class="col-sm-8">
+                                    <select ng-change="cambioEmpresa()" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_idempresa" ng-model="empresaActual"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 ">Sucursal: </label>
+                                <div class="col-sm-8">
+                                    <select ng-change="cambioSucursal(empresaActual,sucursalActual,fecha)" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group col-sm-6">
-                        <label for="inputPassword" class="col-sm-3 ">Sucursal: </label>
-                        <div class="col-sm-8">
-                            <select ng-change="cambioSucursal(empresaActual,sucursalActual)" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
+                    <div class="col-sm-6 col-xs-12">
+                        <div ng-hide="!sucursalActual || sucursalActual.AGENCIA == 0 " class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 ">Período: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="daterange" value="" class="input-sm form-control" ng-model="fecha"/>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
-                    
                     <div ng-show="listaPedidos.length > 0" class=" col-xs-12">
                         <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th colspan="7" class="col-sm-12">
-                                          <div class="col-sm-4">                                         
-                                            <input st-search="folioPedido" placeholder="Buscar por N° de folio" class="input-sm form-control" type="search"/>
-                                          </div>
-                                          <div class="col-sm-4">
-                                            <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search"/>                                            
-                                          </div>
-                                          <div class="col-sm-4">
-                                            <input st-search="estatus" placeholder="Buscar por estatus" class="input-sm form-control" type="search"/>
-                                          </div>
+                                        <div class="col-sm-4">
+                                            <input st-search="folioPedido" placeholder="Buscar por N° de folio" class="input-sm form-control" type="search" />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search" />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input st-search="estatus" placeholder="Buscar por estatus" class="input-sm form-control" type="search" />
+                                        </div>
                                     </th>
                                 </tr>
                                 <tr>
@@ -51,7 +65,7 @@
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="sucursalNombre">
                                         Sucursal
                                     </th>
-                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total">
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total" style="text-align:right">
                                         Total
                                     </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="estatus">
@@ -78,7 +92,7 @@
                                     <td>
                                         {{pedido.sucursalNombre}}
                                     </td>
-                                    <td>
+                                    <td style="text-align:right">
                                         {{pedido.total | currency}}
                                     </td>
                                     <td ng-style="{ 'background-color':'{{pedido.color}}' }">
