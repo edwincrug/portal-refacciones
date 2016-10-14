@@ -65,7 +65,7 @@
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="sucursalNombre">
                                         Sucursal
                                     </th>
-                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total">
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total" style="text-align:right">
                                         Total
                                     </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="estatus">
@@ -92,7 +92,7 @@
                                     <td>
                                         {{pedido.sucursalNombre}}
                                     </td>
-                                    <td>
+                                    <td style="text-align:right">
                                         {{pedido.total | currency}}
                                     </td>
                                     <td ng-style="{ 'background-color':'{{pedido.color}}' }">
