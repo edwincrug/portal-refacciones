@@ -1,3 +1,6 @@
+<style>
+  .top-buffer { margin-top:2px; margin-bottom: 2px;}
+</style>
 <div id="demo-step-tab3" class="tab-pane pad-all  active in">
   <div class="row">
     <div class="col-sm-12">
@@ -20,14 +23,14 @@
           </div>
         </div>
         <br>
-        <div ng-show="backorder || sinbackorder" class="row">
+        <!--div ng-show="backorder || sinbackorder" class="row">
           <div class="col-xs-12">
             <p style="color:red;">
                 <i class="fa fa-exclamation-triangle"></i> Actualmente, no contamos con todas las piezas que ha solicitado, seleccione "Pedido con backorder" para programar las
               piezas faltantes en backorder, o "Pedido sin backorder" para enviarle las piezas en actual existencia.
             </p>
           </div>
-        </div>
+        </div-->
         <div ng-show="cotizacionActual.length > 0" class="row">
             <div class="col-xs-4">
               <h4>  
@@ -37,9 +40,9 @@
         </div>
         <div class="col-sm-12">
           <div class="form-group ">
-              <div style="max-height: 30px; overflow: hidden;">
+              <div style="max-height: 33px; overflow: hidden;">
                   <!--Encabezado, se muestra siempre-->
-                  <table style="margin-bottom:30px;" class="table table-striped ">
+                  <table style="margin-bottom:0px;" class="table table-striped ">
                     <thead>
                       <tr>
                         <th>
@@ -95,7 +98,7 @@
                     </tbody>
                   </table>
               </div>
-              <div style="max-height: 20vh; overflow: auto;">
+              <div style="max-height: 24vh; overflow: auto;">
                   <table style="margin-top:-36px;" class="table table-striped ">
                     <thead>
                       <tr style="visibility: hidden;">
@@ -140,7 +143,7 @@
                         <th ng-show="backorder" style="text-align:center">
                           {{refaccion.cantidad-refaccion.faltante}}
                         </th>
-                        <th ng-show="sinbackorder">
+                        <th ng-show="sinbackorder" style="text-align:center">
                           <i ng-show="refaccion.faltante > 0" style="color:red" class="fa fa-exclamation-triangle"></i> <span>{{refaccion.faltante}}</span>
                         </th>
                         <td style="text-align:right">
@@ -155,37 +158,80 @@
               </div>
           </div>
         </div>
-        <div ng-show="cotizacionActual.length > 0" class="row">
-            <!--div class="col-xs-6">
-            </div-->
-            <!--div class="col-xs-2 col-xs-push-2" style="text-align:right"-->
-            <div class="col-xs-2 col-xs-push-7" style="text-align:right">
-              <h7>Subtotal:</h7>
+        <div id="containerMsg">    
+            <div id="middle">
+                <div id="contenedor3">
+                  <div id="contenidos">
+                    <div id="colMensaje" ng-show="backorder || sinbackorder">
+                        <p style="color:#F50B07;">
+                            <i class="fa fa-exclamation-triangle"></i> Actualmente, no contamos con todas las piezas que ha solicitado, seleccione "Pedido con backorder" para programar las piezas faltantes en backorder, o "Pedido sin backorder" para enviarle las piezas en actual existencia.
+                        </p>
+                    </div>
+                  </div>    
+                </div>
             </div>
-            <div class="col-xs-2 col-xs-push-7" style="text-align:right">
-              <h7>{{total | currency}}</h7>
+            <div id="right">
+                  <div id="tableTotales" ng-show="cotizacionActual.length > 0">
+                    <div id="rowTotales">
+                        <div id="columna1"><b>Subtotal:</b></div>
+                        <div id="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) | currency}}</div>
+                    </div>
+                    <div id="rowTotales" ng-show="backorder || sinbackorder">
+                        <div id="colBackOrder"><b>Subtotal Backorder:</b></div>
+                        <div id="colBackOrder">{{totalBackOrder | currency}}</div>
+                    </div>
+                    <div id="rowTotales">
+                        <div id="columna1">Iva:</div>
+                        <div id="columna2">{{total * .16 | currency}}</div>
+                    </div>
+                    <div id="rowTotales">
+                        <div id="columna1">Total:</div>
+                        <div id="columna2">{{(total* .16) + total | currency}}</div>
+                    </div>
+                  </div>
             </div>
-            <div class="col-xs-10">
+        </div>   
+        <!--div ng-show="cotizacionActual.length > 0" class="row top-buffer">            
+            <div class="col-xs-9 col-md-10" style="background-color:lightgrey; text-align: right; padding-top: 0px; padding-bottom: 0px;">
+                <h6>Subtotal:</h6>
+            </div>
+            <div class="col-xs-3 col-md-2" style="background-color:lavender; text-align: right; padding-top: 0px; padding-bottom: 0px;">
+              <h6>{{total | currency}}</h6>
+            </div>
+        </div>    
+        <div class="row">            
+            <div class="col-xs-9 col-md-10" style="background-color:lightgrey; text-align: right;">
+                <h6>Iva:</h6>
+            </div>
+            <div class="col-xs-3 col-md-2" style="background-color:lavender; text-align: right; padding-top: 0px; padding-bottom: 0px;">
+              <h6>{{total * .16 | currency}}</h6>
+            </div>
+        </div>    
+        <div class="row">            
+            <div class="col-xs-9 col-md-10" style="background-color:lightgrey; text-align: right; margin-bottom: 4px; margin-top: 4pX;">
+                <h6>Total:</h6>
+            </div>
+            <div class="col-xs-3 col-md-2" style="background-color:lavender; text-align: right; margin-bottom: 4px; margin-top: 4pX;">
+              <h6>{{(total * .16) + total | currency}}</h6>
+            </div>
+        </div-->    
+            <!--div class="col-xs-10">
             </div>
             <div class="col-xs-2 col-xs-push-7" style="text-align:right" ng-show="backorder">
               <h7>Iva:</h7>
             </div>
             <div class="col-xs-2 col-xs-push-7" style="text-align:right" ng-show="backorder">
               <h7>{{total * .16 | currency}}</h7>
-            </div>
+            </div-->
             <!--div class="col-xs-2 col-xs-push-2" style="text-align:right" ng-show="backorder">
               <h7>Total:</h7>
             </div>
             <div class="col-xs-2 col-xs-push-2" style="text-align:right" ng-show="backorder">
               <h7>{{(total * .16) + total | currency}}</h7>
             </div-->
-
-          </div>
-        </div>
+          
+        
       </div>
-
-
     </div>
-
   </div>
 </div>

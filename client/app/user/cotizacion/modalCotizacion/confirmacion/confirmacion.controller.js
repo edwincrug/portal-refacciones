@@ -18,6 +18,8 @@
       $scope.spinner = true;
       $scope.idPedidoBP = 0;
 
+      $scope.totalExistencia = -1;
+
       User.get(function(data) {
         $scope.user = data;
         //Carga refacciones si es edicion de cotizacion
@@ -55,6 +57,11 @@
             }
           })
           $scope.total = $scope.$parent.$parent.total = totaltemp;
+
+
+          if($scope.totalExistencia > -1)
+              $scope.total = $scope.totalExistencia;
+
         }
 
         $scope.selectBackorder = function() {
@@ -128,17 +135,37 @@
                 idPedido: $scope.idPedidoBP,
               }, function(data) {
                 if (data) {
+
                   console.log(data)
                   if (data.estatus == "ok") {
 
-                    var folioBPRO = (data.idPedBPRO == 0)?'Pendiente. Pedido en BACKORDER.':data.idPedBPRO;
+                    var folioBPRO = '';
+                    if(data.idPedBPRO == "0")
 
-                    bootbox.alert("<h4>" + data.mensaje + "</h4>" +
-                      "<p><h4>Folio Pedido: <font color='#1827F2'><B> " + folioBPRO + "</B></font></h4>" +
+                        folioBPRO = "<p><h4><font color='#1827F2'><B> Se ha generado un pedido en BACKORDER por las piezas faltantes.</B></font></h4>"
+                    else
+                        folioBPRO = "<p><h4>Folio Pedido: <font color='#1827F2'><B> " + data.idPedBPRO + "</B></font></h4>" +
+                                    "<p><h4>Su token de entrega es: <font color='#1827F2'><B>" + data.token + "</B></font></h4>"
+
+
+                    console.log('back order?')
+                    console.log(data.backOrder)
+
+                    if(data.backOrder == "1")
+                        folioBPRO = folioBPRO + "<p><h4><font color='#1827F2'><B>Se ha generado un pedido en BACKORDER por las piezas faltantes.</B></font></h4>"
+
+                    /*bootbox.alert("<h4>" + data.mensaje + "</h4>" +
+                      "<p><h4>Folio Pedido: <font color='#1827F2'><B> " + folioBPRO + "</B></font></h4>" + 
                       "<p><h4>Su token de entrega es <font color='#1827F2'><B>" + data.token + "</B></font></h4>",
                       function() {
                         $state.go("user.cotizacion")
-                      });
+                      });*/
+
+                      bootbox.alert("<h4>" + data.mensaje + "</h4>" + folioBPRO,
+                      function() {
+                        $state.go("user.cotizacion")
+                      });  
+
                   } else if (data.estatus == "ko") {
                     toastr.info(data.mensaje)
                     $scope.backorder = $scope.$parent.$parent.backorder = true;
@@ -147,6 +174,9 @@
                        $scope.sinbackorderTotal = $scope.$parent.$parent.sinbackorderTotal = true;
 
                     $scope.sinbackorder = $scope.$parent.$parent.sinbackorder = true;
+
+                    $scope.totalBackOrder = data.totalBackOrder;
+                    $scope.totalExistencia = data.totalExistencia;
 
                     $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;
                     $scope.idPedidoBP = data.idPedidoRef;

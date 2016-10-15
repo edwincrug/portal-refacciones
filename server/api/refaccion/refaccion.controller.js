@@ -68,14 +68,29 @@ export function index(req, res) {
   })
   params.push({
     name: 'PAR_IDENPARA',
-    value: 'GEN',
+    value: req.query.par_idenpara,
     type: DataAccess.types.STRING
   })
   params.push({
     name: 'PAR_TIPOPARA',
-    value: 'SA',
+    value: req.query.par_tipopara,
     type: DataAccess.types.STRING
   })
+
+  params.push({
+    name: 'idEmpresa',
+    value: req.query.idEmpresa,
+    type: DataAccess.types.STRING
+  })
+
+  params.push({
+    name: 'idSucursal',
+    value: req.query.idSucursal,
+    type: DataAccess.types.STRING
+  })
+
+  //console.log(params)
+
   DataAccess.query('SEL_REFACCION_SP', params, function(error, result) {
     if(error) return handleError(res)(error);
     return respondWithResult(res)(result[0])

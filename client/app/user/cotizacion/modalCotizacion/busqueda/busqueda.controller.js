@@ -229,7 +229,12 @@
         $scope.buscarRefaccion = function() {
           if ($scope.refaccionBusqueda.length > 2) {
             Refaccion.query({
-              query: $scope.refaccionBusqueda
+              query: $scope.refaccionBusqueda,
+              par_idenpara: 'GEN',
+              par_tipopara: 'SA',
+              idEmpresa: $scope.empresaActual.emp_idempresa,
+              idSucursal: $scope.sucursalActual.AGENCIA
+
             }, function(data) {
               data.forEach(function(d) {
                 d.cantidad = 1;

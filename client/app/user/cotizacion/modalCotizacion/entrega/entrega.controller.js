@@ -25,7 +25,8 @@
 
         Direccion.query({
           user: $scope.user.per_idpersona,
-          base: $scope.empresaActual.base
+          idEmpresa: $scope.empresaActual.emp_idempresa,
+          idSucursal: $scope.sucursalActual.AGENCIA
         }, function(data) {
           $scope.direcciones = data;
           if ($scope.$parent.$parent.direccionActual) {
@@ -59,8 +60,6 @@
       }
     }
   }
-
-
 
   angular.module('refacciones')
     .component('entrega', {

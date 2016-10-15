@@ -68,11 +68,20 @@ export function index(req, res) {
     value: req.query.user,
     type: DataAccess.types.INT
   })
+
   params.push({
-    name: 'base',
-    value: req.query.base,
+    name: 'idEmpresa',
+    value: req.query.idEmpresa,
     type: DataAccess.types.STRING
   })
+
+  params.push({
+    name: 'idSucursal',
+    value: req.query.idSucursal,
+    type: DataAccess.types.STRING
+  })
+  
+  //console.log(params)  
 
   DataAccess.query('SEL_DIRECCION_SP', params, function(error, result) {
     if (error) return handleError(res)(error);
