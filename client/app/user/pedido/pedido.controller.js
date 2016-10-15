@@ -78,8 +78,8 @@
                         empresa: empresa.emp_idempresa,
                         sucursal: sucursal.AGENCIA
                         //,
-                        //fechaI: '14/09/2016',
-                        //fechaF: '14/10/2016'
+                        //fechaI: '09/10/2016',
+                        //fechaF: '12/10/2016'
                     },
                     function(data) {
                         $scope.listaPedidos = data

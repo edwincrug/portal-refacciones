@@ -1,68 +1,69 @@
 <div class="modal fade modal-pedido" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>Pedido</h3>
-      </div>
-      <div class="modal-body">
-        <table class="table">          
-            <tr>
-              <th>
-                No Serie
-              </th>
-              <th>
-                Fecha Solicitado
-              </th>
-              <th>
-                Descripción
-              </th>
-              <th>
-                Precio/Pz
-              </th>
-              <th>
-                No. Piezas
-              </th>              
-              <th>
-                Total
-              </th>
-            </tr>
-          <tbody>
-                <tr ng-repeat="detalle in detalles" ng-class="{'info': detalle.estatus == 0,'success': detalle.estatus == 1,'warning':detalle.estatus == 2}">
-                  <td>
-                    <span>{{detalle.PTS_IDPARTE}}</span>
-                  </td>
-                  <td>
-                    {{detalle.fecha}}
-                  </td>
-                  <td>
-                    {{detalle.PTS_DESPARTE}}
-                  </td>
-                  <td>
-                    {{detalle.PTS_PCOLISTA | currency}}
-                  </td>
-                  <td align="center">
-                    {{detalle.prd_cantidadsolicitada}}
-                  </td>                  
-                  <td align="right">
-                    {{detalle.totalItem | currency}}
-                  </td>
-                </tr>
-          </tbody>
-          <tfoot>
-              <tr>
-                  <td colspan="5" align="right">
-                    <b>Total
-                  </td>
-                  <td align="right">
-                      {{totalPedido | currency}}
-                  </td>
-                  <td>
-                  </td>                  
-              </tr>
-          </tfoot>
-        </table>
-      </div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" class="bg bg-mint">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 style="text-align:center">Pedido: {{idpedido}}</h3>
+            </div>
+            <div style="background-color:#42a5f5">
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>
+                            No Serie
+                        </th>
+                        <th>
+                            Fecha Solicitado
+                        </th>
+                        <th>
+                            Descripción
+                        </th>
+                        <th>
+                            Precio/Pz
+                        </th>
+                        <th>
+                            No. Piezas
+                        </th>
+                        <th style="text-align:right">
+                            Subtotal
+                        </th>
+                    </tr>
+                    <tbody>
+                        <tr ng-repeat="detalle in detalles">
+                            <!-- ng-class="{'info': detalle.estatus == 0,'success': detalle.estatus == 1,'warning':detalle.estatus == 2}" -->
+                            <td>
+                                <span>{{detalle.PTS_IDPARTE}}</span>
+                            </td>
+                            <td>
+                                {{detalle.fecha}}
+                            </td>
+                            <td>
+                                {{detalle.PTS_DESPARTE}}
+                            </td>
+                            <td>
+                                {{detalle.PTS_PCOLISTA | currency}}
+                            </td>
+                            <td align="center">
+                                {{detalle.prd_cantidadsolicitada}}
+                            </td>
+                            <td align="right">
+                                {{detalle.totalItem | currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <section class="panel col-xs-6" style="text-align:right">
+                    <div class="panel-body">
+                        Subtotal
+                    </div>
+                </section>
+                <section class="panel col-xs-6" style="text-align:right"s>
+                    <div class="panel-body">
+                        {{totalPedido | currency}}
+                    </div>
+                </section>
+                <hr>
+            </div>
+        </div>
     </div>
-  </div>
-</div>

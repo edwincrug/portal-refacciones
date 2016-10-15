@@ -15,15 +15,15 @@ class ModalPedidoComponent {
     if ($stateParams.id) {
       console.log($scope.user)
       console.log($stateParams.id)
+      console.log($stateParams.idpedido)
       Pedido.get({
         id: $stateParams.id,
         user: $scope.user.per_idpersona,        
       }, function(data) {
-
         console.log('bunny success!');
         console.log(data.data);        
         $scope.detalles = data.data;
-
+        $scope.idpedido=$stateParams.idpedido;
         console.log($scope.detalles.length);
 
         $scope.totalPedido = 0;        
@@ -44,7 +44,7 @@ angular.module('refacciones')
   .config(function($stateProvider) {
     $stateProvider
       .state('user.pedido.modal', {
-        url: '/:id',
+        url: '/:id/:idpedido',
         templateUrl: 'app/user/pedido/modalPedido/modalPedido.html',
         controller: ModalPedidoComponent
       });

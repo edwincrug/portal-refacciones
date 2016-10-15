@@ -78,7 +78,7 @@
                         empresa: empresa.emp_idempresa,
                         sucursal: sucursal.AGENCIA
                         //,
-                        //fechaI: '14/09/2016',
+                        //fechaI: '12/10/2016',
                         //fechaF: '14/10/2016'
                     },
                     function(data) {

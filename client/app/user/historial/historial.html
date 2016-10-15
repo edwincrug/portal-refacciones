@@ -41,14 +41,14 @@
                                 <tr>
                                     <th colspan="9" class="col-sm-12">
                                         <div class="col-sm-4">
-                                            <input st-search="folioPedido" placeholder="Buscar por N° de pedido" class="input-sm form-control" type="search" />
+                                            <input st-search="" placeholder="Buscar..." class="input-sm form-control" type="search" />
                                         </div>
-                                        <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4">
                                             <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search" />
                                         </div>
                                         <div class="col-sm-4">
                                             <input st-search="factura" placeholder="Buscar por factura" class="input-sm form-control" type="search" />
-                                        </div>
+                                        </div> -->
                                     </th>
                                 </tr>
                                 <tr>
@@ -97,8 +97,10 @@
                                     <td style="text-align:right">
                                         {{pedido.total | currency}}
                                     </td>
-                                    <td ng-style="{ 'background-color':'{{pedido.color}}' }">
-                                        {{pedido.estatus}}
+                                    <td>
+                                    <div class="label label-table" ng-style="{ 'background-color':'{{pedido.color}}' }">
+                                       {{pedido.estatus}} 
+                                    </div>                                        
                                     </td>
                                     <td>
                                         {{pedido.factura}}
