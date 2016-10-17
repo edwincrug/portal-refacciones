@@ -32,7 +32,14 @@
     text-align: right;
 }
 
-
+#colTotalMix{
+    /*display: table-cell;*/
+    vertical-align: middle;
+    padding-left: 3px;
+    color: #921E1C;
+    text-align: center;    
+    width: 200%;
+}
 
 #contMensajeBack {
     display: table;
@@ -53,8 +60,8 @@
 /* {margin: 0; padding: 0;}*/
 #containerMsg {height: 100%; width:100%; font-size: 0;}
 #left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
-#middle {width: 75%; }
-#right {width: 25%; } /*background: #ECF2F6;*/
+#middle {width: 70%; }
+#right {width: 30%; } /*background: #ECF2F6;*/
 
 #contenedor3 {
     display: table;
@@ -73,5 +80,5 @@
     /*border: 1px solid #000;*/
     vertical-align: middle;
     text-align: left;
-    padding: 19px;
+    padding: 15px;
 }

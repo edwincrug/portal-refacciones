@@ -163,9 +163,9 @@
                 <div id="contenedor3">
                   <div id="contenidos">
                     <div id="colMensaje" ng-show="backorder || sinbackorder">
-                        <p style="color:#F50B07;">
+                        <font style="color:#F50B07;">
                             <i class="fa fa-exclamation-triangle"></i> Actualmente, no contamos con todas las piezas que ha solicitado, seleccione "Pedido con backorder" para programar las piezas faltantes en backorder, o "Pedido sin backorder" para enviarle las piezas en actual existencia.
-                        </p>
+                        </font>
                     </div>
                   </div>    
                 </div>
@@ -175,18 +175,21 @@
                     <div id="rowTotales">
                         <div id="columna1"><b>Subtotal:</b></div>
                         <div id="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) | currency}}</div>
-                    </div>
-                    <div id="rowTotales" ng-show="backorder || sinbackorder">
-                        <div id="colBackOrder"><b>Subtotal Backorder:</b></div>
-                        <div id="colBackOrder">{{totalBackOrder | currency}}</div>
-                    </div>
+                        <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
+                    </div>                    
                     <div id="rowTotales">
                         <div id="columna1">Iva:</div>
-                        <div id="columna2">{{total * .16 | currency}}</div>
+                        <div id="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) * .16 | currency}}</div>
+                        <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder * .16 | currency}}</div>
                     </div>
                     <div id="rowTotales">
                         <div id="columna1">Total:</div>
-                        <div id="columna2">{{(total* .16) + total | currency}}</div>
+                        <div id="columna2">{{(total - totalBackOrder) < 1 ? 0: ((total - totalBackOrder) * .16) + (total - totalBackOrder) | currency}}</div>
+                        <div id="colBackOrder" ng-show="backorder || sinbackorder">{{(totalBackOrder * .16) + totalBackOrder | currency}}</div>
+                    </div>
+                    <div id="rowTotales" ng-show="backorder || sinbackorder">
+                        <div id="columna1">Total con BO:</div>
+                        <div id="colTotalMix">{{(total * .16) + total | currency}}</div>
                     </div>
                   </div>
             </div>

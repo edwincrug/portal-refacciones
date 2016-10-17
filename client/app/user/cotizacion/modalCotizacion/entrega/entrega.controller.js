@@ -19,7 +19,7 @@
       if ($scope.$parent.$parent.cotizacionActual)
         $scope.cotizacionActual = $scope.$parent.$parent.cotizacionActual;
 
-      $scope.mapaActual = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBNoVwlP2bV9DIOqRcZc2VPVR_A6psQKLY&center=19.435203,-99.1649484&zoom=11"
+      $scope.mapaActual = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&center=19.435203,-99.1649484&zoom=11" //"https://www.google.com/maps/embed/v1/view?key=AIzaSyBNoVwlP2bV9DIOqRcZc2VPVR_A6psQKLY&center=19.435203,-99.1649484&zoom=11"
       User.get(function(data) {
         $scope.user = data;
 
@@ -56,7 +56,8 @@
         $scope.spinner2 = true;
         $scope.$parent.$parent.direccionActual = direccion;
         var dir = direccion.RTD_CALLE1 + " " + direccion.RTD_NUMEXTER + " " + direccion.RTD_COLONIA + " " + direccion.RTD_DELEGAC + " " + direccion.RTD_CIUDAD + " " + direccion.RTD_CODPOS;
-        $scope.mapaActual = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBNoVwlP2bV9DIOqRcZc2VPVR_A6psQKLY&q=" + dir
+        $scope.mapaActual = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
+        //$scope.mapaActual = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
       }
     }
   }
