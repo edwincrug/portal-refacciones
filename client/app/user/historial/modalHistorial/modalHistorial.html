@@ -1,46 +1,79 @@
 <div class="modal fade modal-historial" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>Pedido Histórico</h3>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>
-                No serie
-              </th>
-              <th>
-                Descripción
-              </th>
-              <th>
-                Precio
-              </th>
-              <th>
-                Cantidad
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-                <tr ng-repeat="detalle in detalles">
-                  <td>
-                    <span>{{detalle.PTS_IDPARTE}}</span>
-                  </td>
-                  <td>
-                    {{detalle.PTS_DESPARTE}}
-                  </td>
-                  <td>
-                    {{detalle.PTS_PCOLISTA | currency}}
-                  </td>
-                  <td>
-                    {{detalle.prd_cantidadsolicitada}}
-                  </td>                  
-                </tr>
-          </tbody>
-        </table>        
-      </div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#249e92">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 style="text-align:center;color:#fff">Pedido Histórico</h3>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                No serie
+                            </th>
+                            <th>
+                                Descripción
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                            <th style="text-align:right">
+                                Subtotal
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="detalle in detalles">
+                            <td>
+                                <span>{{detalle.PTS_IDPARTE}}</span>
+                            </td>
+                            <td>
+                                {{detalle.PTS_DESPARTE}}
+                            </td>
+                            <td>
+                                {{detalle.PTS_PCOLISTA | currency}}
+                            </td>
+                            <td>
+                                {{detalle.prd_cantidadsolicitada}}
+                            </td>
+                            <td align="right">
+                                {{detalle.totalItem | currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="containerMsg">
+                    <div id="middle">
+                        <div id="contenedor3">
+                            <div id="contenidos">
+                                <div id="colMensaje" ng-show="backorder || sinbackorder">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right">
+                        <div id="tableTotales">
+                            <div id="rowTotales">
+                                <div id="columna1">Subtotal:</div>
+                                <div id="columna2">{{subtotal| currency}}</div>
+                                <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
+                            </div>
+                            <div id="rowTotales">
+                                <div id="columna1">Iva:</div>
+                                <div id="columna2">{{subtotal * .16 | currency}}</div>
+                            </div>
+                            <div id="rowTotales">
+                                <div id="columna1"><b>Total:</b></div>
+                                <div id="columna2">{{subtotal + (subtotal*.16)| currency}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
