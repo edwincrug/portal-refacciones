@@ -53,17 +53,36 @@
                         </tr>
                     </tbody>
                 </table>
-                <section class="panel col-xs-6" style="text-align:right">
-                    <div class="panel-body">
-                        Subtotal
+                <div id="containerMsg">
+                    <div id="middle">
+                        <div id="contenedor3">
+                            <div id="contenidos">
+                                <div id="colMensaje" ng-show="backorder || sinbackorder">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </section>
-                <section class="panel col-xs-6" style="text-align:right"s>
-                    <div class="panel-body">
-                        {{totalPedido | currency}}
+                    <div id="right">
+                        <div id="tableTotales" >
+                            <div id="rowTotales">
+                                <div id="columna1">Subtotal:</div>
+                                <div id="columna2">{{subtotal| currency}}</div>
+                                        <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
+                                </div>
+                                <div id="rowTotales">
+                                    <div id="columna1">Iva:</div>
+                                    <div id="columna2">{{subtotal * .16 | currency}}</div>
+                                            
+                                    </div>
+                                    <div id="rowTotales">
+                                        <div id="columna1"><b>Total:</b></div>
+                                        <div id="columna2">{{subtotal + (subtotal*.16)| currency}}</div>
+                                        </div>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </section>
-                <hr>
+                </div>
             </div>
-        </div>
-    </div>
