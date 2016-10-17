@@ -54,10 +54,7 @@
                                 <tr>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
                                         No. Pedido
-                                    </th>
-                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
-                                        Descripción
-                                    </th>
+                                    </th>                                    
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
                                         Empresa
                                     </th>
@@ -84,10 +81,7 @@
                                 <tr ng-repeat="pedido in pedidos">
                                     <td>
                                         <span>{{pedido.folioPedido}}</span>
-                                    </td>
-                                    <td>
-                                        {{pedido.descripcion}}
-                                    </td>
+                                    </td>                                    
                                     <td>
                                         {{pedido.empresaNombre}}
                                     </td>
