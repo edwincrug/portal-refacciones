@@ -176,13 +176,13 @@
                         <div class="columna1"></div>
                         <div class="columna1" ng-show="backorder || sinbackorder"><b>Existencia</b></div>
                         <div id="colBackOrder" ng-show="backorder || sinbackorder">Backorder</div>
-                        <div class="columna3" ng-show="backorder || sinbackorder">Ambos</div> 
+                        <div class="colTotalMix" ng-show="backorder || sinbackorder">Total</div> 
                     </div>                    
                     <div id="rowTotales">
                         <div class="columna1" ="columna1"><b>Subtotal:</b></div>
                         <div class="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) | currency}}</div>
                         <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
-                        <div class="columna3" ng-show="backorder || sinbackorder">{{total | currency}}</div>
+                        <div class="colTotalMix" ng-show="backorder || sinbackorder">{{total | currency}}</div>
                     </div>                    
                     <div id="rowTotales">
                         <div class="columna1">Iva:</div>

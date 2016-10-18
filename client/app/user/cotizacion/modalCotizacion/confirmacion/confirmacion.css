@@ -70,8 +70,8 @@
 /* {margin: 0; padding: 0;}*/
 #containerMsg {height: 100%; width:100%; font-size: 0;}
 #left, #middle, #right {display: inline-block; *display: inline; zoom: 1; vertical-align: top; font-size: 12px;}
-#middle {width: 70%; }
-#right {width: 30%; } /*background: #ECF2F6;*/
+#middle {width: 50%; background: #ECF2F6;}
+#right {width: 50%; } /*background: #ECF2F6;*/
 
 #contenedor3 {
     display: table;
@@ -88,7 +88,7 @@
 #colMensaje {
     display: table-cell;
     /*border: 1px solid #000;*/
-    vertical-align: middle;
+    vertical-align: text-top;
     text-align: left;
-    padding: 15px;
+    padding: 5px;
 }
