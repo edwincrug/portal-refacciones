@@ -30,8 +30,13 @@
                         <div ng-hide="!sucursalActual || sucursalActual.AGENCIA == 0 " class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-3 ">Período: </label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <input type="text" name="daterange" value="" class="input-sm form-control" ng-model="fecha"/>
+                                    
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-info btn-icon" >
+                                    <i class="fa fa-search" ng-click="cambioSucursal(empresaActual,sucursalActual,fecha)"></i></a>
                                 </div>
                             </div>                            
                         </div>
@@ -55,9 +60,9 @@
                                 <tr>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
                                         No. Pedido
-                                    </th>
-                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
-                                        Descripción
+                                    </th>                                    
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
+                                        Fecha
                                     </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
                                         Empresa
@@ -83,9 +88,9 @@
                                 <tr ng-repeat="pedido in pedidos">
                                     <td>
                                         <span>{{pedido.folioPedido}}</span>
-                                    </td>
+                                    </td>                                    
                                     <td>
-                                        {{pedido.descripcion}}
+                                        {{pedido.PMM_FECHA}}
                                     </td>
                                     <td>
                                         {{pedido.empresaNombre}}

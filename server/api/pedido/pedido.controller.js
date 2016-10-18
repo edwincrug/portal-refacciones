@@ -54,18 +54,18 @@ export function index(req, res) {
     value: req.query.sucursal,
     type: DataAccess.types.STRING
   })
-//   params.push({
-            //     name: 'fechaInicio',
-            //     value: req.query.fechaI,
-            //     type: DataAccess.types.STRING
-            //   })
-            //   params.push({
-            //     name: 'fechaFin',
-            //     value: req.query.fechaF,
-            //     type: DataAccess.types.STRING
-            //   })
+params.push({
+  name: 'fechaInicio',
+  value: req.query.fechaI,
+  type: DataAccess.types.STRING
+})
+params.push({
+  name: 'fechaFin',
+  value: req.query.fechaF,
+  type: DataAccess.types.STRING
+})
   console.log(params);
-  DataAccess.query('SEL_PEDIDO_USUARIO_SP', params, function(error, result) {
+  DataAccess.query('SEL_PEDIDO_USUARIO_SP_TEST', params, function(error, result) {
     console.log(error)
 
     if (error) return handleError(res)(error);

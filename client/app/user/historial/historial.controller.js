@@ -72,11 +72,19 @@
 
             $scope.cambioSucursal = function(empresa, sucursal,fecha) {
               var fechaIF=fecha.split('-');
+
+              var modifechaInic = fechaIF[0].split('/')//'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
+              var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+              var modifechaTerm = fechaIF[1].split('/')//'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
+              var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+
                 Pedido.query({
                         user: $scope.user.per_idpersona,
                         estatus: 2,
                         empresa: empresa.emp_idempresa,
-                        sucursal: sucursal.AGENCIA
+                        sucursal: sucursal.AGENCIA,
+                        fechaI: newDateIni, //ADD LQMA 17102016
+                        fechaF: newDateterm//ADD LQMA 17102016
                         //,
                         //fechaI: '12/10/2016',
                         //fechaF: '14/10/2016'

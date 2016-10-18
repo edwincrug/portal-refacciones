@@ -45,8 +45,8 @@
                 })
             });
 
-            //LQMA ADD 05102016 obtiene detalle pedido
-            $scope.muestraDetallePedido = function(idPedido) {
+            //LQMA ADD 17102016 filtro Fecha
+            $scope.filtroFecha = function() {
 
 
             }
@@ -71,15 +71,25 @@
             }
 
             $scope.cambioSucursal = function(empresa, sucursal,fecha) {
-              var fechaIF=fecha.split('-');
+
+               var fechaIF=fecha.split('-');
+
+               /* LQMA ADD 17102016 */
+
+               var modifechaInic = fechaIF[0].split('/')//'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
+               var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+               var modifechaTerm = fechaIF[1].split('/')//'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
+               var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+               //nuevocontrato.fechaInicio = newDateIni;
+               //nuevocontrato.fechaTermino = newDateterm;
+
                 Pedido.query({
                         user: $scope.user.per_idpersona,
                         estatus: 1,
                         empresa: empresa.emp_idempresa,
-                        sucursal: sucursal.AGENCIA
-                        //,
-                        //fechaI: '09/10/2016',
-                        //fechaF: '12/10/2016'
+                        sucursal: sucursal.AGENCIA,
+                        fechaI: newDateIni, //ADD LQMA 17102016
+                        fechaF: newDateterm//ADD LQMA 17102016
                     },
                     function(data) {
                         $scope.listaPedidos = data
