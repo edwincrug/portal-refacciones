@@ -65,7 +65,7 @@ params.push({
   type: DataAccess.types.STRING
 })
   console.log(params);
-  DataAccess.query('SEL_PEDIDO_USUARIO_SP_TEST', params, function(error, result) {
+  DataAccess.query('SEL_PEDIDO_USUARIO_SP', params, function(error, result) {
     console.log(error)
 
     if (error) return handleError(res)(error);
