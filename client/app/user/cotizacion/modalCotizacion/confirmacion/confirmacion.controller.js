@@ -34,7 +34,7 @@
             Cotizacion.get({
               id: $scope.folioActual
             }, function(data) {
-              $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;
+              $scope.$parent.$parent.cotizacionActual = $scope.cotizacionActual = data.data;              
               setTimeout(function() {
                 $scope.$parent.$parent.guardarModal = false;
                 $scope.guardar = false;
@@ -114,12 +114,14 @@
                 Cotizacion.save({
                   idUsuario: $scope.user.per_idpersona,
                   refacciones: $scope.cotizacionActual,
-                  descripcion: "Temp",
+                  descripcion: '',
                   total: $scope.total,
-                  empresa: $scope.empresaActual.emp_nombrecto,
-                  sucursal: $scope.sucursalActual.suc_nombrecto,
-                  base: "GAZM_Zaragoza"
+                  empresa: $scope.empresaActual.emp_nombrecto, //LQMA comment 18102016 .emp_idempresa
+                  sucursal: $scope.sucursalActual.suc_nombrecto, //LQMA comment 18102016 .suc_nombrecto AGENCIA
+                  base: ''
                 }, function(data) {
+                  //LQMA 18102016
+                  $scope.$parent.$parent.folioActual = $scope.$parent.$parent.folioActual.replace('TEMP',data.idCotizacion);
                   resolve(data.idCotizacion)
                 })
               }
