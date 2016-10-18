@@ -45,34 +45,22 @@
                             </td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" style="text-align:right">
+                                Subtotal:
+                                <br> Iva:
+                                <br>
+                                <b>Total:</b>
+                            </td>
+                            <td colspan="1" style="text-align:right">
+                                {{subtotal| currency}}
+                                <br> {{subtotal * .16 | currency}}
+                                <br> {{subtotal + (subtotal*.16)| currency}}
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
-                <div id="containerMsg">
-                    <div id="middle">
-                        <div id="contenedor3">
-                            <div id="contenidos">
-                                <div id="colMensaje" ng-show="backorder || sinbackorder">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="right">
-                        <div id="tableTotales">
-                            <div id="rowTotales">
-                                <div id="columna1">Subtotal:</div>
-                                <div id="columna2">{{subtotal| currency}}</div>
-                                <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
-                            </div>
-                            <div id="rowTotales">
-                                <div id="columna1">Iva:</div>
-                                <div id="columna2">{{subtotal * .16 | currency}}</div>
-                            </div>
-                            <div id="rowTotales">
-                                <div id="columna1"><b>Total:</b></div>
-                                <div id="columna2">{{subtotal + (subtotal*.16)| currency}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
