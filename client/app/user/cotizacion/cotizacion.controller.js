@@ -67,8 +67,8 @@
         $scope.cambioSucursal = function() {
           Cotizacion.query({
               user: $scope.user.per_idpersona,
-              empresa: $scope.empresaActual.emp_nombrecto,
-              sucursal: $scope.sucursalActual.suc_nombrecto
+              empresa: $scope.empresaActual.emp_idempresa,//emp_nombrecto,
+              sucursal: $scope.sucursalActual.AGENCIA//suc_nombrecto
             },
             function(data) {
               $scope.listaCotizaciones = data

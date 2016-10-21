@@ -48,6 +48,10 @@ export function index(req, res) {
     value: req.query.empresa,
     type: DataAccess.types.STRING
   })
+
+  console.log('SEL_COTIZACION_SP')
+  console.log(params)
+
   DataAccess.query('SEL_COTIZACION_SP', params, function(error, result) {
     if (error) return handleError(res)(error);
     return respondWithResult(res)(result[0])
@@ -62,7 +66,13 @@ export function show(req, res) {
     value: req.params.id,
     type: DataAccess.types.INT
   })
+
+  console.log('SEL_COTIZACIONDETALLE_SP')
+  console.log(params)
+
   DataAccess.query('SEL_COTIZACIONDETALLE_SP', params, function(error, result) {
+    console.log('error: SEL_COTIZACIONDETALLE_SP' )
+    console.log(error)
     if (error) return handleError(res)(error);
     return respondWithResult(res)({data:result[0]})
   })

@@ -40,8 +40,8 @@
         //Carga los templates asociados
         Template.query({
           user: $scope.user.per_idpersona,
-          empresa: $scope.empresaActual.emp_nombrecto,
-          sucursal: $scope.sucursalActual.suc_nombrecto
+          empresa: $scope.empresaActual.emp_idempresa,//emp_nombrecto,emp_nombrecto,
+          sucursal: $scope.sucursalActual.AGENCIA//suc_nombrecto
         }, function(data) {
           data.unshift({
             idCotizacionPlantilla: 0,
@@ -139,9 +139,9 @@
                     refacciones: $scope.cotizacionActual,
                     descripcion: result,
                     total: $scope.total,
-                    empresa: $scope.empresaActual.emp_nombrecto,
-                    sucursal: $scope.sucursalActual.suc_nombrecto,
-                    base: "GAZM_Zaragoza"
+                    empresa: $scope.empresaActual.emp_idempresa,//emp_nombrecto,
+                    sucursal: $scope.sucursalActual.AGENCIA,//suc_nombrecto,
+                    base: ""
                   }
                   Cotizacion.save(cotizacionGuardar, function(data) {
                     var params = {
@@ -184,13 +184,13 @@
               callback: function(result) {
                 if (result != null && result != "") {
                   var cotizacionGuardar = {
-                    idUsuario: 11,
+                    idUsuario: $scope.user.per_idpersona,
                     idCotizacion: $scope.folioActual,
                     refacciones: $scope.cotizacionActual,
                     descripcion: result,
-                    empresa: $scope.empresaActual.emp_nombrecto,
-                    sucursal: $scope.sucursalActual.suc_nombrecto,
-                    base: "GAZM_Zaragoza"
+                    empresa: $scope.empresaActual.emp_idempresa,//emp_nombrecto,
+                    sucursal: $scope.sucursalActual.AGENCIA,//suc_nombrecto,
+                    base: ""
                   }
                   Template.save(cotizacionGuardar, function(data) {
                     console.log(data)
