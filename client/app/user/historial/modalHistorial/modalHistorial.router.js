@@ -11,6 +11,7 @@ class ModalHistorialComponent {
         console.log('stateParams :' + $stateParams)
         if ($stateParams.id) {
             console.log($scope.user)
+            $scope.colorEstatus = '#' + $stateParams.idcolor
             Pedido.get({
                 id: $stateParams.id,
                 user: $scope.user.per_idpersona
@@ -39,7 +40,7 @@ angular.module('refacciones')
     .config(function($stateProvider) {
         $stateProvider
             .state('user.historial.modal', {
-                url: '/:id',
+                url: '/:id/:idcolor',
                 templateUrl: 'app/user/historial/modalHistorial/modalHistorial.html',
                 controller: ModalHistorialComponent
             });

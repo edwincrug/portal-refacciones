@@ -19,11 +19,11 @@
                 //   })
                 //Consigue la fecha actual
                 var f = new Date();
-                var fechafin=f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+                var fechafin = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
                 //Consigue 30 dias antes de la fecha actual
-                var fI=new Date();
+                var fI = new Date();
                 fI.setDate(fI.getDate() - 30);
-                var fechaInicio=fI.getDate() + "/" + (fI.getMonth() + 1) + "/" + fI.getFullYear();
+                var fechaInicio = fI.getDate() + "/" + (fI.getMonth() + 1) + "/" + fI.getFullYear();
                 //Para iniciar el datapicker 
                 $('input[name="daterange"]').daterangepicker({
                     locale: {
@@ -70,18 +70,18 @@
                 }
             }
 
-            $scope.cambioSucursal = function(empresa, sucursal,fecha) {
+            $scope.cambioSucursal = function(empresa, sucursal, fecha) {
 
-               var fechaIF=fecha.split('-');
+                var fechaIF = fecha.split('-');
 
-               /* LQMA ADD 17102016 */
+                /* LQMA ADD 17102016 */
 
-               var modifechaInic = fechaIF[0].split('/')//'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
-               var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
-               var modifechaTerm = fechaIF[1].split('/')//'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
-               var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
-               //nuevocontrato.fechaInicio = newDateIni;
-               //nuevocontrato.fechaTermino = newDateterm;
+                var modifechaInic = fechaIF[0].split('/') //'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
+                var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+                var modifechaTerm = fechaIF[1].split('/') //'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
+                var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+                //nuevocontrato.fechaInicio = newDateIni;
+                //nuevocontrato.fechaTermino = newDateterm;
 
                 Pedido.query({
                         user: $scope.user.per_idpersona,
@@ -89,15 +89,50 @@
                         empresa: empresa.emp_idempresa,
                         sucursal: sucursal.AGENCIA,
                         fechaI: newDateIni, //ADD LQMA 17102016
-                        fechaF: newDateterm//ADD LQMA 17102016
+                        fechaF: newDateterm //ADD LQMA 17102016
                     },
                     function(data) {
-                        $scope.listaPedidos = data
-                            //console.log(data)            
+
+                        $scope.listaPedidos = data;
+                        $scope.listaPedidos2 = data;
+
+                        $('#tblPedidoFiltros').DataTable().destroy();
+
+                        setTimeout(function() {                            
+                            $scope.setTablePaging('tblPedidoFiltros');
+
+                        }, 1);
+
+                        //console.log(data)            
                     })
 
-
             }
+
+            $scope.setTablePaging = function(idTable) {
+                $('#' + idTable).DataTable({
+                    dom: '<"html5buttons"B>lTfgitp',
+                    buttons: [{
+                        extend: 'copy'
+                    }, {
+                        extend: 'csv'
+                    }, {
+                        extend: 'excel',
+                        title: 'ExampleFile'
+                    }, {
+                        extend: 'pdf',
+                        title: 'ExampleFile'
+                    }, {
+                        extend: 'print',
+                        customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }]
+                });
+            };
 
         }
     }

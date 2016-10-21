@@ -1,13 +1,13 @@
 <div class="modal fade modal-pedido" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" class="bg bg-mint" style="background-color:#249e92">
+            <div class="modal-header" class="bg bg-mint"  ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff">Pedido: {{idpedido}}</h3>
             </div>
             <div style="background-color:#42a5f5">
             </div>
-            <div class="modal-body">
+            <div class="modal-body">            
                 <table class="table">
                     <tr>
                         <th>

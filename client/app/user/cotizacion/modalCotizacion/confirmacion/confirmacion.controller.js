@@ -116,17 +116,18 @@
                   refacciones: $scope.cotizacionActual,
                   descripcion: '',
                   total: $scope.total,
-                  empresa: $scope.empresaActual.emp_nombrecto, //LQMA comment 18102016 .emp_idempresa
-                  sucursal: $scope.sucursalActual.suc_nombrecto, //LQMA comment 18102016 .suc_nombrecto AGENCIA
+                  empresa: $scope.empresaActual.emp_idempresa, //LQMA comment 18102016 .emp_idempresa emp_nombrecto
+                  sucursal: $scope.sucursalActual.AGENCIA, //LQMA comment 18102016 .suc_nombrecto .AGENCIA
                   base: ''
                 }, function(data) {
                   //LQMA 18102016
+                  console.log(data)
                   $scope.$parent.$parent.folioActual = $scope.$parent.$parent.folioActual.replace('TEMP',data.idCotizacion);
                   resolve(data.idCotizacion)
                 })
               }
             }).then(function(idCotizacion) {
-              console.log($scope.direccionActual)
+              console.log($scope.direccionActual)              
               Pedido.save({
                 idUsuario: $scope.user.per_idpersona,
                 idCotizacion: idCotizacion,

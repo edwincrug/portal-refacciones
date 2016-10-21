@@ -1,99 +1,115 @@
 <div id="container" class="effect aside-float aside-bright {{classMenu}} reveal">
-  <header id="navbar">
-    <div id="navbar-container" class="boxed">
-      <div class="navbar-header">
-        <a href="#" class="navbar-brand">
-          <img src="assets/images/logoB.png" style="margin:5px 7px;" alt="Nifty Logo" class="brand-icon">
-          <div class="brand-title">
-            <span class="brand-text">Grupo andrade</span>
-          </div>
-        </a>
-      </div>
-      <div class="navbar-content clearfix">
-        <ul class="nav navbar-top-links pull-left">
-          <li class="tgl-menu-btn">
-            <a ng-click="toggeMenu()" class="mainnav-toggle reveal" href="#">
-              <i class="fa fa-navicon"></i>
-            </a>
-          </li>
-        </ul>
-        <ul class="nav navbar-top-links pull-right">
-          <li id="dropdown-user" class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-  <div class="boxed">
-    <div ui-view id="content-container"></div>
-  </div>
-  <nav id="mainnav-container">
-    <div id="mainnav">
-      <div id="mainnav-menu-wrap">
-        <div class="nano">
-          <div class="nano-content">
-            <div id="mainnav-profile" class="mainnav-profile">
-              <div class="profile-wrap">
-                <div class="pad-btm">
-                  <!--img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture"-->
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">
+                    <img src="assets/images/logo.png" style="margin:5px 7px;" alt="Portal Refacciones" class="brand-icon">
+                    <div class="brand-title" style="background-color: #FFFFFF;">
+                        <span class="brand-text" style="color: #020963; font-size: 2;">Grupo Andrade</span>
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-left">
+                    <li class="tgl-menu-btn">
+                        <a ng-click="toggeMenu()" class="mainnav-toggle reveal" href="#">
+                            <i class="fa fa-navicon"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links pull-left">
+                    <li><a href="#"><font style="font-weight: 900;"><h4> PORTAL REFACCIONES </h4></font></a></li>
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+                    <!--li id="dropdown-user" class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                        </a>
+                    </li-->
+                    
+                    <li><a href="#"><font style="font-weight: 400;"> {{user.name}} </font></a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"> </span></a></li>
+                </ul>
+            </div>
+            <!--nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <img alt="image" src="assets/images/logoB.png" style="margin:5px 7px;" class="brand-icon"/>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">{{user.name}}</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"> </span></a></li>
+                        <li></li>
+                    </ul>
                 </div>
-                <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
-                  <span class="pull-right dropdown-toggle">
+            </nav-->
+        </div>
+    </header>
+    <div class="boxed">
+        <div ui-view id="content-container"></div>
+    </div>
+    <nav id="mainnav-container">
+        <div id="mainnav">
+            <div id="mainnav-menu-wrap">
+                <div class="nano">
+                    <div class="nano-content">
+                        <div id="mainnav-profile" class="mainnav-profile">
+                            <div class="profile-wrap">
+                                <div class="pad-btm">
+                                    <!--img class="img-circle img-sm img-border" src="img/profile-photos/1.png" alt="Profile Picture"-->
+                                </div>
+                                <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                    <span class="pull-right dropdown-toggle">
                                                 <i class="dropdown-caret"></i>
                                             </span>
-                  <p class="mnp-name">{{user.name}}</p>
-                  <span class="mnp-desc">{{}}</span>
-                </a>
-              </div>
-              <div id="profile-nav" class="collapse list-group bg-trans">
-                <a href="#" class="list-group-item" ng-click="cerrarSession()">
-
-                  <i class="demo-pli-unlock icon-lg icon-fw"></i> Cerrar sesion
-                </a>
-              </div>
-            </div>
-            <br>
-            <ul id="mainnav-menu" class="list-group">
-              <li  title="Cotizaciones">
-                <a href="/cotizacion">
-                  <i class="fa fa-edit"></i>
-                  <span class="menu-title">
-												<strong>Cotizaciones</strong>
-											</span>
-                </a>
-              </li>
-              <li title="Pedidos">
-                <a href="/pedido">
-                  <i class="fa fa-truck"></i>
-                  <span class="menu-title">
+                                    <p class="mnp-name">{{user.name}}</p>
+                                    <span class="mnp-desc">{{}}</span>
+                                </a>
+                            </div>
+                            <div id="profile-nav" class="collapse list-group bg-trans">
+                                <a href="#" class="list-group-item" ng-click="cerrarSession()">
+                                    <i class="demo-pli-unlock icon-lg icon-fw"></i> Cerrar sesion
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                        <ul id="mainnav-menu" class="list-group">
+                            <li title="Cotizaciones">
+                                <a href="/cotizacion">
+                                    <i class="fa fa-edit"></i>
+                                    <span class="menu-title">
+                        <strong>Cotizaciones</strong>
+                      </span>
+                                </a>
+                            </li>
+                            <li title="Pedidos">
+                                <a href="/pedido">
+                                    <i class="fa fa-truck"></i>
+                                    <span class="menu-title">
                         <strong>Pedidos</strong>
                       </span>
-                </a>
-              </li>
-              <li  title="Historial">
-                <a href="/historial">
-                  <i class="fa fa-area-chart"></i>
-                  <span class="menu-title">
+                                </a>
+                            </li>
+                            <li title="Historial">
+                                <a href="/historial">
+                                    <i class="fa fa-area-chart"></i>
+                                    <span class="menu-title">
                         <strong>Historial</strong>
                       </span>
-                </a>
-              </li>
-            </ul>
-          </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
-
-  <footer id="footer">
-    <div class="show-fixed pull-right">
-      You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
-    </div>
-    <div class="hide-fixed pull-right pad-rgt">
-      14GB of <strong>512GB</strong> Free.
-    </div>
-    <p class="pad-lft">&#0169; 2016 Your Company</p>
-  </footer>
+    </nav>
+    <footer id="footer">
+        <div class="show-fixed pull-right">
+            You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+        </div>
+        <div class="hide-fixed pull-right pad-rgt">
+            14GB of <strong>512GB</strong> Free.
+        </div>
+        <p class="pad-lft">&#0169; 2016 Your Company</p>
+    </footer>
 </div>

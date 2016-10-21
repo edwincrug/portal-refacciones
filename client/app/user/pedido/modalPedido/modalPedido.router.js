@@ -14,8 +14,10 @@ class ModalPedidoComponent {
         console.log('stateParams :' + $stateParams)
         if ($stateParams.id) {
             console.log($scope.user)
-            console.log($stateParams.id)
-            console.log($stateParams.idpedido)
+            console.log($stateParams)
+            console.log($stateParams.idcolor)
+            $scope.colorEstatus = '#' + $stateParams.idcolor
+            //console.log($stateParams.idcolor)
             Pedido.get({
                 id: $stateParams.id,
                 user: $scope.user.per_idpersona,
@@ -51,7 +53,7 @@ angular.module('refacciones')
     .config(function($stateProvider) {
         $stateProvider
             .state('user.pedido.modal', {
-                url: '/:id/:idpedido',
+                url: '/:id/:idpedido/:idcolor',
                 templateUrl: 'app/user/pedido/modalPedido/modalPedido.html',
                 controller: ModalPedidoComponent
             });

@@ -116,6 +116,9 @@ export function create(req, res) {
   })
 
   DataAccess.query('INS_COTIZACION_SP', params, function(error, result) {
+    console.log('error INS_COTIZACION_SP: ')
+    console.log(error)
+
     if (error) return handleError(res)(error);
     return respondWithResult(res, 201)(result[0][0])
   });
