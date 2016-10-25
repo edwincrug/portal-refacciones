@@ -40,8 +40,8 @@
                         <div class="row" style="padding: 9.5px;">
                           <div class="col-xs-6">
                             <p class="text-lg text-bold"><i class="demo-pli-check icon-fw"></i>Crédito</p>
-                            <p>Total: <span class="pull-right text-semibold">{{sucursalActual.Con_LimCredito | currency }}</span></p>
-                            <p>Consumido: <span class="pull-right  text-semibold"><font color='#D50819'>{{sucursalActual.descuento | currency }}</font></span></p>
+                            <p>Crédito Autorizado: <span class="pull-right text-semibold">{{sucursalActual.Con_LimCredito | currency }}</span></p>
+                            <p>Pedidos Solicitados: <span class="pull-right  text-semibold"><font color='#D50819'>{{sucursalActual.descuento | currency }}</font></span></p>
                             <p>Cartera: <span class="pull-right  text-semibold"><font color='#D50819'>{{sucursalActual.importe | currency }}</font></span></p>
                             <hr>
                             <p>Disponible: <span class="pull-right  text-semibold"> {{sucursalActual.Con_LimCredito  - sucursalActual.descuento| currency }}</span></p>
@@ -71,6 +71,12 @@
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio">
                     Cotización
                   </th>
+                  <th>
+                    Empresa
+                  </th>
+                  <th>
+                    Sucursal
+                  </th>
                   <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="descripcion">
                     Descripción
                   </th>
@@ -86,6 +92,12 @@
                 <tr ng-repeat="cotizacion in cotizaciones">
                   <td>
                     {{cotizacion.folio}}
+                  </td>
+                  <td>
+                    {{empresaActual.emp_nombre}}
+                  </td>
+                  <td>
+                    {{sucursalActual.NOMBRE_AGENCIA}}
                   </td>
                   <td>
                     {{cotizacion.descripcion}}

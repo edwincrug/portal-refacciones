@@ -154,6 +154,9 @@ export function create(req, res) {
   })
 
   DataAccess.query('INS_PEDIDO_SP', params, function(error, result) {
+    console.log('error: INS_PEDIDO_SP')
+    console.log(error)
+
     if (error) return handleError(res)(error);
     result[0][0].data = result[1]
     return respondWithResult(res, 201)(result[0][0])
