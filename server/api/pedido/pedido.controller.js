@@ -98,13 +98,18 @@ export function show(req, res) {
   console.log(params)
   DataAccess.query('SEL_PEDIDO_USUARIODETALLE_SP', params, function(error, result) {
     
-    //console.log(result)
+    console.log(result)
     //console.log(result[0])
 
-    if (error) return handleError(res)(error);
+    /*if (error) return handleError(res)(error);   //original
     return respondWithResult(res)({      
       data: result[0]      
-    })
+    })*/
+
+    if (error) return handleError(res)(error);
+    result[0][0].data = result[1]
+    return respondWithResult(res, 201)(result[0][0])
+
     /*if (error) return handleError(res)(error);
     return respondWithResult(res)(res.json(result))*/
   })
@@ -156,6 +161,8 @@ export function create(req, res) {
   DataAccess.query('INS_PEDIDO_SP', params, function(error, result) {
     console.log('error: INS_PEDIDO_SP')
     console.log(error)
+
+    console.log(result)
 
     if (error) return handleError(res)(error);
     result[0][0].data = result[1]

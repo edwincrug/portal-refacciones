@@ -94,12 +94,15 @@
                     function(data) {
 
                         $scope.listaPedidos = data;
-                        $scope.listaPedidos2 = data;
+                        //$scope.listaPedidos2 = data;
 
                         $('#tblPedidoFiltros').DataTable().destroy();
 
                         setTimeout(function() {                            
                             $scope.setTablePaging('tblPedidoFiltros');
+
+                            $("#tblPedidoFiltros_length").removeClass("dataTables_info").addClass("hide-div");
+                            $("#tblPedidoFiltros_filter").removeClass("dataTables_info").addClass("pull-left");
 
                         }, 1);
 
@@ -111,6 +114,7 @@
             $scope.setTablePaging = function(idTable) {
                 $('#' + idTable).DataTable({
                     dom: '<"html5buttons"B>lTfgitp',
+                    order: [ 0, 'desc' ],
                     buttons: [{
                         extend: 'copy'
                     }, {

@@ -2,7 +2,7 @@
   <div class="row ">
     <div class="col-sm-10 col-sm-push-1 mar-top">
       <div id="">
-        <h1 class="page-header text-overflow">Historial</h1>
+        <h1 class="page-header text-overflow">Histórico</h1>
         </h1>
       </div>
     </div>
@@ -35,32 +35,19 @@
                             </div>                            
                         </div>
                     </div>
-                    <div ng-show="listaPedidos.length > 0" class=" col-xs-12">
-                        <table st-table="pedidos" st-safe-src="listaPedidos" id="tabla-pedido" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th colspan="9" class="col-sm-12">
-                                        <div class="col-sm-4">
-                                            <input st-search="" placeholder="Buscar..." class="input-sm form-control" type="search" />
-                                        </div>
-                                        <!-- <div class="col-sm-4">
-                                            <input st-search="total" placeholder="Buscar por total" class="input-sm form-control" type="search" />
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input st-search="factura" placeholder="Buscar por factura" class="input-sm form-control" type="search" />
-                                        </div> -->
-                                    </th>
-                                </tr>
+                    <div ng-show="listaPedidos.length > 0" class="col-xs-12">
+                        <table id="tblHistoricoFiltros" st-table="pedidos" st-safe-src="listaPedidos">
+                            <thead>                                        
                                 <tr>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
                                         No. Pedido
                                     </th>                                    
-                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
+                                    <!--th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
                                         Empresa
                                     </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="sucursalNombre">
                                         Sucursal
-                                    </th>
+                                    </th-->
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="total" st-sort="total" style="text-align:right">
                                         Total
                                     </th>
@@ -71,7 +58,16 @@
                                         Factura
                                     </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="fechaFactura">
-                                        Fecha
+                                        Fecha Pedido
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="fechaFactura">
+                                        Entrega
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="fechaFactura">
+                                        Efectividad
+                                    </th>
+                                    <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="fechaFactura">
+                                        Nota Crédito
                                     </th>
                                     <th>
                                     </th>
@@ -82,17 +78,17 @@
                                     <td>
                                         <span>{{pedido.folioPedido}}</span>
                                     </td>                                    
-                                    <td>
+                                    <!--td>
                                         {{pedido.empresaNombre}}
                                     </td>
                                     <td>
                                         {{pedido.sucursalNombre}}
-                                    </td>
+                                    </td-->
                                     <td style="text-align:right">
                                         {{pedido.total | currency}}
                                     </td>
-                                    <td>
-                                    <div class="label label-table" width="17%" ng-style="{ 'background-color':'{{pedido.color}}' }">
+                                    <td width="17%">
+                                    <div class="label label-table" ng-style="{ 'background-color':'{{pedido.color}}' }">
                                        {{pedido.estatus}} 
                                     </div>                                        
                                     </td>
@@ -100,15 +96,19 @@
                                         {{pedido.factura}}
                                     </td> 
                                     <td>
-                                        {{pedido.fechaFactura}}
+                                        {{pedido.PMM_FECHA}}
                                     </td> 
                                     <td>
-                                        <a href="{{'/historial/'+pedido.idPedidoRef+'/'+pedido.color.replace('#','')}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
+                                        {{pedido.fechaEntrega}}
+                                    </td> 
+                                    <td class="texto-centrado">
+                                        {{pedido.diasEntrega}}
+                                    </td> 
+                                    <td>
+                                        {{pedido.notaCredito}}
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="8" class="text-center">
-                                        <div st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
+                                    <td>
+                                        <a href="{{'/historial/'+pedido.idPedidoRef+'/'+pedido.color.replace('#','')}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

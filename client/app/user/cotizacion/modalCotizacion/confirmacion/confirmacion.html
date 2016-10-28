@@ -180,19 +180,19 @@
                     </div>                    
                     <div id="rowTotales">
                         <div class="columna1" ="columna1"><b>Subtotal:</b></div>
-                        <div class="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) | currency}}</div>
+                        <div ng-class="{ 'columna2': backorder || sinbackorder, 'columna22': !backorder || !sinbackorder}">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) | currency}}</div>
                         <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder | currency}}</div>
                         <div class="colTotalMix" ng-show="backorder || sinbackorder">{{total | currency}}</div>
                     </div>                    
                     <div id="rowTotales">
                         <div class="columna1">Iva:</div>
-                        <div class="columna2">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) * .16 | currency}}</div>
+                        <div ng-class="{ 'columna2': backorder || sinbackorder, 'columna22': !backorder || !sinbackorder}">{{(total - totalBackOrder) < 1 ? 0: (total - totalBackOrder) * .16 | currency}}</div>
                         <div id="colBackOrder" ng-show="backorder || sinbackorder">{{totalBackOrder * .16 | currency}}</div>
                         <div class="colTotalMix" ng-show="backorder || sinbackorder">{{(total * .16) | currency}}</div>                        
                     </div>
                     <div id="rowTotales">
                         <div class="columna1">Total:</div>
-                        <div class="columna2">{{(total - totalBackOrder) < 1 ? 0: ((total - totalBackOrder) * .16) + (total - totalBackOrder) | currency}}</div>
+                        <div ng-class="{ 'columna2': backorder || sinbackorder, 'columna22': !backorder || !sinbackorder}">{{(total - totalBackOrder) < 1 ? 0: ((total - totalBackOrder) * .16) + (total - totalBackOrder) | currency}}</div>
                         <div id="colBackOrder" ng-show="backorder || sinbackorder">{{(totalBackOrder * .16) + totalBackOrder | currency}}</div>
                         <div class="colTotalMix" ng-show="backorder || sinbackorder">{{(total * .16) + total | currency}}</div>
                     </div>                    

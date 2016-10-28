@@ -5,10 +5,10 @@
         <span>Crédito autorizado: {{sucursalActual.Con_LimCredito | currency}}</span>
         <div class="progress progress-lg pull-right">
           <div class="restante">
-              Crédito disponible: {{sucursalActual.Con_LimCredito- total | currency }}
+              Crédito disponible: {{disponible - total | currency }}
           </div>
-          <div style="width: {{((sucursalActual.Con_LimCredito- total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-success"></div>
-          <div style="width: {{((total)/sucursalActual.Con_LimCredito)*100}}%" class="progress-bar progress-bar-danger"></div>
+          <div style="width: {{((disponible - total)/disponible)*100}}%" class="progress-bar progress-bar-success"></div>
+          <div style="width: {{((total)/disponible)*100}}%" class="progress-bar progress-bar-danger"></div>
         </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>

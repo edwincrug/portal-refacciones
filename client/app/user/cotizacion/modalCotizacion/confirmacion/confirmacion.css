@@ -24,6 +24,15 @@
     text-align: right;
 }
 
+.columna11,.columna22{
+    display: table-cell;
+    vertical-align: middle;
+    width:20%;
+    padding-left: 3px;
+    color: black;
+    text-align: right;
+}
+
 .columna3
 {
     display: table-cell;

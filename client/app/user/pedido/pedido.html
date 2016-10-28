@@ -43,6 +43,9 @@
                         <table id="tblPedidoFiltros" st-table="pedidos" st-safe-src="listaPedidos">
                             <thead>
                                 <tr>
+                                    <th style="display: none;">
+                                        id_pedido  
+                                    </th>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
                                         No. Pedido
                                     </th>
@@ -71,6 +74,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="pedido in pedidos">
+                                    <td style="display: none;">
+                                        {{pedido.ID_Pedido}}
+                                    </td>
                                     <td>
                                         <span>{{pedido.folioPedido}}</span>
                                     </td>
@@ -91,7 +97,7 @@
                                         <div class="label label-table" ng-style="{ 'background-color':'{{pedido.color}}' }">{{pedido.estatus}}</div>
                                     </td>
                                     <td>
-                                        <a href="{{'/pedido/'+pedido.idPedidoRef+'/'+pedido.folioPedido+'/'+pedido.color.replace('#','')}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
+                                        <a href="{{'/pedido/'+pedido.idPedidoRef+'/'+pedido.folioPedido+'/'+pedido.color.replace('#','')+'/'+pedido.estatus}}" class="btn btn-info btn-icon"><i class="fa fa-search"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

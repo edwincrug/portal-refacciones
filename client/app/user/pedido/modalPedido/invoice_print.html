@@ -1,14 +1,11 @@
-<div class="modal fade modal-pedido" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header" class="bg bg-mint" ng-style="{ 'background-color':'{{colorEstatus}}' }">
+<div class="modal-header" class="bg bg-mint" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>
             </div>
-            <div ng-style="{ 'background-color':'{{colorEstatus}}' }" >
-                    <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%;"> </div>
-                    <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
-                    <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a-->
+            <div ng-style="{ 'background-color':'{{colorEstatus}}' }" style="align-content: right;">
+                
+                    <div class="glyphicon glyphicon-print" ng-click="imprimir()"> </div>
+                    <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a>
                 
             </div>
             <div id="imprimeme">
@@ -33,8 +30,9 @@
                             <abbr>Teléfono:</abbr>
                         </address>
                         <p>
-                            <span><strong>Fecha de solicitado:</strong> {{empresa.FECHAPEDIDO}} </span>
-                            <br/>                            
+                            <span><strong>Invoice Date:</strong> Marh 18, 2014</span>
+                            <br/>
+                            <span><strong>Due Date:</strong> March 24, 2014</span>
                         </p>
                     </div>
                 </div>
@@ -93,7 +91,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6" style="text-align:right">
+                                <td colspan="5" style="text-align:right">
                                     Subtotal:
                                     <br> Iva:
                                     <br>
@@ -110,5 +108,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+
+    <script type="text/javascript">
+        window.print();
+    </script>

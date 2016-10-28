@@ -2,10 +2,10 @@
 
 (function() {
 
-  class HistorialComponent {
-     constructor($scope, User, Empresa, Sucursal, Pedido) {
+    class HistorialComponent {
+        constructor($scope, User, Empresa, Sucursal, Pedido) {
 
-      $scope.sucursalActual = $scope.empresaActual = null;
+            $scope.sucursalActual = $scope.empresaActual = null;
             $scope.listaPedidos = [];
             User.get(function(data) {
                 $scope.user = data;
@@ -19,11 +19,11 @@
                 //   })
                 //Consigue la fecha actual
                 var f = new Date();
-                var fechafin=f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+                var fechafin = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
                 //Consigue 30 dias antes de la fecha actual
-                var fI=new Date();
+                var fI = new Date();
                 fI.setDate(fI.getDate() - 30);
-                var fechaInicio=fI.getDate() + "/" + (fI.getMonth() + 1) + "/" + fI.getFullYear();
+                var fechaInicio = fI.getDate() + "/" + (fI.getMonth() + 1) + "/" + fI.getFullYear();
                 //Para iniciar el datapicker 
                 $('input[name="daterange"]').daterangepicker({
                     locale: {
@@ -45,12 +45,6 @@
                 })
             });
 
-            //LQMA ADD 05102016 obtiene detalle pedido
-            $scope.muestraDetallePedido = function(idPedido) {
-
-
-            }
-
             $scope.cambioEmpresa = function() {
                 if ($scope.empresaActual.emp_idempresa != 0) {
                     Sucursal.query({
@@ -70,13 +64,13 @@
                 }
             }
 
-            $scope.cambioSucursal = function(empresa, sucursal,fecha) {
-              var fechaIF=fecha.split('-');
+            $scope.cambioSucursal = function(empresa, sucursal, fecha) {
+                var fechaIF = fecha.split('-');
 
-              var modifechaInic = fechaIF[0].split('/')//'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
-              var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
-              var modifechaTerm = fechaIF[1].split('/')//'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
-              var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+                var modifechaInic = fechaIF[0].split('/') //'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
+                var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+                var modifechaTerm = fechaIF[1].split('/') //'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
+                var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
 
                 Pedido.query({
                         user: $scope.user.per_idpersona,
@@ -84,26 +78,63 @@
                         empresa: empresa.emp_idempresa,
                         sucursal: sucursal.AGENCIA,
                         fechaI: newDateIni, //ADD LQMA 17102016
-                        fechaF: newDateterm//ADD LQMA 17102016
-                        //,
-                        //fechaI: '12/10/2016',
-                        //fechaF: '14/10/2016'
+                        fechaF: newDateterm //ADD LQMA 17102016
+                            //,
+                            //fechaI: '12/10/2016',
+                            //fechaF: '14/10/2016'
                     },
                     function(data) {
                         $scope.listaPedidos = data
-                            //console.log(data)            
+                            //console.log(data)
+
+                        $('#tblHistoricoFiltros').DataTable().destroy();
+
+                        setTimeout(function() {
+                            $scope.setTablePaging('tblHistoricoFiltros');
+                            
+                            $("#tblHistoricoFiltros_length").removeClass("dataTables_info").addClass("hide-div");
+                            $("#tblHistoricoFiltros_filter").removeClass("dataTables_info").addClass("pull-left");
+
+                        }, 1);
+
                     })
-
-
             }
 
-    }
-  }
+            $scope.setTablePaging = function(idTable) {
+                $('#' + idTable).DataTable({
+                    dom: '<"html5buttons"B>lTfgitp',
+                    order: [0, 'desc'],
+                    buttons: [{
+                        extend: 'copy'
+                    }, {
+                        extend: 'csv'
+                    }, {
+                        extend: 'excel',
+                        title: 'ExampleFile'
+                    }, {
+                        extend: 'pdf',
+                        title: 'ExampleFile'
+                    }, {
+                        extend: 'print',
+                        customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }]
+                });
+            };
 
-  angular.module('refacciones')
-    .component('historial', {
-      templateUrl: 'app/user/historial/historial.html',
-      controller: HistorialComponent
-    });
+
+        }
+    }
+
+    angular.module('refacciones')
+        .component('historial', {
+            templateUrl: 'app/user/historial/historial.html',
+            controller: HistorialComponent
+        });
 
 })();

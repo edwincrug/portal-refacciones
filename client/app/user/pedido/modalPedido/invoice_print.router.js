@@ -1,11 +1,11 @@
 'use strict';
 
-class ModalPedidoComponent {
+class InvoiceComponent {
     constructor($state, $scope, $stateParams, Pedido, User) {
 
         $scope.bunny = 'some bunny';
 
-        $('.modal-pedido').modal('show')
+        /*$('.modal-pedido').modal('show')
         $('.modal-pedido').on('hidden.bs.modal', function(e) {
             $state.go("user.pedido")
         })
@@ -58,7 +58,7 @@ class ModalPedidoComponent {
             var style = ventana.document.createElement('link');
             style.type = "text/css";
             style.rel = "stylesheet";
-            style.href = 'components/plugins/nifty/nifty.css';
+            style.href = "components/plugins/nifty/nifty.css";
             style.media = "all";
 
             ventana.document.write('<html><head><title>Detalle Pedido</title>');
@@ -68,7 +68,7 @@ class ModalPedidoComponent {
             
 
             ventana.document.write('<link rel="stylesheet" href="components/portal.css" />');
-            ventana.document.write('<link rel="stylesheet" href="components/style.css" />');*/
+            ventana.document.write('<link rel="stylesheet" href="components/style.css" />');
             //ventana.document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />');
             
             //ventana.document.write("<link rel='stylesheet' href='app/user/pedido/pedido.css' />");
@@ -83,7 +83,7 @@ class ModalPedidoComponent {
             ventana.document.close();  //cerramos el documento
             ventana.print();  //imprimimos la ventana
             ventana.close();  //cerramos la ventana
-        }
+        }*/
 
     }
 }
@@ -91,9 +91,9 @@ class ModalPedidoComponent {
 angular.module('refacciones')
     .config(function($stateProvider) {
         $stateProvider
-            .state('user.pedido.modal', {
-                url: '/:id/:idpedido/:idcolor/:estatus',
-                templateUrl: 'app/user/pedido/modalPedido/modalPedido.html',
-                controller: ModalPedidoComponent
+            .state('user.invoice.modal', {
+                url: '/:id',
+                templateUrl: 'app/user/pedido/modalPedido/invoice_print.html',
+                controller: InvoiceComponent
             });
     });
