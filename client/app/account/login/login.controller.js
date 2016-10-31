@@ -20,6 +20,17 @@ class LoginController {
         })
         .then(() => {
           // Logged in, redirect to home
+          /*remueve las opciones de historico*/
+          localStorage.removeItem('histEmpresa')
+          localStorage.removeItem('histSucursal')
+
+          /*remueve las opciones de pedidos*/
+          localStorage.removeItem('pedEmpresa')
+          localStorage.removeItem('pedSucursal')
+          /*remueve las opciones de cotizaciones*/
+          localStorage.removeItem('cotEmpresa')
+          localStorage.removeItem('cotSucursal')
+
           this.$state.go('user.cotizacion');
         })
         .catch(err => {

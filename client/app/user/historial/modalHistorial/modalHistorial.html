@@ -5,62 +5,112 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff">Pedido Histórico</h3>
             </div>
-            <div class="modal-body">
-                <table class="table">
-                    <thead>
+            <div id="imprimeme">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <strong>Empresa: </strong>{{empresa.NOMBRE}}
+                        </p>
+                        <p>
+                            <strong>Dirección: </strong> {{empresa.DIRECCION}}
+                        </p>
+                        <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <h4>Factura </h4>
+                        <h4>{{idFactura}}</h4>
+                        <span><strong>Cliente:</strong></span>
+                        <p>
+                            {{user.name}}
+                        </p>
+                        <p>
+                            <strong>Dirección:</strong>
+                        </p>
+                        <address>
+                            {{empresa.DIRCLIENTE}}
+                            <br>
+                            <br>
+                            <abbr><strong>Teléfono: </strong>{{empresa.TELCLIENTE}}</abbr>
+                        </address>
+                        <p>
+                            <abbr><strong>Correo: </strong>{{empresa.CORREOCLIENTE}}</abbr>
+                        </p>
+                        <p>
+                            <span><strong>Fecha de solicitado:</strong> {{empresa.FECHAPEDIDO}} </span>
+                            <br/>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
                         <tr>
                             <th>
-                                No serie
+                                No Serie
                             </th>
                             <th>
                                 Descripción
                             </th>
                             <th>
-                                Precio
+                                Precio/Pz
                             </th>
                             <th>
-                                Cantidad
+                                No. Piezas
+                            </th>
+                            <th width="15%">
+                                Estatus
+                            </th>
+                            <th>
+                                Pedido
                             </th>
                             <th style="text-align:right">
                                 Subtotal
                             </th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="detalle in detalles">
-                            <td>
-                                <span>{{detalle.PTS_IDPARTE}}</span>
-                            </td>
-                            <td>
-                                {{detalle.PTS_DESPARTE}}
-                            </td>
-                            <td>
-                                {{detalle.PTS_PCOLISTA | currency}}
-                            </td>
-                            <td>
-                                {{detalle.prd_cantidadsolicitada}}
-                            </td>
-                            <td align="right">
-                                {{detalle.totalItem | currency}}
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="4" style="text-align:right">
-                                Subtotal:
-                                <br> Iva:
-                                <br>
-                                <b>Total:</b>
-                            </td>
-                            <td colspan="1" style="text-align:right">
-                                {{subtotal| currency}}
-                                <br> {{subtotal * .16 | currency}}
-                                <br> {{subtotal + (subtotal*.16)| currency}}
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                        <tbody>
+                            <tr ng-repeat="detalle in detalles">
+                                <!-- ng-class="{'info': detalle.estatus == 0,'success': detalle.estatus == 1,'warning':detalle.estatus == 2}" -->
+                                <td>
+                                    <span>{{detalle.PTS_IDPARTE}}</span>
+                                </td>
+                                <td>
+                                    {{detalle.PTS_DESPARTE}}
+                                </td>
+                                <td>
+                                    {{detalle.PTS_PCOLISTA | currency}}
+                                </td>
+                                <td align="center">
+                                    {{detalle.prd_cantidadsolicitada}}
+                                </td>
+                                <td width="15%">
+                                    <div class="label label-table" ng-style="{ 'background-color':'{{detalle.color}}' }">
+                                        {{detalle.estatusPieza}}
+                                    </div>
+                                </td>
+                                <td>
+                                    {{detalle.idPedidoBPRO}}
+                                </td>
+                                <td align="right">
+                                    {{detalle.totalItem | currency}}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" style="text-align:right">
+                                    Subtotal:
+                                    <br> Iva:
+                                    <br>
+                                    <b>Total:</b>
+                                </td>
+                                <td colspan="1" style="text-align:right">
+                                    {{subtotal| currency}}
+                                    <br> {{subtotal * .16 | currency}}
+                                    <br> {{subtotal + (subtotal*.16)| currency}}
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

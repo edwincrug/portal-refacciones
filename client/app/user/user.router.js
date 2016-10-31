@@ -23,6 +23,17 @@ angular.module('refacciones')
 
        $scope.cerrarSession = function()
        {
+          /*remueve las opciones de historico*/
+          localStorage.removeItem('histEmpresa')
+          localStorage.removeItem('histSucursal')
+
+          /*remueve las opciones de pedidos*/
+          localStorage.removeItem('pedEmpresa')
+          localStorage.removeItem('pedSucursal')
+          /*remueve las opciones de cotizaciones*/
+          localStorage.removeItem('cotEmpresa')
+          localStorage.removeItem('cotSucursal')
+
           Auth.logout();
           $state.go('login');
           

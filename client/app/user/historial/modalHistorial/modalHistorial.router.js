@@ -10,8 +10,9 @@ class ModalHistorialComponent {
         if ($scope.user == null) $state.go("user.historial")
         console.log('stateParams :' + $stateParams)
         if ($stateParams.id) {
-            console.log($scope.user)
+            console.log($stateParams.id)
             $scope.colorEstatus = '#' + $stateParams.idcolor
+            $scope.idFactura = $stateParams.idFactura
             Pedido.get({
                 id: $stateParams.id,
                 user: $scope.user.per_idpersona
@@ -19,7 +20,9 @@ class ModalHistorialComponent {
 
                 console.log('bunny success!')
                 console.log(data)
-                $scope.detalles = data.data;
+                $scope.detalles = data.data;                
+                $scope.empresa = data;
+
                 var i = 0;
                 $scope.subtotal = 0;
                 angular.forEach($scope.detalles, function(value, key) {
@@ -40,7 +43,7 @@ angular.module('refacciones')
     .config(function($stateProvider) {
         $stateProvider
             .state('user.historial.modal', {
-                url: '/:id/:idcolor',
+                url: '/:id/:idcolor/:idFactura',
                 templateUrl: 'app/user/historial/modalHistorial/modalHistorial.html',
                 controller: ModalHistorialComponent
             });

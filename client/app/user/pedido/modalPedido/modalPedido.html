@@ -5,36 +5,45 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>
             </div>
-            <div ng-style="{ 'background-color':'{{colorEstatus}}' }" >
-                    <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%;"> </div>
-                    <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
+            <div ng-style="{ 'background-color':'{{colorEstatus}}' }">
+                <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%;"> </div>
+                <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
                     <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a-->
-                
             </div>
             <div id="imprimeme">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>Empresa:</h4>
-                        <address>
-                            <strong>{{empresa.NOMBRE}}</strong>
-                            <br>{{empresa.DIRECCION}}
-                            <br>
-                            <abbr>Teléfono: </abbr> {{empresa.TELEFONO}}
-                        </address>
+                        <p>
+                        <strong>Empresa: </strong>{{empresa.NOMBRE}}
+                        </p>
+                        <p>
+                            <strong>Dirección: </strong>
+                            {{empresa.DIRECCION}}
+                        </p>
+                        <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
                     </div>
                     <div class="col-sm-6 text-right">
                         <h4>Pedido </h4>
                         <h4>{{idpedido}}</h4>
-                        <span>A:</span>
+                        <span>Cliente:</span>
+                        <p>
+                            {{user.name}}
+                        </p>
+                        <p>
+                            <strong>Dirección:</strong>
+                        </p>
                         <address>
-                            <strong> </strong>
+                            {{empresa.DIRCLIENTE}}
                             <br>
                             <br>
-                            <abbr>Teléfono:</abbr>
+                            <abbr><strong>Teléfono: </strong>{{empresa.TELCLIENTE}}</abbr>
                         </address>
                         <p>
+                            <abbr><strong>Correo: </strong>{{empresa.CORREOCLIENTE}}</abbr>
+                        </p>
+                        <p>
                             <span><strong>Fecha de solicitado:</strong> {{empresa.FECHAPEDIDO}} </span>
-                            <br/>                            
+                            <br/>
                         </p>
                     </div>
                 </div>
@@ -53,7 +62,7 @@
                             <th>
                                 No. Piezas
                             </th>
-                            <th>
+                            <th width="15%">
                                 Estatus
                             </th>
                             <th>
@@ -73,15 +82,15 @@
                                     {{detalle.PTS_DESPARTE}}
                                 </td>
                                 <td>
-                                    {{detalle.PTS_PCOLISTA | currency}}
+                                    <div style="background-color: #E12C2C;">{{detalle.PTS_PCOLISTA | currency}}</div>
                                 </td>
                                 <td align="center">
                                     {{detalle.prd_cantidadsolicitada}}
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <div class="label label-table" ng-style="{ 'background-color':'{{detalle.color}}' }">
                                         {{detalle.estatusPieza}}
-                                        </div>
+                                    </div>
                                 </td>
                                 <td>
                                     {{detalle.idPedidoBPRO}}
@@ -107,8 +116,8 @@
                             </tr>
                         </tfoot>
                     </table>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
