@@ -8,6 +8,10 @@ angular.module('refacciones')
       templateUrl: 'app/user/user.html',
       authenticate: true,
       controller:function($scope,$state,User,Auth){
+
+        closeNav();
+
+
         User.get(function(data){
           $scope.user = data;
           $scope.classMenu = "mainnav-sm"

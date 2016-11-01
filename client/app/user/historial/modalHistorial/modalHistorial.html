@@ -4,7 +4,7 @@
             <div class="modal-header" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff">Pedido Histórico</h3>
-                <div class="glyphicon glyphicon-print" ng-click="imprimir()" title="Imprimir" style="padding-left: 96%; width: 135px; font-size: 25px;"> </div>
+                <div class="glyphicon glyphicon-print" ng-click="imprimir()" title="Imprimir" style="padding-left: 96%; width: 135px; font-size: 25px; cursor: pointer;"> </div>
             </div>
             <div id="imprimeme">
                 <div class="row">
@@ -57,7 +57,7 @@
                             <th>
                                 No. Piezas
                             </th>
-                            <th width="15%">
+                            <th width="20%">
                                 Estatus
                             </th>
                             <th>
@@ -82,7 +82,7 @@
                                 <td align="center">
                                     {{detalle.prd_cantidadsolicitada}}
                                 </td>
-                                <td width="15%">
+                                <td  width="20%">
                                     <div class="label label-table" ng-style="{ 'background-color':'{{detalle.color}}' }">
                                         {{detalle.estatusPieza}}
                                     </div>

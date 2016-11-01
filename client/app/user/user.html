@@ -1,4 +1,4 @@
-<div id="container" class="effect aside-float aside-bright {{classMenu}} reveal">
+<!--div id="container" class="effect aside-float aside-bright {{classMenu}} reveal">
     <header id="navbar">
         <div id="navbar-container" class="boxed">
             <div class="navbar-header">
@@ -94,4 +94,53 @@
         </div>
         
     </footer>
+</div-->
+<div id="pnlSideNav" class="sidenav">
+    <div class="pnlSideTitleMin">GA</div>
+    <div id="mainnav-profile" class="mainnav-profile">
+        <div class="profile-wrap" id="divUserSession">
+            <div class="pad-btm">
+            </div>
+            <a href="#profile-nav" id="aUsuarioSession" class="box-block" data-toggle="collapse" aria-expanded="true">
+                <span class="pull-right dropdown-toggle">
+                                                <i class="dropdown-caret"></i>
+                                            </span>
+                <p class="mnp-name">{{user.name}}</p>
+                <span class="mnp-desc">{{}}</span>
+            </a>
+        </div>
+        <div id="profile-nav" class="collapse list-group bg-trans">
+            <a href="#" class="list-group-item" ng-click="cerrarSession()">
+                <i class="demo-pli-unlock icon-lg icon-fw"></i> Cerrar sesion
+            </a>
+        </div>
+    </div>
+    <a href="/cotizacion" title="Cotizaciones">
+        <i class="fa fa-edit"></i>
+        <span class="menu-title">
+                        <strong>Cotizaciones</strong>
+                      </span>
+    </a>
+    <a href="/pedido" title="Pedidos">
+        <i class="fa fa-truck"></i>
+        <span class="menu-title">
+                        <strong>Pedidos</strong>
+                      </span>
+    </a>
+    <a href="/historial" title="Historico"><i class="fa fa-area-chart"></i><span class="menu-title"><strong>Histórico</strong></span></a>
+</div>
+<div id="pnlMain">
+    <div class="panelTopBar">
+        <div class="pnlBodyBar">
+            <button type="button" class="btn btn-default" onclick="openCloseNav()"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+            <strong>PORTAL REFACCIONES</strong>
+        </div>
+        <div class="pnlBodyBar pull-right">
+            <h4><strong>{{user.name}}</strong></h4>
+        </div>
+        <!--div class="pnlBodyBar pull-right">
+            <button type="button" class="btn btn-default" onclick="openCloseNav()"><span class="glyphicon glyphicon-menu-hamburger"> </span> </button>
+        </div-->
+    </div>
+    <div ui-view></div>
 </div>

@@ -1,12 +1,12 @@
 <div id="page-content">
-  <div class="row ">
-    <div class="col-sm-10 col-sm-push-1 mar-top">
-      <div id="">
-        <h1 class="page-header text-overflow">Histórico</h1>
-        </h1>
-      </div>
-    </div>
-    <div class="col-sm-10 col-sm-push-1 mar-top ">
+    <div class="row ">
+        <div class="col-sm-10 col-sm-push-1 mar-top">
+            <div id="">
+                <h1 class="page-header text-overflow">Histórico</h1>
+                </h1>
+            </div>
+        </div>
+        <div class="col-sm-10 col-sm-push-1 mar-top ">
             <div class="panel ">
                 <div class="panel-body pad-top mar-top">
                     <div class="col-sm-6  col-xs-12">
@@ -30,18 +30,18 @@
                             <div class="form-group">
                                 <label class="col-sm-3 ">Período: </label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="daterange" value="" class="input-sm form-control" ng-model="fecha"/>
+                                    <input type="text" name="daterange" value="" class="input-sm form-control" ng-model="fecha" />
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                     <div ng-show="listaPedidos.length > 0" class="col-xs-12">
                         <table id="tblHistoricoFiltros" st-table="pedidos" st-safe-src="listaPedidos">
-                            <thead>                                        
+                            <thead>
                                 <tr>
                                     <th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="folio" st-sort="folioPedido">
                                         No. Pedido
-                                    </th>                                    
+                                    </th>
                                     <!--th st-class-ascent="fa fa-sort-asc" st-class-descent="fa fa-sort-desc" st-skip-natural="true" st-sort="empresaNombre">
                                         Empresa
                                     </th>
@@ -77,7 +77,7 @@
                                 <tr ng-repeat="pedido in pedidos">
                                     <td>
                                         <span>{{pedido.folioPedido}}</span>
-                                    </td>                                    
+                                    </td>
                                     <!--td>
                                         {{pedido.empresaNombre}}
                                     </td>
@@ -88,22 +88,22 @@
                                         {{pedido.total | currency}}
                                     </td>
                                     <td width="17%">
-                                    <div class="label label-table" ng-style="{ 'background-color':'{{pedido.color}}' }">
-                                       {{pedido.estatus}} 
-                                    </div>                                        
+                                        <div class="label label-table" ng-style="{ 'background-color':'{{pedido.color}}' }">
+                                            {{pedido.estatus}}
+                                        </div>
                                     </td>
                                     <td>
                                         {{pedido.factura}}
-                                    </td> 
+                                    </td>
                                     <td>
                                         {{pedido.PMM_FECHA}}
-                                    </td> 
+                                    </td>
                                     <td>
                                         {{pedido.fechaEntrega}}
-                                    </td> 
+                                    </td>
                                     <td class="texto-centrado">
                                         {{pedido.diasEntrega}}
-                                    </td> 
+                                    </td>
                                     <td>
                                         {{pedido.notaCredito}}
                                     </td>
@@ -117,6 +117,6 @@
                 </div>
             </div>
         </div>
-  </div>
+    </div>
 </div>
 <div id="modal-cotizacion-container" ui-view></div>
