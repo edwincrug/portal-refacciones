@@ -4,10 +4,11 @@
             <div class="modal-header" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff">Pedido Histórico</h3>
+                <div class="glyphicon glyphicon-print" ng-click="imprimir()" title="Imprimir" style="padding-left: 96%; width: 135px; font-size: 25px;"> </div>
             </div>
             <div id="imprimeme">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="padding-left: 30px;">
                         <p>
                             <strong>Empresa: </strong>{{empresa.NOMBRE}}
                         </p>
@@ -16,7 +17,7 @@
                         </p>
                         <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <div class="col-sm-6 text-right" style="padding-left: 30px;">
                         <h4>Factura </h4>
                         <h4>{{idFactura}}</h4>
                         <span><strong>Cliente:</strong></span>

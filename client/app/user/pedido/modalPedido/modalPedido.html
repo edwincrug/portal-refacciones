@@ -4,7 +4,7 @@
             <div class="modal-header" class="bg bg-mint" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>                
-                <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%; width: 150px; font-size: 25px;"> </div>
+                <div class="glyphicon glyphicon-print" ng-click="imprimir()" title="Imprimir" style="padding-left: 96%; width: 135px; font-size: 25px;"> </div>
             </div>
             <div ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
@@ -13,7 +13,7 @@
             </div>
             <div id="imprimeme">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="padding-left: 30px;">
                         <p>
                             <strong>Empresa: </strong>{{empresa.NOMBRE}}
                         </p>
@@ -22,10 +22,11 @@
                         </p>
                         <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <div class="col-sm-6 text-right" style="padding-right: 30px;">
                         <h4>Pedido </h4>
                         <h4>{{idpedido}}</h4>
-                        <span>Cliente:</span>
+
+                        <span><strong>Cliente:</strong></span>
                         <p>
                             {{user.name}}
                         </p>
