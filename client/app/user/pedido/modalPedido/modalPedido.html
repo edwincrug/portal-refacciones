@@ -3,22 +3,22 @@
         <div class="modal-content">
             <div class="modal-header" class="bg bg-mint" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>
+                <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>                
+                <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%; width: 150px; font-size: 25px;"> </div>
             </div>
             <div ng-style="{ 'background-color':'{{colorEstatus}}' }">
-                <div class="glyphicon glyphicon-print" ng-click="imprimir()" style="padding-left: 98%;"> </div>
                 <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
                     <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a-->
+                    
             </div>
             <div id="imprimeme">
                 <div class="row">
                     <div class="col-sm-6">
                         <p>
-                        <strong>Empresa: </strong>{{empresa.NOMBRE}}
+                            <strong>Empresa: </strong>{{empresa.NOMBRE}}
                         </p>
                         <p>
-                            <strong>Dirección: </strong>
-                            {{empresa.DIRECCION}}
+                            <strong>Dirección: </strong> {{empresa.DIRECCION}}
                         </p>
                         <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
                     </div>
@@ -82,7 +82,7 @@
                                     {{detalle.PTS_DESPARTE}}
                                 </td>
                                 <td>
-                                    <div style="background-color: #E12C2C;">{{detalle.PTS_PCOLISTA | currency}}</div>
+                                    <div>{{detalle.PTS_PCOLISTA | currency}}</div>
                                 </td>
                                 <td align="center">
                                     {{detalle.prd_cantidadsolicitada}}
