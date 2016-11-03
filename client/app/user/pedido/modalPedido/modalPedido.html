@@ -3,29 +3,79 @@
         <div class="modal-content">
             <div class="modal-header" class="bg bg-mint" ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>                
+                <h3 style="text-align:center;color:#fff"> {{estatus}} </h3>
                 <div class="glyphicon glyphicon-print" ng-click="imprimir()" title="Imprimir" style="padding-left: 96%; width: 135px; font-size: 25px; cursor: pointer;"> </div>
+                <!--a href="#" onClick="window.open('/invoice', '_blank')">OOOO</a-->
             </div>
             <div ng-style="{ 'background-color':'{{colorEstatus}}' }">
                 <!--a href="{{'/invoice/'+detalle.idPedidoBPRO}}" class="btn btn-info btn-icon"><i class="fa fa-search">Print Invoice</i></a>
                     <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a-->
-                    
             </div>
+            <br>
             <div id="imprimeme">
-                <div class="row">
-                    <div class="col-sm-6" style="padding-left: 30px;">
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <strong>Empresa: </strong>{{empresa.NOMBRE}}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>Pedido: </strong>{{idpedido}} - <strong>solicitado:</strong> {{empresa.FECHAPEDIDO}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Dirección: </strong> {{empresa.DIRECCION}}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>Cliente:</strong> {{user.name}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Teléfono: </strong> {{empresa.TELEFONO}}
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>Dirección:</strong> {{empresa.DIRCLIENTE}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>Correo: </strong>{{empresa.CORREOCLIENTE}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <strong>Teléfono: </strong>{{empresa.TELCLIENTE}}
+                            </td>
+                        </tr>
+                    </table>
+                    <!--div class="col-sm-6" style="padding-left: 30px;">
                         <p>
-                            <strong>Empresa: </strong>{{empresa.NOMBRE}}
+                            <strong>Teléfono: </strong>{{empresa.TELCLIENTE}}
                         </p>
                         <p>
-                            <strong>Dirección: </strong> {{empresa.DIRECCION}}
+                            <strong>Correo: </strong>{{empresa.CORREOCLIENTE}}
                         </p>
                         <abbr><strong>Teléfono: </strong></abbr> {{empresa.TELEFONO}}
                     </div>
-                    <div class="col-sm-6 text-right" style="padding-right: 30px;">
+                    <div class="col-sm-6 text-center" style="padding-right: 30px;">
                         <h4>Pedido </h4>
                         <h4>{{idpedido}}</h4>
-
                         <span><strong>Cliente:</strong></span>
                         <p>
                             {{user.name}}
@@ -46,15 +96,17 @@
                             <span><strong>Fecha de solicitado:</strong> {{empresa.FECHAPEDIDO}} </span>
                             <br/>
                         </p>
-                    </div>
+                    </div-->
                 </div>
+                <br>
+                <br>
                 <div class="modal-body">
                     <table class="table">
                         <tr>
-                            <th>
+                            <th style="text-align:left;">
                                 No Serie
                             </th>
-                            <th>
+                            <th style="text-align:left;">
                                 Descripción
                             </th>
                             <th>
@@ -66,7 +118,7 @@
                             <th width="15%">
                                 Estatus
                             </th>
-                            <th>
+                            <th align="center">
                                 Pedido
                             </th>
                             <th style="text-align:right">
@@ -93,7 +145,7 @@
                                         {{detalle.estatusPieza}}
                                     </div>
                                 </td>
-                                <td>
+                                <td align="center">
                                     {{detalle.idPedidoBPRO}}
                                 </td>
                                 <td align="right">

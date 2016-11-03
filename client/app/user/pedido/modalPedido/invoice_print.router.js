@@ -91,8 +91,8 @@ class InvoiceComponent {
 angular.module('refacciones')
     .config(function($stateProvider) {
         $stateProvider
-            .state('user.invoice.modal', {
-                url: '/:id',
+            .state('user.invoice', {
+                url: 'invoice',
                 templateUrl: 'app/user/pedido/modalPedido/invoice_print.html',
                 controller: InvoiceComponent
             });
