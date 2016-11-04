@@ -17,7 +17,7 @@
                             <td>
                             </td>
                             <td>
-                                <strong>Pedido: </strong>{{idpedido}} - <strong>solicitado:</strong> {{empresa.FECHAPEDIDO}}
+                                <strong>Pedido: </strong>{{idpedido}} - <strong>Solicitado:</strong> {{empresa.FECHAPEDIDO}}
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
                 <br>
                 <br>
                 <div class="modal-body">
-                    <table class="table">
+                    <table class="table" width="100%">
                         <tr>
                             <th>
                                 No Serie
@@ -107,13 +107,13 @@
                             <th>
                                 Precio/Pz
                             </th>
-                            <th>
+                            <th style="text-align:center">
                                 No. Piezas
                             </th>
-                            <th width="20%">
+                            <th width="20%" style="text-align:center">
                                 Estatus
                             </th>
-                            <th>
+                            <th style="text-align:center">
                                 Pedido
                             </th>
                             <th style="text-align:right">
@@ -132,15 +132,15 @@
                                 <td>
                                     {{detalle.PTS_PCOLISTA | currency}}
                                 </td>
-                                <td align="center">
+                                <td style="text-align:center">
                                     {{detalle.prd_cantidadsolicitada}}
                                 </td>
-                                <td width="20%">
+                                <td width="20%" style="text-align:center">
                                     <div class="label label-table" ng-style="{ 'background-color':'{{detalle.color}}' }">
                                         {{detalle.estatusPieza}}
                                     </div>
                                 </td>
-                                <td>
+                                <td style="text-align:center">
                                     {{detalle.idPedidoBPRO}}
                                 </td>
                                 <td align="right">

@@ -20,6 +20,9 @@ export default function(app) {
 
   app.use('/auth', require('./auth').default);
 
+  //LQMA 04112016  obtiene mensajes de tiempos de pedidos y backorders
+  app.use('/api/mensaje', require('./api/mensaje'));
+
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);

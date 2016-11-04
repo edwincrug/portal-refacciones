@@ -22,6 +22,7 @@ function onConnect(socket) {
   require('../api/template/template.socket').register(socket);
   require('../api/refaccion/refaccion.socket').register(socket);
   require('../api/cotizacion/cotizacion.socket').register(socket);
+  require('../api/mensaje/mensaje.socket').register(socket);
   require('../api/sucursal/sucursal.socket').register(socket);
   require('../api/empresa/empresa.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
