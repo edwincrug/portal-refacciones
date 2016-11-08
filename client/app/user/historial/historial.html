@@ -29,8 +29,12 @@
                         <div ng-hide="!sucursalActual || sucursalActual.AGENCIA == 0 " class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-3 ">Período: </label>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">
                                     <input type="text" name="daterange" value="" class="input-sm form-control" ng-model="fecha" />
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-info btn-icon">
+                                        <i class="fa fa-search" ng-click="cambioSucursal(empresaActual,sucursalActual,fecha)"></i></a>
                                 </div>
                             </div>
                         </div>

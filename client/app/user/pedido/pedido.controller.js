@@ -159,9 +159,9 @@
                     /* LQMA ADD 17102016 */
 
                     var modifechaInic = fechaIF[0].split('/') //'07/10/2016'.split('/');//nuevocontrato.fechaInicio.split('/');
-                    var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+                    var newDateIni = modifechaInic[2] + modifechaInic[1] + modifechaInic[0]//modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
                     var modifechaTerm = fechaIF[1].split('/') //'10/10/2016'.split('/');//nuevocontrato.fechaTermino.split('/');
-                    var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+                    var newDateterm = modifechaTerm[2] + modifechaTerm[1] + modifechaTerm[0]//modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
                     //nuevocontrato.fechaInicio = newDateIni;
                     //nuevocontrato.fechaTermino = newDateterm;
 
