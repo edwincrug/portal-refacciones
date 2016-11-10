@@ -31,6 +31,12 @@ class ModalHistorialComponent {
                 });
                 //$scope.detalles=$scope.detallesdata.data[0];
 
+                $scope.totalPedido = 0;
+
+                data.data.forEach(function(entry) {
+                    $scope.totalPedido += entry.totalItem;
+                }, this);
+
             })
         } else {
             console.log('empty')
@@ -55,7 +61,10 @@ class ModalHistorialComponent {
                     "data": rptStructure
                 }
 
-                $scope.generarPDF(jsonData);
+            console.log('empresa:')
+            console.log(rptStructure.empresa)
+
+            $scope.generarPDF(jsonData);
 
             /*var objeto = document.getElementById('imprimeme'); //obtenemos el objeto a imprimir
 
