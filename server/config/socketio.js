@@ -27,6 +27,12 @@ function onConnect(socket) {
   require('../api/empresa/empresa.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 
+  require('../api/estado/estado.socket').register(socket);
+  require('../api/ciudad/ciudad.socket').register(socket);
+  require('../api/municipio/municipio.socket').register(socket);
+  require('../api/colonia/colonia.socket').register(socket);
+  require('../api/cp/cp.socket').register(socket);  
+
 }
 
 export default function(socketio) {

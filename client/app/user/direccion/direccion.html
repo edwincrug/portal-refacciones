@@ -1,0 +1,298 @@
+<div class="panel panel-primary">
+    <!--Panel heading-->
+    <!--div class="panel-heading" style="background-color: #1E335B;">
+        <div class="panel-control">            
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#demo-tabs-box-1">Alta de direcciones</a></li>                
+            </ul>
+        </div>
+        <h3 class="panel-title">DIRECCIONES</h3>
+    </div-->
+    <!--Panel body-->
+    <div class="panel-body">
+        <!--Tabs content-->
+        <div class="tab-content">
+            <div id="demo-tabs-box-1" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel">
+                            <div class="panel-heading" style="background-color: #1E335B;">
+                                <h3 class="panel-title">Alta de nueva dirección de entrega</h3>
+                            </div>
+                            <!-- BASIC FORM ELEMENTS -->
+                            <!--===================================================-->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 ">Empresa:</label>
+                                            <div class="col-sm-9">
+                                                <select ng-change="cambioEmpresa()" id="selEmpresas" class="form-control" ng-options="empresa as empresa.emp_nombre for empresa in empresas track by empresa.emp_idempresa" ng-model="empresaActual"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <diV class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 ">Sucursal:</label>
+                                            <div class="col-sm-8">
+                                                <select id="selSucursales" ng-change="cambioSucursal(empresaActual,sucursalActual,fecha)" ng-disabled="empresaActual.emp_idempresa==0" class="form-control" ng-options="sucursal.NOMBRE_AGENCIA for sucursal in sucursales track by sucursal.AGENCIA" ng-model="sucursalActual"></select>
+                                            </div>
+                                        </div>
+                                    </diV>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-heading" style="background-color: #FFFFFF; height: 20px; padding: 0px;">                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-heading" style="background-color: #7B8599; height: 40px; padding: 0px;">
+                                        <h4 class="panel-title">Datos de domicilio</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-heading" style="background-color: #FFFFFF; height: 20px; padding: 0px;">                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <!--Estado-->
+                                        <div class="form-group">
+                                            <label class="control-label">Estado</label>
+                                            <select id="selEstado" ng-change="cambioEstado()" class="form-control" ng-options="edo as edo.descripcion for edo in Estados track by edo.idEdo" ng-model="estadoActual"></select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--Ciudad-->
+                                        <div class="form-group">
+                                            <label class="control-label">Ciudad</label>
+                                            <select id="selCiudad" ng-change="cambioCiudad()" class="form-control" ng-options="cid as cid.d_ciudad for cid in Ciudades" ng-model="ciudadActual"></select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--Municipio-->
+                                        <div class="form-group">
+                                            <label class="control-label">Municipio</label>
+                                            <select id="selMunicipio" ng-change="cambioMunicipio()" class="form-control" ng-options="mun as mun.municipio for mun in Municipios" ng-model="municipioActual"></select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--Colonia-->
+                                        <div class="form-group">
+                                            <label class="control-label">Colonia:</label>
+                                            <select id="selColonia" ng-change="cambioColonia()" class="form-control" ng-options="col as col.colonia for col in Colonias" ng-model="coloniaActual"></select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <!--Calle-->
+                                        <div class="form-group">
+                                            <label class="control-label">Calle:</label>
+                                            <input type="text" class="form-control" placeholder="Calle" ng-model="calle">
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--No. Ext.-->
+                                        <div class="form-group">
+                                            <label class="control-label">No. Ext.:</label>
+                                            <input type="text" class="form-control" placeholder="Número Exterior" ng-model="exterior">
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--No. Int.-->
+                                        <div class="form-group">
+                                            <label class="control-label">No. Int.:</label>
+                                            <input type="text" class="form-control" placeholder="Número Interior" ng-model="interior">
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!--Cp-->
+                                        <div class="form-group">
+                                            <label class="control-label">C.P.:</label>
+                                            <select id="selCp" ng-change="cambioCp()" class="form-control" ng-options="cod as cod.cp for cod in Codigos" ng-model="cpActual"></select>
+                                            <small class="help-block"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <!--Referencia-->
+                                        <div class="form-group">
+                                            <label class="col-md-1 control-label" for="demo-textarea-input">Referencia:</label>
+                                            <div class="col-md-11">
+                                                <textarea id="demo-textarea-input" rows="2" class="form-control" placeholder="Referencia del domicilio" ng-model="referencia"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="col-md-6 control-label">Comprobante de domicilio</label>
+                                            <div class="col-md-6">
+                                                <span class="pull-left btn btn-primary btn-file">
+                                            Buscar archivo... <input type="file">
+                                            </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-heading" style="background-color: #FFFFFF; height: 20px; padding: 0px;">                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-heading" style="background-color: #7B8599; height: 40px; padding: 0px;">
+                                        <h4 class="panel-title">Datos de contacto</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <p>
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                    <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                        <h4 class="panel-title">Contacto 1</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Nombre</label>
+                                            <input type="text" class="form-control" ng-model="nombre1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Apellido Paterno</label>
+                                            <input type="text" class="form-control" ng-model="apaterno1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Apellido Materno</label>
+                                            <input type="text" class="form-control" ng-model="amaterno1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">R.F.C.</label>
+                                            <input type="text" class="form-control" ng-model="rfc1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Lada</label>
+                                            <input type="text" class="form-control" ng-model="lada1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Telefono 1</label>
+                                            <input type="text" class="form-control" ng-model="tel1_1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Telefono 2</label>
+                                            <input type="text" class="form-control" ng-model="tel2_1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                    <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                        <h4 class="panel-title">Contacto 2</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="control-label">Nombre</label>
+                                            <input type="text" class="form-control" ng-model="nombre2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Apellido Paterno</label>
+                                            <input type="text" class="form-control" ng-model="apaterno2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">Apellido Materno</label>
+                                            <input type="text" class="form-control" ng-model="amaterno2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">R.F.C.</label>
+                                            <input type="text" class="form-control" ng-model="rfc2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Lada</label>
+                                            <input type="text" class="form-control" ng-model="lada2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Telefono 1</label>
+                                            <input type="text" class="form-control" ng-model="tel1_2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label class="control-label">Telefono 2</label>
+                                            <input type="text" class="form-control" ng-model="tel2_2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="demo-email-input">Correo electronico Contacto 1</label>
+                                            <input type="email" class="form-control" ng-model="correo1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="demo-email-input">Correo electronico Contacto 2</label>
+                                            <input type="email" class="form-control" ng-model="correo2">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="demo-email-input" >Correo electronico general de sucursal</label>
+                                            <input type="email" class="form-control" ng-model="correoGeneral">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-right" style="background-color: #FFFFFF;">
+                                    <a ng-click="guardaDireccion()" type="button" class="finish btn btn-info">Guardar dirección</a>
+                                </div>
+                            </div>
+                            <form class="panel-body form-horizontal form-padding">
+                                <!--Static-->
+                                <!--div class="form-group">
+                                    <label class="col-md-3 control-label">GA</label>
+                                    <div class="col-md-9">
+                                        <p class="form-control-static">Grupo Andrade</p>
+                                    </div>
+                                </div-->
+                                <!--Contactos-->
+                                <div class="panel-body">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

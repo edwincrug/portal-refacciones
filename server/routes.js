@@ -16,6 +16,13 @@ export default function(app) {
   app.use('/api/cotizacion', require('./api/cotizacion'));
   app.use('/api/sucursal', require('./api/sucursal'));
   app.use('/api/empresa', require('./api/empresa'));
+
+  app.use('/api/estado', require('./api/estado'));
+  app.use('/api/ciudad', require('./api/ciudad'));
+  app.use('/api/municipio', require('./api/municipio'));
+  app.use('/api/colonia', require('./api/colonia'));
+  app.use('/api/cp', require('./api/cp'));
+
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth').default);
