@@ -63,27 +63,63 @@ function handleError(res, statusCode) {
 // Gets a list of Direccions
 export function index(req, res) {
     var params = [];
+
+    var opcion = req.query.opcion; //1:SEL_DIRECCION_SP, 2:SEL_DIRECCION_CLIENTE_SP
+
+    var stored = (opcion == 1) ? 'SEL_DIRECCION_SP' : (opcion == 2) ? 'SEL_DIRECCION_CLIENTE_SP' : 'SEL_RUTAS_SP';
+
+    //var stored = '';
+
+    /*switch (opcion) {
+        case 1:
+            stored = "SEL_DIRECCION_SP";
+            break;
+        case 2:
+            stored = "SEL_DIRECCION_CLIENTE_SP";
+            break;
+        case 3:
+            stored = "SEL_RUTAS_SP";
+            break;
+    }*/
+
     params.push({
         name: 'idUsuario',
-        value: req.query.user,
+        value: req.query.idUsuario,
         type: DataAccess.types.INT
     })
 
     params.push({
         name: 'idEmpresa',
         value: req.query.idEmpresa,
-        type: DataAccess.types.STRING
+        type: DataAccess.types.INT
     })
 
     params.push({
         name: 'idSucursal',
         value: req.query.idSucursal,
-        type: DataAccess.types.STRING
+        type: DataAccess.types.INT
     })
 
-    //console.log(params)  
+    if (opcion == 2) {
+        params.push({
+            name: 'idEstatus',
+            value: req.query.idEstatus,
+            type: DataAccess.types.INT
+        })
+    }
 
-    DataAccess.query('SEL_DIRECCION_SP', params, function(error, result) {
+    if (opcion == 3) { //agregar parametro idDireccion
+        params.push({
+            name: 'idDireccion',
+            value: req.query.idDireccion,
+            type: DataAccess.types.INT
+        })
+    }
+
+    console.log(params)
+    console.log(stored)
+
+    DataAccess.query(stored, params, function(error, result) {
         if (error) return handleError(res)(error);
         return respondWithResult(res)(result[0])
     })
@@ -92,14 +128,101 @@ export function index(req, res) {
 
 // Gets a single Direccion from the DB
 export function show(req, res) {
-    return Direccion.find({
-            where: {
-                _id: req.params.id
-            }
-        })
-        .then(handleEntityNotFound(res))
-        .then(respondWithResult(res))
-        .catch(handleError(res));
+
+    console.log('show')
+
+    var params = [];
+    params.push({
+        name: 'idUsuario',
+        value: req.query.idUsuario,
+        type: DataAccess.types.INT
+    })
+
+    /*params.push({
+        name: 'idEmpresa',
+        value: req.query.idEmpresa,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idSucursal',
+        value: req.query.idSucursal,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idEstatus',
+        value: req.query.idEstatus,
+        type: DataAccess.types.INT
+    })*/
+
+    params.push({
+        name: 'idDireccion',
+        value: req.query.idDireccion,
+        type: DataAccess.types.INT
+    })
+
+    console.log('SEL_DIRECCION_CLIENTE_DETALLE_SP')
+    console.log(params)
+
+    DataAccess.query('SEL_DIRECCION_CLIENTE_DETALLE_SP', params, function(error, result) {
+
+        console.log(error)
+        console.log(result[0])
+
+        /*if (error) return handleError(res)(error);
+        return respondWithResult(res)(result[0])*/
+
+        if (error) return handleError(res)(error);
+        result[0][0].data = result[1]
+            //result[0].data = result[0]
+
+
+        return respondWithResult(res, 201)(result[0][0])
+    })
+}
+
+// Gets a list of Direccions from the DB
+export function list(req, res) {
+
+    console.log('list')
+
+    var params = [];
+    params.push({
+        name: 'idUsuario',
+        value: req.query.idUsuario,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idEmpresa',
+        value: req.query.idEmpresa,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idSucursal',
+        value: req.query.idSucursal,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idEstatus',
+        value: req.query.idEstatus,
+        type: DataAccess.types.INT
+    })
+
+    console.log('SEL_DIRECCION_CLIENTE_SP')
+    console.log(params)
+
+    DataAccess.query('SEL_DIRECCION_CLIENTE_SP', params, function(error, result) {
+
+        console.log(error)
+        console.log(result)
+
+        if (error) return handleError(res)(error);
+        return respondWithResult(res)(result[0])
+    })
 }
 
 // Creates a new Direccion in the DB
@@ -293,18 +416,52 @@ export function create(req, res) {
 
 // Updates an existing Direccion in the DB
 export function update(req, res) {
-    if (req.body._id) {
-        delete req.body._id;
-    }
-    return Direccion.find({
-            where: {
-                _id: req.params.id
-            }
-        })
-        .then(handleEntityNotFound(res))
-        .then(saveUpdates(req.body))
-        .then(respondWithResult(res))
-        .catch(handleError(res));
+
+    console.log('server update direccion')
+    console.log(req.body)
+
+    /*for (var i = 0; i < req.body.direcciones.length; i++) {
+        req.body.direcciones[i] = {
+            direccion: req.body.direcciones[i]
+        }
+    }*/
+
+    var params = [];
+    
+    params.push({
+        name: 'idUsuario',
+        value: req.body.idUsuario,
+        type: DataAccess.types.INT
+    })    
+
+    params.push({
+        name: 'idRuta',
+        value: req.body.idRuta,
+        type: DataAccess.types.INT
+    })
+
+    params.push({
+        name: 'idDireccion',
+        value: req.body.idDireccion,
+        type: DataAccess.types.DECIMAL
+    })
+
+    params.push({
+        name: 'operacion',
+        value: req.body.operacionP,
+        type: DataAccess.types.DECIMAL
+    })
+
+    console.log(params)
+
+    DataAccess.query('UPD_DIRECCION_SP', params, function(error, result) {
+
+        console.log(error)
+        console.log(result)
+
+        if (error) return handleError(res)(error);
+        return respondWithResult(res, 201)(result[0][0])
+    });
 }
 
 // Deletes a Direccion from the DB

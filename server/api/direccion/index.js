@@ -7,8 +7,9 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+//router.get('/:dir', controller.list);
 router.post('/', controller.create);
-router.put('/:id', controller.update);
+router.put('/', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 

@@ -2,6 +2,8 @@
 
 angular.module('refacciones')
   .config(function($stateProvider) {
+
+    
     $stateProvider.state('user', {
       url: '/',
 
@@ -12,7 +14,8 @@ angular.module('refacciones')
         closeNav();
 
 
-        User.get(function(data){
+        User.get(function(data){         
+
           $scope.user = data;
           $scope.classMenu = "mainnav-sm"
           $scope.toggeMenu = function(){

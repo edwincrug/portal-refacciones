@@ -24,9 +24,11 @@
         $scope.user = data;
 
         Direccion.query({
-          user: $scope.user.per_idpersona,
+          idUsuario: $scope.user.per_idpersona,
           idEmpresa: $scope.empresaActual.emp_idempresa,
-          idSucursal: $scope.sucursalActual.AGENCIA
+          idSucursal: $scope.sucursalActual.AGENCIA,
+          opcion: 1,
+          idEstatus: 1
         }, function(data) {
           $scope.direcciones = data;
           if ($scope.$parent.$parent.direccionActual) {

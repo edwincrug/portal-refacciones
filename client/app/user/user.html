@@ -115,30 +115,36 @@
             </a>
         </div>
     </div>
-    <a href="/cotizacion" title="Cotizaciones">
+    <a href="/cotizacion" title="Cotizaciones" ng-show="user.role == 'user'">
         <i class="fa fa-edit"></i>
         <span class="menu-title">
                         <strong>Cotizaciones</strong>
                       </span>
     </a>
-    <a href="/pedido" title="Pedidos">
+    <a href="/pedido" title="Pedidos" ng-show="user.role == 'user'">
         <i class="fa fa-truck"></i>
         <span class="menu-title">
                         <strong>Pedidos</strong>
                       </span>
     </a>
-    <a href="/historial" title="Historico">
+    <a href="/historial" title="Historico" ng-show="user.role == 'user'">
         <i class="fa fa-area-chart"></i>
         <span class="menu-title">
                         <strong>Histórico</strong>
                       </span>
     </a>
-    <a href="/direccion" title="Direcciones">
+    <a href="/direccion" title="Direcciones" ng-show="user.role == 'user'">
         <i class="fa fa-home"></i>
         <span class="menu-title">
                         <strong>Alta Direcciones</strong>
                       </span>
-    </a>    
+    </a>
+    <a href="/aprobacion" title="Aprobación de direcciones" ng-show="user.role == 'admin'">
+        <i class="fa fa-check-square-o"></i>
+        <span class="menu-title">
+                        <strong>Aprobación de Direcciones</strong>
+                      </span>
+    </a>
 </div>
 <div id="pnlMain">
     <div class="panelTopBar">

@@ -7,189 +7,183 @@
 <!--<![endif]-->
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <base href="/">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css(client) app/vendor.css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
-  <link rel="stylesheet" href="bower_components/bootstrap-table/src/bootstrap-table.css" />
-  <link rel="stylesheet" href="bower_components/magic-check/css/magic-check.css" />
-  <link rel="stylesheet" href="bower_components/switchery/dist/switchery.css" />
-
-  <link rel="stylesheet" href="bower_components/datepicker/daterangepicker.css">
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:css({.tmp,client}) app/app.css -->
-  <!-- injector:css -->
-  <!-- endinjector -->
-  <!-- endbuild -->
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="components/plugins/nifty/nifty.css" />
-  
-  <link rel="stylesheet" href="components/css/navBar.css" />
-  <link rel="stylesheet" href="components/css/custom.css" />
-
-  <link rel="stylesheet" href="app/user/cotizacion/cotizacion.css" />
-  <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/busqueda/busqueda.css" />
-  <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/modalCotizacion.css" />
-  <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/entrega/entrega.css" />
-  <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.css" />
-  <link rel="stylesheet" href="app/user/pedido/pedido.css" />
-  
-  <link rel="stylesheet" href="components/plugins/datatable/jquery.dataTables.min.css" />
-
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-table/src/bootstrap-table.css" />
+    <link rel="stylesheet" href="bower_components/magic-check/css/magic-check.css" />
+    <link rel="stylesheet" href="bower_components/switchery/dist/switchery.css" />
+    <link rel="stylesheet" href="bower_components/datepicker/daterangepicker.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <!-- injector:css -->
+    <!-- endinjector -->
+    <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="components/plugins/nifty/nifty.css" />
+    <link rel="stylesheet" href="components/css/navBar.css" />
+    <link rel="stylesheet" href="components/css/custom.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/cotizacion.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/busqueda/busqueda.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/modalCotizacion.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/entrega/entrega.css" />
+    <link rel="stylesheet" href="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.css" />
+    <link rel="stylesheet" href="app/user/pedido/pedido.css" />
+    <link rel="stylesheet" href="components/plugins/datatable/jquery.dataTables.min.css" />
 </head>
 
 <body ng-app="refacciones">
-  <!--[if lt IE 7]>
+    <!--[if lt IE 7]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-  <div ui-view></div>
-
-  <!--[if lt IE 9]>
+    <div ui-view></div>
+    <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
-  <!-- build:js({client,node_modules}) app/vendor.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-  <script src="bower_components/angular-socket-io/socket.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
-  <script src="bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-  <script src="bower_components/bootbox.js/bootbox.js"></script>
-  <script src="bower_components/toastr/toastr.js"></script>
-  <script src="bower_components/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
-  <script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-  <script src="bower_components/transitionize/dist/transitionize.js"></script>
-  <script src="bower_components/fastclick/lib/fastclick.js"></script>
-  <script src="bower_components/switchery/dist/switchery.js"></script>
-
-
-  <script src="bower_components/datepicker/moment.js"></script>
-  <script src="bower_components/datepicker/daterangepicker.js"></script>
-  
-  <!-- endbower -->
-  <script src="socket.io-client/socket.io.js"></script>
-  <!-- endbuild -->
-  <!-- build:js(.tmp) app/app.js -->
-  <script src="app/app.js"></script>
-  <!-- injector:js -->
-  <script src="components/auth/auth.module.js"></script>
-  <script src="components/util/util.module.js"></script>
-  <script src="app/account/account.js"></script>
-  <script src="app/account/login/login.controller.js"></script>
-  <script src="app/account/settings/settings.controller.js"></script>
-  <script src="app/account/signup/signup.controller.js"></script>
-  <script src="app/app.constant.js"></script>
-  <script src="app/user/cotizacion/cotizacion.controller.js"></script>
-  <script src="app/user/cotizacion/cotizacion.router.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.controller.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.router.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.controller.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.router.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.controller.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.router.js"></script>
-  <script src="app/user/cotizacion/modalCotizacion/modalCotizacion.router.js"></script>
-  <script src="app/user/direccion/direccion.controller.js"></script>
-  <script src="app/user/direccion/direccion.router.js"></script>
-  <script src="app/user/historial/historial.controller.js"></script>
-  <script src="app/user/historial/historial.router.js"></script>
-  <script src="app/user/historial/modalHistorial/modalHistorial.router.js"></script>
-  <script src="app/user/pedido/modalPedido/invoice_print.router.js"></script>
-  <script src="app/user/pedido/modalPedido/modalPedido.controller.js"></script>
-  <script src="app/user/pedido/modalPedido/modalPedido.router.js"></script>
-  <script src="app/user/pedido/pedido.controller.js"></script>
-  <script src="app/user/pedido/pedido.router.js"></script>
-  <script src="app/user/user.router.js"></script>
-  <script src="components/auth/auth.service.js"></script>
-  <script src="components/auth/interceptor.service.js"></script>
-  <script src="components/auth/router.decorator.js"></script>
-  <script src="components/auth/user.service.js"></script>
-  <script src="components/footer/footer.directive.js"></script>
-  <script src="components/js/navBar.js"></script>
-  <script src="components/modal/modal.service.js"></script>
-  <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-  <script src="components/navbar/navbar.controller.js"></script>
-  <script src="components/navbar/navbar.directive.js"></script>
-  <script src="components/plugins/datatable/jquery.dataTables.min.js"></script>
-  <script src="components/plugins/nifty/nifty.min.js"></script>
-  <script src="components/resources/ciudad.service.js"></script>
-  <script src="components/resources/colonia.service.js"></script>
-  <script src="components/resources/cotizacion.service.js"></script>
-  <script src="components/resources/cp.service.js"></script>
-  <script src="components/resources/direccion.service.js"></script>
-  <script src="components/resources/empresa.service.js"></script>
-  <script src="components/resources/estado.service.js"></script>
-  <script src="components/resources/geocoding.service.js"></script>
-  <script src="components/resources/mensaje.service.js"></script>
-  <script src="components/resources/municipio.service.js"></script>
-  <script src="components/resources/pedido.service.js"></script>
-  <script src="components/resources/refaccion.service.js"></script>
-  <script src="components/resources/sucursal.service.js"></script>
-  <script src="components/resources/template.service.js"></script>
-  <script src="components/socket/socket.service.js"></script>
-  <script src="components/util/util.service.js"></script>
-  <!-- endinjector -->
-  <!-- endbuild -->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+    <script src="bower_components/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="bower_components/bootbox.js/bootbox.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+    <script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <script src="bower_components/transitionize/dist/transitionize.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/switchery/dist/switchery.js"></script>
+    <script src="bower_components/datepicker/moment.js"></script>
+    <script src="bower_components/datepicker/daterangepicker.js"></script>
+    
+    <!-- endbower -->
+    <script src="socket.io-client/socket.io.js"></script>
+    <!-- endbuild -->
+    <!-- build:js(.tmp) app/app.js -->
+    <script src="app/app.js"></script>
+    <!-- injector:js -->
+    <script src="components/auth/auth.module.js"></script>
+    <script src="components/util/util.module.js"></script>
+    <script src="app/account/account.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/signup/signup.controller.js"></script>
+    <script src="app/app.constant.js"></script>
+    <script src="app/user/aprobacion/aprobacion.controller.js"></script>
+    <script src="app/user/aprobacion/aprobacion.router.js"></script>
+    <script src="app/user/aprobacion/modalAprobacion/aprobar/aprobacion.controller.js"></script>
+    <script src="app/user/aprobacion/modalAprobacion/aprobar/aprobacion.router.js"></script>
+    <script src="app/user/aprobacion/modalAprobacion/modalAprobacion.router.js"></script>
+    <script src="app/user/cotizacion/cotizacion.controller.js"></script>
+    <script src="app/user/cotizacion/cotizacion.router.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.controller.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/busqueda/busqueda.router.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.controller.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/confirmacion/confirmacion.router.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.controller.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/entrega/entrega.router.js"></script>
+    <script src="app/user/cotizacion/modalCotizacion/modalCotizacion.router.js"></script>
+    <script src="app/user/direccion/direccion.controller.js"></script>
+    <script src="app/user/direccion/direccion.router.js"></script>
+    <script src="app/user/historial/historial.controller.js"></script>
+    <script src="app/user/historial/historial.router.js"></script>
+    <script src="app/user/historial/modalHistorial/modalHistorial.router.js"></script>
+    <script src="app/user/pedido/modalPedido/invoice_print.router.js"></script>
+    <script src="app/user/pedido/modalPedido/modalPedido.controller.js"></script>
+    <script src="app/user/pedido/modalPedido/modalPedido.router.js"></script>
+    <script src="app/user/pedido/pedido.controller.js"></script>
+    <script src="app/user/pedido/pedido.router.js"></script>
+    <script src="app/user/user.router.js"></script>
+    <script src="components/auth/auth.service.js"></script>
+    <script src="components/auth/interceptor.service.js"></script>
+    <script src="components/auth/router.decorator.js"></script>
+    <script src="components/auth/user.service.js"></script>
+    <script src="components/footer/footer.directive.js"></script>
+    <script src="components/js/navBar.js"></script>
+    <script src="components/modal/modal.service.js"></script>
+    <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+    <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/navbar/navbar.directive.js"></script>
+    <script src="components/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="components/plugins/nifty/nifty.min.js"></script>
+    <script src="components/resources/ciudad.service.js"></script>
+    <script src="components/resources/colonia.service.js"></script>
+    <script src="components/resources/cotizacion.service.js"></script>
+    <script src="components/resources/cp.service.js"></script>
+    <script src="components/resources/direccion.service.js"></script>
+    <script src="components/resources/empresa.service.js"></script>
+    <script src="components/resources/estado.service.js"></script>
+    <script src="components/resources/geocoding.service.js"></script>
+    <script src="components/resources/mensaje.service.js"></script>
+    <script src="components/resources/municipio.service.js"></script>
+    <script src="components/resources/pedido.service.js"></script>
+    <script src="components/resources/refaccion.service.js"></script>
+    <script src="components/resources/sucursal.service.js"></script>
+    <script src="components/resources/template.service.js"></script>
+    <script src="components/socket/socket.service.js"></script>
+    <script src="components/util/util.service.js"></script>
+    <!-- endinjector -->
+    <!-- endbuild -->
 </body>
 
 </html>
-  <script src="components/navbar/navbar.controller.js"></script>
-  <script src="components/navbar/navbar.directive.js"></script>
-  <script src="components/plugins/nifty/nifty.min.js"></script>
-  <script src="components/resources/cotizacion.service.js"></script>
-  <script src="components/resources/direccion.service.js"></script>
-  <script src="components/resources/empresa.service.js"></script>
-  <script src="components/resources/geocoding.service.js"></script>
-  <script src="components/resources/pedido.service.js"></script>
-  <script src="components/resources/refaccion.service.js"></script>
-  <script src="components/resources/sucursal.service.js"></script>
-  <script src="components/resources/template.service.js"></script>
-  <script src="components/socket/socket.service.js"></script>
-  <script src="components/util/util.service.js"></script>
-  <!-- endinjector -->
-  <!-- endbuild -->
+<script src="components/navbar/navbar.controller.js"></script>
+<script src="components/navbar/navbar.directive.js"></script>
+<script src="components/plugins/nifty/nifty.min.js"></script>
+<script src="components/resources/cotizacion.service.js"></script>
+<script src="components/resources/direccion.service.js"></script>
+<script src="components/resources/empresa.service.js"></script>
+<script src="components/resources/geocoding.service.js"></script>
+<script src="components/resources/pedido.service.js"></script>
+<script src="components/resources/refaccion.service.js"></script>
+<script src="components/resources/sucursal.service.js"></script>
+<script src="components/resources/template.service.js"></script>
+<script src="components/socket/socket.service.js"></script>
+<script src="components/util/util.service.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 
 </html>
- <!-- endinjector -->
-  <!-- endbuild -->
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 
 </html>
-  <script src="components/navbar/navbar.controller.js"></script>
-  <script src="components/navbar/navbar.directive.js"></script>
-  <script src="components/plugins/nifty/nifty.min.js"></script>
-  <script src="components/resources/cotizacion.service.js"></script>
-  <script src="components/resources/direccion.service.js"></script>
-  <script src="components/resources/empresa.service.js"></script>
-  <script src="components/resources/geocoding.service.js"></script>
-  <script src="components/resources/pedido.service.js"></script>
-  <script src="components/resources/refaccion.service.js"></script>
-  <script src="components/resources/sucursal.service.js"></script>
-  <script src="components/resources/template.service.js"></script>
-  <script src="components/socket/socket.service.js"></script>
-  <script src="components/util/util.service.js"></script>
-  
-  <!-- endinjector -->
-  <!-- endbuild -->
+<script src="components/navbar/navbar.controller.js"></script>
+<script src="components/navbar/navbar.directive.js"></script>
+<script src="components/plugins/nifty/nifty.min.js"></script>
+<script src="components/resources/cotizacion.service.js"></script>
+<script src="components/resources/direccion.service.js"></script>
+<script src="components/resources/empresa.service.js"></script>
+<script src="components/resources/geocoding.service.js"></script>
+<script src="components/resources/pedido.service.js"></script>
+<script src="components/resources/refaccion.service.js"></script>
+<script src="components/resources/sucursal.service.js"></script>
+<script src="components/resources/template.service.js"></script>
+<script src="components/socket/socket.service.js"></script>
+<script src="components/util/util.service.js"></script>
+<!-- endinjector -->
+<!-- endbuild -->
 </body>
 
 </html>
