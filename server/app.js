@@ -25,7 +25,7 @@ require('./routes').default(app);
 
 //LQMA 23/11/2016
 //**********************************************
-var multer = require('multer');
+//var multer = require('multer');
 var path = require('path');
 var formidable = require('formidable');
 
@@ -33,7 +33,7 @@ var fs = require('fs');
 
 var rutaDestino = 'C:/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/';
 
-var storage = multer.diskStorage({
+/*var storage = multer.diskStorage({
     destination: function(req, file, cb) {
 
         console.log('idDireccion')
@@ -48,7 +48,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({ storage: storage }).single('avatar');
+var upload = multer({ storage: storage }).single('avatar');*/
 
 app.post('/comprobante', function(req, res) {
 
