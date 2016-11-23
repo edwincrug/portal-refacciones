@@ -1,7 +1,7 @@
 'use strict';
 
 class ModalAprobacionComponent {
-    constructor($state, $scope, $stateParams, $http, User, Direccion) {
+    constructor($state, $scope, $stateParams, $http, User, Direccion, Vendedor) {
 
             $('.modal-aprobacion').modal('show')
             $('.modal-aprobacion').on('hidden.bs.modal', function(e) {
@@ -34,26 +34,44 @@ class ModalAprobacionComponent {
                     $scope.direccion = data.data[0];
 
                     Direccion.query({
-                        idUsuario: $scope.user.per_idpersona,
-                        idEmpresa: $scope.empresaActual.emp_idempresa,
-                        idSucursal: $scope.sucursalActual.AGENCIA,
-                        idDireccion: $stateParams.id,
-                        opcion: 3
-                    }, function(data) {
+                            idUsuario: $scope.user.per_idpersona,
+                            idEmpresa: $scope.empresaActual.emp_idempresa,
+                            idSucursal: $scope.sucursalActual.AGENCIA,
+                            idDireccion: $stateParams.id,
+                            opcion: 3
+                        }, function(data) {
 
-                        console.log('rutas succes!')
-                        console.log(data)
+                            console.log('rutas succes!')
+                            console.log(data)
 
-                        data.unshift({
-                            RUT_IDRUTA: 0,
-                            RUT_NOMBRERT: "Selecciona ..."
-                        })
+                            data.unshift({
+                                RUT_IDRUTA: 0,
+                                RUT_NOMBRERT: "Selecciona ..."
+                            })
 
-                        $scope.rutas = data;
-                        $scope.rutaActual = $scope.rutas[0];
+                            $scope.rutas = data;
+                            $scope.rutaActual = $scope.rutas[0];
 
-                        $scope.listaRutas = data;
-                    })
+                            $scope.listaRutas = data;
+
+                            Vendedor.query({
+                                idUsuario: $scope.user.per_idpersona,
+                                idEmpresa: $scope.empresaActual.emp_idempresa,
+                                idSucursal: $scope.sucursalActual.AGENCIA,
+                                idDireccion: $stateParams.id
+                            }, function(data) {
+
+                                data.unshift({
+                                    per_idpersona: 0,
+                                    nombre: "Selecciona ..."
+                                })
+
+                                $scope.vendedores = data;
+                                $scope.vendedorActual = $scope.vendedores[0];
+
+                            })
+
+                        }) // fin Direccion.query
 
                 })
 
@@ -108,16 +126,16 @@ class ModalAprobacionComponent {
             $scope.muestraComprobante = function() {
 
                 //$scope.idDireccion
-                window.open('http://192.168.20.9/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/IDCLIENTE/IDDIRECCION/3/3_comp.pdf', 'Comprobante de domicilio', 'height=400,width=600');
+                window.open('http://192.168.20.9/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/' +  $scope.direccion.RTD_IDPERSONA + '/' + $stateParams.id + '/' + $stateParams.id + '_comp.pdf', 'Comprobante de domicilio', 'height=400,width=600');
 
             }
 
             $scope.Procesar = function(operacion) {
 
-                    console.log('Procesar')                   
+                    console.log('Procesar')
 
 
-                    var operacionCadena = (operacion == 1) ? 'Aprobar' : 'Rechazar';
+                    var operacionCadena = (operacion == 2) ? 'Aprobar' : 'Rechazar';
 
                     new Promise(function(resolve, reject) {
 
@@ -139,7 +157,8 @@ class ModalAprobacionComponent {
                                 idUsuario: $scope.user.per_idpersona,
                                 idRuta: $scope.rutaActual.RUT_IDRUTA,
                                 idDireccion: $stateParams.id,
-                                operacionP: operacion
+                                operacionP: operacion,
+                                idVendedor: $scope.vendedorActual.per_idpersona
                             }
 
                             console.log('$scope.rutaActual')

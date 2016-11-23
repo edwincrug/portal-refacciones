@@ -17,6 +17,8 @@ export default function(app) {
   app.use('/api/sucursal', require('./api/sucursal'));
   app.use('/api/empresa', require('./api/empresa'));
 
+  app.use('/api/vendedor', require('./api/vendedor'));
+
   app.use('/api/estado', require('./api/estado'));
   app.use('/api/ciudad', require('./api/ciudad'));
   app.use('/api/municipio', require('./api/municipio'));

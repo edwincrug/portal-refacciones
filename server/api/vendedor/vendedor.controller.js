@@ -1,12 +1,3 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /sucursal              ->  index
- * POST    /sucursal              ->  create
- * GET     /sucursal/:id          ->  show
- * PUT     /sucursal/:id          ->  update
- * DELETE  /sucursal/:id          ->  destroy
- */
-
 'use strict';
 
 import _ from 'lodash';
@@ -61,28 +52,32 @@ function handleError(res, statusCode) {
 // Gets a list of Sucursals
 export function index(req, res) {
   var params = [];
+  
   params.push({
-    name: 'idUsuario',
-    value: req.query.user,
-    type: DataAccess.types.STRING
-  })
-  params.push({
-    name: 'idEmpresa',
-    value: req.query.empresa,
-    type: DataAccess.types.STRING
-  })
+        name: 'idUsuario',
+        value: req.query.idUsuario,
+        type: DataAccess.types.INT
+    })
 
-  if (req.query.role != undefined) {
-        params.push({
-            name: 'role',
-            value: req.query.role,
-            type: DataAccess.types.STRING
-        })
-    }
+    params.push({
+        name: 'idEmpresa',
+        value: req.query.idEmpresa,
+        type: DataAccess.types.INT
+    })
 
-  console.log(params)
+    params.push({
+        name: 'idSucursal',
+        value: req.query.idSucursal,
+        type: DataAccess.types.INT
+    })
+    
+    params.push({
+            name: 'idDireccion',
+            value: req.query.idDireccion,
+            type: DataAccess.types.INT
+        })    
 
-  DataAccess.query('SEL_SUCURSAL_SP', params, function(error, result) {
+  DataAccess.query('SEL_VENDEDOR_SP', params, function(error, result) {
     if(error) return handleError(res)(error);
     return respondWithResult(res)(result[0])
   });

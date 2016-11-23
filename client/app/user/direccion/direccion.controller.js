@@ -298,6 +298,9 @@
                                 )
                             }).then(function(operacion) {
 
+                                console.log('archivo:')
+                                console.log($scope.archivoComprobante)
+
                                 new Promise(function(resolve, reject) {
 
                                     Direccion.save({
@@ -333,12 +336,50 @@
                                             tel1_2: $scope.tel1_2,
                                             tel2_2: $scope.tel2_2,
                                             correo2: $scope.correo2,
-                                            correoGeneral: $scope.correoGeneral
+                                            correoGeneral: $scope.correoGeneral,
+                                            archivo: $scope.archivoComprobante
 
                                         }, function(data) {
                                             if (data) {
 
                                                 console.log(data)
+
+                                                if (data.estatus == "ok") {
+
+                                                    //console.log('ok dentro de Direccion.save')
+
+                                                    $scope.empresaActual = $scope.empresas[0];
+                                                    $scope.sucursalActual = {};
+                                                    $scope.estadoActual = {};
+                                                    $scope.ciudadActual = {};
+                                                    $scope.municipioActual = {};
+                                                    $scope.coloniaActual = {};
+                                                    $scope.cpActual = {};
+
+                                                    $scope.calle = '';
+                                                    $scope.exterior = '';
+                                                    $scope.interior = '';
+                                                    $scope.referencia = '';
+
+                                                    $scope.nombre1 = '';
+                                                    $scope.apaterno1 = '';
+                                                    $scope.amaterno1 = '';
+                                                    $scope.rfc1 = '';
+                                                    $scope.lada1 = '';
+                                                    $scope.tel1_1 = '';
+                                                    $scope.tel2_1 = '';
+                                                    $scope.correo1 = '';
+
+                                                    $scope.nombre2 = '';
+                                                    $scope.apaterno2 = '';
+                                                    $scope.amaterno2 = '';
+                                                    $scope.rfc2 = '';
+                                                    $scope.lada2 = '';
+                                                    $scope.tel1_2 = '';
+                                                    $scope.tel2_2 = '';
+                                                    $scope.correo2 = '';
+                                                    $scope.correoGeneral = '';
+                                                }
 
                                                 /*if (data.estatus == "ok") {
 
@@ -361,11 +402,31 @@
 
                                 }).then(function(respuesta) {
 
-                                    bootbox.alert("<h4>Aprobación exitosa! " + respuesta.mensaje + " </h4>",
-                                        function() {
-                                            $('.modal-aprobacion').modal('hide')
-                                                //$state.go("user.aprobacion")
-                                        });
+                                    if (respuesta.estatus = 'ok') {
+                                        //console.log('inicia setTimeout')
+
+                                        //$("#upload_form").submit();
+
+                                        $scope.guardarArchivo(respuesta.idDireccion, $scope.user.per_idpersona);
+
+                                        bootbox.alert("<h4>" + respuesta.mensaje + " </h4>",
+                                            function() {
+                                                $('.modal-aprobacion').modal('hide')
+                                                    //$state.go("user.aprobacion")
+                                            });
+
+                                    } //if respuesta.estatus = 0k
+                                    else { //error al guardar
+
+                                        console.log('error al guardar')
+
+                                        bootbox.alert("<h4>" + respuesta.mensaje + " </h4>",
+                                            function() {
+                                                $('.modal-aprobacion').modal('hide')
+                                                    //$state.go("user.aprobacion")
+                                            });
+
+                                    }
 
                                 })
 
@@ -374,16 +435,77 @@
                     } // fin guarda direccion
 
 
-                $scope.guardarArchivo = function(filesss) {
-                    console.log('hola archivo', $scope.file)
+                $scope.guardarArchivo = function(idDireccion, idCliente) {
 
-                }
+                        var files = $('#avatar').prop("files"); //$(ele).get(0).files;
+
+                        if (files.length > 0) {
+                            // create a FormData object which will be sent as the data payload in the
+                            // AJAX request
+                            var formData = new FormData();
+
+                            // loop through all the selected files and add them to the formData object
+                            for (var i = 0; i < files.length; i++) {
+                                var file = files[i];
+
+                                // add the files to formData object for the data payload
+                                formData.append('avatar', file, idDireccion + '_' + idCliente + '.pdf');
+                            }
+
+                            $.ajax({
+                                url: '/comprobante',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(data) {
+                                    console.log('upload successful!\n' + data);
+                                },
+                                xhr: function() {
+                                    // create an XMLHttpRequest
+                                    var xhr = new XMLHttpRequest();
+
+                                    // listen to the 'progress' event
+                                    xhr.upload.addEventListener('progress', function(evt) {
+
+                                        if (evt.lengthComputable) {
+                                            // calculate the percentage of upload completed
+                                            var percentComplete = evt.loaded / evt.total;
+                                            percentComplete = parseInt(percentComplete * 100);
+
+                                            // update the Bootstrap progress bar with the new percentage
+                                            $('.progress-bar').text(percentComplete + '%');
+                                            $('.progress-bar').width(percentComplete + '%');
+
+                                            // once the upload reaches 100%, set the progress bar text to done
+                                            if (percentComplete === 100) {
+                                                $('.progress-bar').html('Done');
+                                            }
+
+                                        }
+
+                                    }, false);
+
+                                    return xhr;
+                                }
+                            });
+                        } //if file.length
+
+
+                    } //guardar archivo
 
                 $scope.fileNameChanged = function(ele) {
 
-                        console.log(ele)
+                        /*console.log(ele)
+                        //console.log(ele)
+                        var archivo1 = $('#avatar').prop("files")
+                        console.log(archivo1)
 
-                        var files = ele.files;
+
+                        var files = $('#avatar').prop("files")
+                        console.log('archivos: ')
+                        console.log(files)    
+
                         var l = files.length;
                         var namesArr = [];
 
@@ -391,20 +513,82 @@
                             namesArr.push(files[i].name);
                         }
 
-                        console.log(files[0])
+                        $scope.archivoComprobante = files[0];
+
+                        console.log('archivo:')
+                        console.log($scope.archivoComprobante)
+
+                        console.log(files[0])*/
+
+                        var files = $('#avatar').prop("files"); //$(ele).get(0).files;
+
+                        if (files.length > 0) {
+                            // create a FormData object which will be sent as the data payload in the
+                            // AJAX request
+                            var formData = new FormData();
+
+                            // loop through all the selected files and add them to the formData object
+                            for (var i = 0; i < files.length; i++) {
+                                var file = files[i];
+
+                                // add the files to formData object for the data payload
+                                formData.append('avatar', file, 40 + '_' + 78425 + '.pdf');
+                            }
+
+                            $.ajax({
+                                url: '/comprobante',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(data) {
+                                    console.log('upload successful!\n' + data);
+                                },
+                                xhr: function() {
+                                    // create an XMLHttpRequest
+                                    var xhr = new XMLHttpRequest();
+
+                                    // listen to the 'progress' event
+                                    xhr.upload.addEventListener('progress', function(evt) {
+
+                                        if (evt.lengthComputable) {
+                                            // calculate the percentage of upload completed
+                                            var percentComplete = evt.loaded / evt.total;
+                                            percentComplete = parseInt(percentComplete * 100);
+
+                                            // update the Bootstrap progress bar with the new percentage
+                                            $('.progress-bar').text(percentComplete + '%');
+                                            $('.progress-bar').width(percentComplete + '%');
+
+                                            // once the upload reaches 100%, set the progress bar text to done
+                                            if (percentComplete === 100) {
+                                                $('.progress-bar').html('Done');
+                                            }
+
+                                        }
+
+                                    }, false);
+
+                                    return xhr;
+                                }
+                            });
+                        } //if file.length
 
                     } //fin fileNameChanged
 
-                    
-
                 $scope.elegirDireccion = function(direccion) {
-                    $scope.spinner2 = true;
-                    $scope.$parent.$parent.direccionActual = direccion;
-                    var dir = direccion.RTD_CALLE1 + " " + direccion.RTD_NUMEXTER + " " + direccion.RTD_COLONIA + " " + direccion.RTD_DELEGAC + " " + direccion.RTD_CIUDAD + " " + direccion.RTD_CODPOS;
-                    $scope.mapaActual = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
-                        //$scope.mapaActual = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
-                }
+                        $scope.spinner2 = true;
+                        $scope.$parent.$parent.direccionActual = direccion;
+                        var dir = direccion.RTD_CALLE1 + " " + direccion.RTD_NUMEXTER + " " + direccion.RTD_COLONIA + " " + direccion.RTD_DELEGAC + " " + direccion.RTD_CIUDAD + " " + direccion.RTD_CODPOS;
+                        $scope.mapaActual = "https://www.google.com/maps/embed/v1/place?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
+                            //$scope.mapaActual = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBFoh96sELDelI27Pfwk5mGLsqFYt99AZM&q=" + dir
+                    } //fin elegirDireccion
 
+
+                $scope.sendForm = function() {
+
+                    console.log('pelucon!')
+                }
 
             } //fin constructor
     }

@@ -93,7 +93,7 @@
                                         <!--Calle-->
                                         <div class="form-group">
                                             <label class="control-label">Calle:</label>
-                                            <input type="text" class="form-control" placeholder="Calle" ng-model="calle">
+                                            <input type="text" class="form-control" placeholder="Calle" ng-model="calle" maxlength="64">
                                             <small class="help-block"></small>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                         <!--No. Ext.-->
                                         <div class="form-group">
                                             <label class="control-label">No. Ext.:</label>
-                                            <input type="text" class="form-control" placeholder="Número Exterior" ng-model="exterior">
+                                            <input type="text" class="form-control" placeholder="Número Exterior" ng-model="exterior" maxlength="20">
                                             <small class="help-block"></small>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                                         <!--No. Int.-->
                                         <div class="form-group">
                                             <label class="control-label">No. Int.:</label>
-                                            <input type="text" class="form-control" placeholder="Número Interior" ng-model="interior">
+                                            <input type="text" class="form-control" placeholder="Número Interior" ng-model="interior" maxlength="20">
                                             <small class="help-block"></small>
                                         </div>
                                     </div>
@@ -127,20 +127,21 @@
                                         <!--Referencia-->
                                         <div class="form-group">
                                             <label class="col-md-1 control-label" for="demo-textarea-input">Referencia:</label>
-                                            <textarea id="demo-textarea-input" rows="2" class="form-control" placeholder="Referencia del domicilio" ng-model="referencia"></textarea>
+                                            <textarea id="demo-textarea-input" rows="2" class="form-control" placeholder="Referencia del domicilio" maxlength="300" ng-model="referencia"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <!--label class="col-md-6 control-label">Comprobante de domicilio</label-->
                                             <div class="col-md-12">
-                                                <form id="upload_form">
+                                                <form id="upload_form" action="/comprobante" method="POST" enctype="multipart/form-data">
                                                     <div style="padding-top: 21px;">
                                                         <label class="btn btn-info" style="background-color: #7B8599;">
                                                             <span class="fa fa-search"> Comprobante de domicilio</span>
-                                                            <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'pdf/*'" accept="pdf/*" ngf-max-size="20MB" onchange="angular.element(this).scope().fileNameChanged(this)" />
+                                                            <input type="file" ngf-select ngf-pattern="'pdf/*'" name="avatar" id="avatar" accept="pdf/*" ngf-max-size="20MB" /><!--onchange="angular.element(this).scope().fileNameChanged(this)" -->
                                                         </label>
                                                     </div>
+                                                    <input type='submit'>
                                                     <!--                                                                        <p>{{progress}}</p>-->
                                                 </form>
                                                 </span>
@@ -162,131 +163,138 @@
                                         <p>
                                     </div>
                                 </div>
-                                <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
-                                    <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
-                                        <h4 class="panel-title">Contacto 1</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Nombre</label>
-                                            <input type="text" class="form-control" ng-model="nombre1">
+                                <form name="mainForm" ng-submit="guardaDireccion()">
+                                    <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                        <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                            <h4 class="panel-title">Contacto 1</h4>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Apellido Paterno</label>
-                                            <input type="text" class="form-control" ng-model="apaterno1">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Nombre</label>
+                                                <input type="text" class="form-control" ng-model="nombre1" maxlength="80">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Apellido Paterno</label>
+                                                <input type="text" class="form-control" ng-model="apaterno1" maxlength="40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Apellido Materno</label>
+                                                <input type="text" class="form-control" ng-model="amaterno1" maxlength="40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">R.F.C.</label>
+                                                <input type="text" class="form-control" ng-model="rfc1" maxlength="15">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Apellido Materno</label>
-                                            <input type="text" class="form-control" ng-model="amaterno1">
+                                    <div class="row ">
+                                        <div class="col-sm-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Lada</label>
+                                                <input type="text" class="form-control" ng-model="lada1" maxlength="6">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Telefono 1</label>
+                                                <input type="text" class="form-control" ng-model="tel1_1" maxlength="12">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Telefono 2</label>
+                                                <input type="text" class="form-control" ng-model="tel2_1" maxlength="12">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label class="control-label" for="demo-email-input">Correo electronico Contacto 1</label>
+                                                <input type="email" class="form-control" ng-model="correo1" maxlength="64">
+                                                <span class="error" ng-show="mainForm.correo1.$error.email">invalid email</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">R.F.C.</label>
-                                            <input type="text" class="form-control" ng-model="rfc1">
+                                    <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                        <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
+                                            <h4 class="panel-title">Contacto 2</h4>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row ">
-                                    <div class="col-sm-1">
-                                        <div class="form-group">
-                                            <label class="control-label">Lada</label>
-                                            <input type="text" class="form-control" ng-model="lada1">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Nombre</label>
+                                                <input type="text" class="form-control" ng-model="nombre2" maxlength="80">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Apellido Paterno</label>
+                                                <input type="text" class="form-control" ng-model="apaterno2" maxlength="40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Apellido Materno</label>
+                                                <input type="text" class="form-control" ng-model="amaterno2" maxlength="40">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label ">R.F.C.</label>
+                                                <input type="text" class="form-control" ng-model="rfc2" maxlength="15">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Telefono 1</label>
-                                            <input type="text" class="form-control" ng-model="tel1_1">
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <div class="form-group">
+                                                <label class="control-label">Lada</label>
+                                                <input type="text" class="form-control" ng-model="lada2" maxlength="6">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Telefono 1</label>
+                                                <input type="tel" class="form-control" ng-model="tel1_2" maxlength="12">
+                                                <span class="error" ng-show="mainForm.tel1_2.$error.tel">invalid email</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label class="control-label">Telefono 2</label>
+                                                <input type="text" class="form-control" ng-model="tel2_2" maxlength="12">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label class="control-label" for="demo-email-input">Correo electronico Contacto 2</label>
+                                                <input type="email" id="mailContacto2" class="form-control" ng-model="correo2" maxlength="64">
+                                                <span class="error" ng-show="mainForm.mailContacto2.$error.email">invalid email</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Telefono 2</label>
-                                            <input type="text" class="form-control" ng-model="tel2_1">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="control-label" for="demo-email-input">Correo electronico general de sucursal</label>
+                                                <input type="email" class="form-control" ng-model="correoGeneral" maxlength="64">
+                                                <span class="error" ng-show="mainForm.correoGeneral.$error.email">invalid email</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label class="control-label" for="demo-email-input">Correo electronico Contacto 1</label>
-                                            <input type="email" class="form-control" ng-model="correo1">
-                                        </div>
+                                    <div class="panel-footer text-right" style="background-color: #FFFFFF;">
+                                        <button type="submit" class="finish btn btn-info">Guardar dirección</button>
+                                        <!--a ng-click="guardaDireccion()" type="button" class="finish btn btn-info">Guardar dirección</a-->
                                     </div>
-                                </div>
-                                <div class="row" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
-                                    <div class="panel-heading" style="background-color: #BBC6DA; height: 40px; padding: 0px;">
-                                        <h4 class="panel-title">Contacto 2</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Nombre</label>
-                                            <input type="text" class="form-control" ng-model="nombre2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Apellido Paterno</label>
-                                            <input type="text" class="form-control" ng-model="apaterno2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Apellido Materno</label>
-                                            <input type="text" class="form-control" ng-model="amaterno2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label ">R.F.C.</label>
-                                            <input type="text" class="form-control" ng-model="rfc2">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <div class="form-group">
-                                            <label class="control-label">Lada</label>
-                                            <input type="text" class="form-control" ng-model="lada2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Telefono 1</label>
-                                            <input type="text" class="form-control" ng-model="tel1_2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label class="control-label">Telefono 2</label>
-                                            <input type="text" class="form-control" ng-model="tel2_2">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
-                                            <label class="control-label" for="demo-email-input">Correo electronico Contacto 2</label>
-                                            <input type="email" class="form-control" ng-model="correo2">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label class="control-label" for="demo-email-input">Correo electronico general de sucursal</label>
-                                            <input type="email" class="form-control" ng-model="correoGeneral">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-footer text-right" style="background-color: #FFFFFF;">
-                                    <a ng-click="guardaDireccion()" type="button" class="finish btn btn-info">Guardar dirección</a>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

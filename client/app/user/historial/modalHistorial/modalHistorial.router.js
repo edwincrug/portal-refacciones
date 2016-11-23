@@ -53,7 +53,7 @@ class ModalHistorialComponent {
                                          'DIRECCION':$scope.empresa.DIRECCION,'name':$scope.user.name,'TELEFONO': $scope.empresa.TELEFONO,
                                          'DIRCLIENTE':$scope.empresa.DIRCLIENTE,'CORREOCLIENTE':$scope.empresa.CORREOCLIENTE,
                                          'TELCLIENTE': $scope.empresa.TELCLIENTE,'subtotal': $scope.subtotal,'iva':($scope.subtotal * .16),
-                                         'total':$scope.totalPedido + ($scope.subtotal * .16)}];
+                                         'total':$scope.totalPedido + ($scope.subtotal * .16),'colorEstatus': $scope.colorEstatus,'estatus':'HISTORICO'}];
 
 
             var jsonData = {

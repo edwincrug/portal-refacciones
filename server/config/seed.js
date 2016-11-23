@@ -26,10 +26,10 @@ User.sync()
     }, {
       provider: 'local',
       role: 'admin',
-      name: 'Admin',
-      rfc: 'PAGO910812AAA',
-      password: 'admin',
-      per_idpersona:10
+      name: 'ADMINISTRADOR REFACCIONES',
+      rfc: 'MPI',
+      password: '1234',
+      per_idpersona:15
     },{
       provider: 'local',
       name: 'CENTRO AUTOMOTRIZ DE LA LAGUNA, S.A. DE C.V.',

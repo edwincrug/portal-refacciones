@@ -15,7 +15,8 @@
                 $scope.user = data;
                 $scope.listaCotizaciones = [];
                 Empresa.query({
-                    user: $scope.user.per_idpersona
+                    user: $scope.user.per_idpersona,
+                    role: $scope.user.role
                 }, function(data) {
                     data.unshift({
                         emp_idempresa: 0,
@@ -169,9 +170,13 @@
                 }
 
                 $scope.consultaSucursales = function() {
+
+                        //$scope.sucursales = []
+
                         Sucursal.query({
                             user: $scope.user.per_idpersona,
-                            empresa: $scope.empresaActual.emp_idempresa
+                            empresa: $scope.empresaActual.emp_idempresa,                            
+                            role: $scope.user.role
                         }, function(data) {
                             data.unshift({
                                 AGENCIA: "0",
@@ -184,7 +189,7 @@
                             //SET SUCURSAL DESDE LOCALSTORAGE   BEGIN
                             if (localStorage.getItem('cotSucursal') !== null) {
 
-                                console.log('existe sucursal cotizacion')
+                                /*console.log('existe sucursal cotizacion')
 
                                 $scope.cotSucursal = []
 
@@ -203,7 +208,7 @@
                                     //$scope.consultaCotizaciones();
                                     $scope.cambioSucursal();
 
-                                }, 10);
+                                }, 10);*/
 
                             } //SET SUCURSAL DESDE LOCALSTORAGE  END
                         })

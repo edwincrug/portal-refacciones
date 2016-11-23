@@ -49,3 +49,18 @@ export function index(req, res) {
     return respondWithResult(res)(result[0])
   });
 }
+
+export function create(req, res) {
+
+    console.log('datos en el BODY!asdas!!')
+
+    console.log('req.body')
+    console.log(req.body)
+    console.log('req.file')
+    console.log(req.file)
+    console.log('req.files')
+    console.log(req.files)
+    console.log('regresar respuestsdsa!')
+
+    return respondWithResult(res, 201)('uuuu')
+}

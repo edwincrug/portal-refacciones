@@ -396,7 +396,9 @@ export function create(req, res) {
         type: DataAccess.types.STRING
     })
 
-    console.log('inserta direccion: ')
+    console.log('archivo: ')    
+    console.log(req.body.archivo)
+    console.log('inserta direccion: ')    
     console.log(params)
 
     DataAccess.query('INS_DIRECCION_CLIENTE_SP', params, function(error, result) {
@@ -449,6 +451,12 @@ export function update(req, res) {
     params.push({
         name: 'operacion',
         value: req.body.operacionP,
+        type: DataAccess.types.DECIMAL
+    })
+
+    params.push({
+        name: 'idVendedor',
+        value: req.body.idVendedor,
         type: DataAccess.types.DECIMAL
     })
 

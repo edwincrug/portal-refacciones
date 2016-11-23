@@ -60,7 +60,7 @@ class ModalPedidoComponent {
                                          'DIRECCION':$scope.empresa.DIRECCION,'name':$scope.user.name,'TELEFONO': $scope.empresa.TELEFONO,
                                          'DIRCLIENTE':$scope.empresa.DIRCLIENTE,'CORREOCLIENTE':$scope.empresa.CORREOCLIENTE,
                                          'TELCLIENTE': $scope.empresa.TELCLIENTE,'subtotal': $scope.subtotal,'iva':($scope.subtotal * .16),
-                                         'total':$scope.totalPedido + ($scope.subtotal * .16)}];
+                                         'total':$scope.totalPedido + ($scope.subtotal * .16),'colorEstatus': $scope.colorEstatus,'estatus':$scope.estatus}];
                 /*rptStructure.totalT2 = result.data.listaTotales[1];
 
                 rptStructure.payDocT1 = result.data.listaDocPagados[0];
