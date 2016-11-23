@@ -126,7 +126,7 @@ class ModalAprobacionComponent {
             $scope.muestraComprobante = function() {
 
                 //$scope.idDireccion
-                window.open('http://192.168.20.9/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/' +  $scope.direccion.RTD_IDPERSONA + '/' + $stateParams.id + '/' + $stateParams.id + '_comp.pdf', 'Comprobante de domicilio', 'height=400,width=600');
+                window.open('http://192.168.20.9/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/' +  $scope.direccion.RTD_IDPERSONA + '/' + $stateParams.id + '/' + $stateParams.id + '_comprobante.pdf', 'Comprobante de domicilio', 'height=400,width=600');
 
             }
 
