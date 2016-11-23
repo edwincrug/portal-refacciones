@@ -197,5 +197,47 @@ sqldb.sequelize.sync()
         console.log('Server failed to start due to error: %s', err);
     });
 
+
+    
+var io = require('socket.io')(server);
+var lstSocketAdmin = [];
+var lstSocketUser = [];
+
+
+io.on('connection', function(socket) {
+
+
+    socket.on('set admin', function(objUser) {
+        lstSocketAdmin.push(objUser);        
+        console.log("Admin seteado");
+    });
+
+    socket.on('set user', function(objUser) {
+        lstSocketUser.push(objUser);
+        io.emit('refreshUSer', objUser);
+        console.log("usuario seteado");
+    });
+
+    socket.on('disconnect', function() {
+        console.log(socket.id);
+    });
+
+    socket.on('response channel', function(objUser) {
+
+        switch (objUser.type) {
+            case 0: //administrador a usuario
+                io.emit(objUser.guidUser, objUser);
+                break;
+            case 1: //usuario a administrador                
+                io.emit(objUser.guidAdmin, objUser);
+
+                break;
+            default:
+                console.log("typo de usuario no valido");
+        }
+
+    });
+});
+
 // Expose app
 exports = module.exports = app;

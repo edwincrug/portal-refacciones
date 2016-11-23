@@ -161,3 +161,39 @@
     </div>
     <div ui-view></div>
 </div>
+<!-- aqui empieza el chat-->
+<div id="mainChatWindow">
+    <input id="hdnNickName" type="hidden" value="{{user.name}}">
+    <div id="chatWindow" class="small-chat-box">
+        <div class="heading" draggable="true">
+            <small class="chat-date pull-right">
+                23.11.2016
+            </small> Chat cliente
+        </div>
+        <div id="chatContent" class="content">
+        </div>
+        <form id="frmClient" action="" class="form-chat">
+            <div class="input-group input-group-sm">
+                <input type="text" class="form-control" id="txtMessage" autocomplete="off" aria-label="..."> <span class="input-group-btn"> 
+                <button class="btn btn-default" type="button" onclick="userSubmit()">Enviar </button> < /span>
+            </div>
+        </form>
+    </div>
+    <div id="small-chat">
+        <span class="badge badge-warning pull-right">5</span>
+                <a class="open-small-chat" onclick="showHideChat()">
+                    <i class="glyphicon glyphicon-comment"></i>
+                </a>
+            </div>
+    </div>
+    <!--
+<button onclick="setUserChat()">Click me</button>
+<button onclick="starListenUser()">startListen</button>
+-->
+    <script type="text/javascript">
+    $('form').submit(function() {
+        userSubmit();
+        return false;
+    });
+    </script>
+    <!-- aqui termina el chat-->

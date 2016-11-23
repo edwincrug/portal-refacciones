@@ -1,0 +1,64 @@
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Conectados</div>
+                    <div class="panel-body">
+                        <!-- Nav tabs -->
+                        <ul id="mnuConnectedUsers" class="nav nav-pills nav-stacked chatGreen" role="tablist">
+                            <!-- <li role="presentation" class="active"><a value="home" href="#home" role="tab" onclick="return setCurrentUser(this)" data-toggle="tab">Usuarios activos</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">Desconectados</div>
+                    <div class="panel-body"></div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Chat</div>
+                    <div class="panel-body">
+                        <!-- Tab panes -->
+                        <div id="pnlConnectedUsers" class="tab-content" style="height:400px; overflow:auto;">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                Bienvenido al chat
+                                <ul id="messages"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" id="txtMessage" autocomplete="off" aria-label="..."> <span class="input-group-btn"> 
+                <button class="btn btn-primary" type="button" onclick="adminSubmit()">Enviar </button> < /span>
+            </div>
+             
+                </form>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+<button onclick="setAdminChat()">setadmin</button>
+<button onclick="starListenAdmin()">startListen</button>
+<button onclick="getUsers()">getuser</button>
+-->
+
+<script type="text/javascript">
+
+(function(){    
+     var elem = document.getElementById('mainChatWindow');
+    elem.parentNode.removeChild(elem);
+    initAdmin();   
+})();
+
+$('form').submit(function() {
+    adminSubmit();
+    return false;
+});
+</script>
