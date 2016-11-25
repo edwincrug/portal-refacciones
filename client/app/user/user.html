@@ -154,6 +154,7 @@
         </div>
         <div class="pnlBodyBar pull-right">
             <h4><strong>{{user.name}}</strong></h4>
+            <h4><strong>{{datosContacto.emp_nombre}}</strong></h4>
         </div>
         <!--div class="pnlBodyBar pull-right">
             <button type="button" class="btn btn-default" onclick="openCloseNav()"><span class="glyphicon glyphicon-menu-hamburger"> </span> </button>
@@ -162,7 +163,7 @@
     <div ui-view></div>
 </div>
 <!-- aqui empieza el chat-->
-<div id="mainChatWindow">
+<!--div id="mainChatWindow">
     <input id="hdnNickName" type="hidden" value="{{user.name}}">
     <div id="chatWindow" class="small-chat-box">
         <div class="heading" draggable="true">
@@ -175,25 +176,25 @@
         <form id="frmClient" action="" class="form-chat">
             <div class="input-group input-group-sm">
                 <input type="text" class="form-control" id="txtMessage" autocomplete="off" aria-label="..."> <span class="input-group-btn"> 
-                <button class="btn btn-default" type="button" onclick="userSubmit()">Enviar </button> < /span>
+                <button class="btn btn-default" type="button" onclick="userSubmit()">Enviar </button> </span>
             </div>
         </form>
     </div>
     <div id="small-chat">
         <span class="badge badge-warning pull-right">5</span>
-                <a class="open-small-chat" onclick="showHideChat()">
-                    <i class="glyphicon glyphicon-comment"></i>
-                </a>
-            </div>
+        <a class="open-small-chat" onclick="showHideChat()">
+            <i class="glyphicon glyphicon-comment"></i>
+        </a>
     </div>
-    <!--
+</div-->
+<!--
 <button onclick="setUserChat()">Click me</button>
 <button onclick="starListenUser()">startListen</button>
 -->
-    <script type="text/javascript">
-    $('form').submit(function() {
-        userSubmit();
-        return false;
-    });
-    </script>
-    <!-- aqui termina el chat-->
+<script type="text/javascript">
+$('form').submit(function() {
+    userSubmit();
+    return false;
+});
+</script>
+<!-- aqui termina el chat-->

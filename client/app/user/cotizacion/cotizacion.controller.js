@@ -46,6 +46,7 @@
 
                 $scope.cambioEmpresa = function() {
                     if ($scope.empresaActual.emp_idempresa != 0) {
+                        
 
                         $scope.cotEmpresa = []
 

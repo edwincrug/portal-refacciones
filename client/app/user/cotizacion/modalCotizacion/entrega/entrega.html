@@ -8,7 +8,7 @@
   </div>
   <div class="row map-container">
     <div ng-show="direcciones.length > 0">
-      <div class="col-xs-6 col-md-5">
+      <div class="col-xs-6 col-md-5" style="overflow: auto;">
         <h4>Selecciona una direccion de entrega:</h4>
         <div ng-repeat="direccion in direcciones" class="radio">
           <input ng-checked="{{direccion.selected}}" ng-click="elegirDireccion(direccion)"  id="radioDireccion{{$index}}" class="magic-radio" type="radio" name="form-radio-button">

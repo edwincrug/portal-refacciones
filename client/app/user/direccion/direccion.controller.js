@@ -301,6 +301,13 @@
                                 console.log('archivo:')
                                 console.log($scope.archivoComprobante)
 
+                                var files = $('#avatar').prop("files"); //$(ele).get(0).files;
+                                
+                                $scope.comprobante = 0;
+
+                                if (files.length > 0)
+                                        $scope.comprobante = 1;
+
                                 new Promise(function(resolve, reject) {
 
                                     Direccion.save({
@@ -337,7 +344,9 @@
                                             tel2_2: $scope.tel2_2,
                                             correo2: $scope.correo2,
                                             correoGeneral: $scope.correoGeneral,
-                                            archivo: $scope.archivoComprobante
+                                            archivo: $scope.archivoComprobante,
+
+                                            comprobante: $scope.comprobante
 
                                         }, function(data) {
                                             if (data) {
@@ -379,6 +388,7 @@
                                                     $scope.tel2_2 = '';
                                                     $scope.correo2 = '';
                                                     $scope.correoGeneral = '';
+
                                                 }
 
                                                 /*if (data.estatus == "ok") {

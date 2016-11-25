@@ -33,6 +33,9 @@ class ModalAprobacionComponent {
 
                     $scope.direccion = data.data[0];
 
+                    console.log('compbante:')
+                    console.log($scope.direccion.comprobante)
+
                     Direccion.query({
                             idUsuario: $scope.user.per_idpersona,
                             idEmpresa: $scope.empresaActual.emp_idempresa,

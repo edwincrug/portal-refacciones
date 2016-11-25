@@ -115,9 +115,47 @@
 
                             $scope.listaDirecciones = data;
 
+
+                            $('#tblDireccionFiltros').DataTable().destroy();
+
+                            setTimeout(function() {
+                                $scope.setTablePaging('tblDireccionFiltros');
+
+                                $("#tblDireccionFiltros_length").removeClass("dataTables_info").addClass("hide-div");
+                                $("#tblDireccionFiltros_filter").removeClass("dataTables_info").addClass("pull-left");
+
+                            }, 1);
+
                         })
 
                     } //end cambio sucursales
+
+                $scope.setTablePaging = function(idTable) {
+                    $('#' + idTable).DataTable({
+                        dom: '<"html5buttons"B>lTfgitp',
+                        order: [0, 'desc'],
+                        buttons: [{
+                            extend: 'copy'
+                        }, {
+                            extend: 'csv'
+                        }, {
+                            extend: 'excel',
+                            title: 'ExampleFile'
+                        }, {
+                            extend: 'pdf',
+                            title: 'ExampleFile'
+                        }, {
+                            extend: 'print',
+                            customize: function(win) {
+                                $(win.document.body).addClass('white-bg');
+                                $(win.document.body).css('font-size', '10px');
+                                $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                            }
+                        }]
+                    });
+                }; //end setTablePaging
 
                 $scope.consultaCotizaciones = function() {
 
@@ -175,7 +213,7 @@
 
                         Sucursal.query({
                             user: $scope.user.per_idpersona,
-                            empresa: $scope.empresaActual.emp_idempresa,                            
+                            empresa: $scope.empresaActual.emp_idempresa,
                             role: $scope.user.role
                         }, function(data) {
                             data.unshift({

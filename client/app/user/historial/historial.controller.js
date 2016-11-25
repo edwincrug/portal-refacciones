@@ -269,7 +269,7 @@
                         }
                     }]
                 });
-            };
+            };//end setTablePaging
 
 
             $scope.consultaSucursales = function() {

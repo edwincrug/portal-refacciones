@@ -396,6 +396,12 @@ export function create(req, res) {
         type: DataAccess.types.STRING
     })
 
+    params.push({
+        name: 'comprobante',
+        value: req.body.comprobante,
+        type: DataAccess.types.INT
+    })
+
     console.log('archivo: ')    
     console.log(req.body.archivo)
     console.log('inserta direccion: ')    

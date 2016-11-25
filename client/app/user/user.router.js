@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('refacciones')
-  .config(function($stateProvider) {
+  .config(function($stateProvider) {   
 
     
     $stateProvider.state('user', {
@@ -12,7 +12,6 @@ angular.module('refacciones')
       controller:function($scope,$state,User,Auth){
 
         closeNav();
-
 
         User.get(function(data){         
 

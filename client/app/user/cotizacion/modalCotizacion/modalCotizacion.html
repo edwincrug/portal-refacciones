@@ -1,79 +1,110 @@
 <div class="modal fade modal-cotizacion" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span>Crédito autorizado: {{sucursalActual.Con_LimCredito | currency}}</span>
-        <div class="progress progress-lg pull-right">
-          <div class="restante">
-              Crédito disponible: {{disponible - total | currency }}
-          </div>
-          <div style="width: {{((disponible - total)/disponible)*100}}%" class="progress-bar progress-bar-success"></div>
-          <div style="width: {{((total)/disponible)*100}}%" class="progress-bar progress-bar-danger"></div>
-        </div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>
-        <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
-      </div>
-      <div style="padding:0px" class="modal-body">
-        <div id="demo-step-wz">
-          <div class="wz-heading wz-w-label bg-info">
-            <div class="progress progress-sm">
-              <div style="width: 75%; margin: 0px 12.5%;" class="progress-bar progress-bar-dark bg-gray"></div>
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--div class="row">
+                    <div class="col-sm-3">
+                        <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización" }}</h3>
+                        <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
+                    </div>
+                    <div class="col-sm-4" style="background-color: #BF5959 !important;">
+                        <h5><b>Sucursal: {{sucursalActual.NOMBRE_AGENCIA}}</b></h5>
+                        <p><h5>Dirección: {{sucursalActual.dirSuc }}</h5></p>
+                        <h5>Teléfono: <span class="texto-izquierda text-semibold">{{sucursalActual.telSuc }}</span></h5>
+                    </div>
+                    <div class="col-sm-5" style="background-color: #6359BF !important;">
+                        <div class="progress progress-lg pull-right">
+                            <div class="restante">
+                                Crédito disponible: {{disponible - total | currency }}
+                            </div>
+                            <div style="width: {{((disponible - total)/disponible)*100}}%" class="progress-bar progress-bar-success"></div>
+                            <div style="width: {{((total)/disponible)*100}}%" class="progress-bar progress-bar-danger"></div>
+                        </div>
+                    </div>
+                </div-->
+                <span>Crédito autorizado: {{sucursalActual.Con_LimCredito | currency}}</span>
+                <div class="progress progress-lg pull-right">
+                    <div class="restante">
+                        Crédito disponible: {{disponible - total | currency }}
+                    </div>
+                    <div style="width: {{((disponible - total)/disponible)*100}}%" class="progress-bar progress-bar-success"></div>
+                    <div style="width: {{((total)/disponible)*100}}%" class="progress-bar progress-bar-danger"></div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div style="display:inline-block; margin: 0px;">
+                    <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización"}}</h3>
+                    <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
+                </div>
+                <div style="display:inline-block; width: 41%; padding-bottom: -1px;">
+                    <div style=" padding-top: 0px; padding-bottom: 0px;">
+                        <div style="padding-top: 0px; padding-bottom: 0px;">
+                            <h5><b>Sucursal:</b> {{sucursalActual.NOMBRE_AGENCIA}}</h5></div>
+                        <div style="padding-top: 0px; padding-bottom: 0px;">
+                                <h5><b>Dirección:</b> {{sucursalActual.dirSuc }}</h5>
+                        </div>
+                        <div style="padding-top: 0px; padding-bottom: 0px;">
+                            <h5><b>Teléfono:</b> <span class="texto-izquierda text-semibold">{{sucursalActual.telSuc }}</span></h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ul class="wz-steps wz-icon-bw wz-nav-off text-lg">
-              <li class="col-xs-4 active">
-                <a data-toggle="tab" href="#demo-step-tab1" aria-expanded="false">
-                  <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
-        					                                    <span class="wz-icon icon-txt text-bold">1</span>
-                  <i class="wz-icon-done fa fa-check"></i>
-                  </span>
-                  <small class="wz-desc box-block text-semibold">Busqueda de refacciones</small>
-                </a>
-              </li>
-              <li class="col-xs-4">
-                <a data-toggle="tab" href="#demo-step-tab2" aria-expanded="false">
-                  <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
+            <div style="padding:0px" class="modal-body">
+                <div id="demo-step-wz">
+                    <div class="wz-heading wz-w-label bg-info">
+                        <div class="progress progress-sm">
+                            <div style="width: 75%; margin: 0px 12.5%;" class="progress-bar progress-bar-dark bg-gray"></div>
+                        </div>
+                        <ul class="wz-steps wz-icon-bw wz-nav-off text-lg">
+                            <li class="col-xs-4 active">
+                                <a data-toggle="tab" href="#demo-step-tab1" aria-expanded="false">
+                                    <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
+                                                      <span class="wz-icon icon-txt text-bold">1</span>
+                                    <i class="wz-icon-done fa fa-check"></i>
+                                    </span>
+                                    <small class="wz-desc box-block text-semibold">Busqueda de refacciones</small>
+                                </a>
+                            </li>
+                            <li class="col-xs-4">
+                                <a data-toggle="tab" href="#demo-step-tab2" aria-expanded="false">
+                                    <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
                     <span class="wz-icon icon-txt text-bold">2</span>
-                  <i class="wz-icon-done fa fa-check"></i>
-                  </span>
-                  <small class="wz-desc box-block text-semibold">Datos de entrega</small>
-                </a>
-              </li>
-              <li class="col-xs-4">
-                <a data-toggle="tab" href="#demo-step-tab3" aria-expanded="false">
-                  <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
-        					                                    <span class="wz-icon icon-txt text-bold">3</span>
-                  <i class="wz-icon-done fa fa-check"></i>
-                  </span>
-                  <small class="wz-desc box-block text-semibold">Confirmación de pedido</small>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!--Form-->
-          <form class="form-horizontal">
-            <div style="height: 65vh;" class="panel-body">
-              <div class="tab-content">
-                <div ui-view></div>
-
-              </div>
+                                    <i class="wz-icon-done fa fa-check"></i>
+                                    </span>
+                                    <small class="wz-desc box-block text-semibold">Datos de entrega</small>
+                                </a>
+                            </li>
+                            <li class="col-xs-4">
+                                <a data-toggle="tab" href="#demo-step-tab3" aria-expanded="false">
+                                    <span class="icon-wrap icon-wrap-xs icon-circle bg-gray ">
+                                                      <span class="wz-icon icon-txt text-bold">3</span>
+                                    <i class="wz-icon-done fa fa-check"></i>
+                                    </span>
+                                    <small class="wz-desc box-block text-semibold">Confirmación de pedido</small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Form-->
+                    <form class="form-horizontal">
+                        <div style="height: 65vh;" class="panel-body">
+                            <div class="tab-content">
+                                <div ui-view></div>
+                            </div>
+                        </div>
+                        <!--Footer button-->
+                        <div class="panel-footer text-right">
+                            <div class="box-inline">
+                                <a ng-hide="backorder || sinbackorder" href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
+                                <a ng-disabled="(page == 1 && cotizacionActual.length == 0) ||(!direccionActual &&  page == 2)" href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
+                                <a ng-show="backorder || sinbackorder" ng-click="hacerPedido(3)" type="button" class="finish btn btn-warning" style="display: inline-block;">Cancelar pedido</a>
+                                <a ng-show="backorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-success" style="display: inline-block;">Confirmar pedido <b>con</b> backorder</a>
+                                <a ng-show="sinbackorderTotal" ng-click="hacerPedido(1)" type="button" class="finish btn btn-info" style="display: inline-block;">Confirmar pedido <b>sin</b> backorder</a>
+                                <a ng-hide="backorder || sinbackorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-primary" style="display: inline-block;">Realizar pedido</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <!--Footer button-->
-            <div class="panel-footer text-right">
-              <div class="box-inline">
-                <a ng-hide="backorder || sinbackorder" href="{{previous}}" type="button" class="previous btn btn-info">Anterior</a>
-                <a ng-disabled="(page == 1 && cotizacionActual.length == 0) ||(!direccionActual &&  page == 2)" href="{{next}}" type="button" class="next btn btn-info disabled" style="display: none;">Siguiente</a>
-                <a ng-show="backorder || sinbackorder" ng-click="hacerPedido(3)" type="button" class="finish btn btn-warning" style="display: inline-block;">Cancelar pedido</a>
-                <a ng-show="backorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-success" style="display: inline-block;">Confirmar pedido <b>con</b> backorder</a>
-                <a ng-show="sinbackorderTotal" ng-click="hacerPedido(1)" type="button" class="finish btn btn-info" style="display: inline-block;">Confirmar pedido <b>sin</b> backorder</a>
-                <a ng-hide="backorder || sinbackorder" ng-click="hacerPedido(0)" type="button" class="finish btn btn-primary" style="display: inline-block;">Realizar pedido</a>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
 </div>
