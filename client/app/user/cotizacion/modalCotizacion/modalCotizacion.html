@@ -31,20 +31,21 @@
                     <div style="width: {{((total)/disponible)*100}}%" class="progress-bar progress-bar-danger"></div>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div style="display:inline-block; margin: 0px;">
-                    <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización"}}</h3>
-                    <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
+                <div style="display:inline-block; margin-top: -30px;">
+                    <!-- background-color: #6359BF;-->
+                    <div style="margin-top: 0px;">
+                        <!--background-color: #BF5959;"-->
+                        <h3>{{folioActual=="TEMP"?"Nueva cotización":"Cotización"}}</h3>
+                        <h4 class="modal-title" id="myModalLabel">Folio: {{empresaActual.emp_nombrecto}}-{{sucursalActual.suc_nombrecto}}-REF-{{folioActual}}</h4>
+                    </div>
                 </div>
                 <div style="display:inline-block; width: 41%; padding-bottom: -1px;">
-                    <div style=" padding-top: 0px; padding-bottom: 0px;">
-                        <div style="padding-top: 0px; padding-bottom: 0px;">
-                            <h5><b>Sucursal:</b> {{sucursalActual.NOMBRE_AGENCIA}}</h5></div>
-                        <div style="padding-top: 0px; padding-bottom: 0px;">
-                                <h5><b>Dirección:</b> {{sucursalActual.dirSuc }}</h5>
-                        </div>
-                        <div style="padding-top: 0px; padding-bottom: 0px;">
-                            <h5><b>Teléfono:</b> <span class="texto-izquierda text-semibold">{{sucursalActual.telSuc }}</span></h5>
-                        </div>
+                    <div style="padding-top: 0px; padding-bottom: 0px;">
+                        <address>
+                            Sucursal: {{sucursalActual.NOMBRE_AGENCIA}} <br>
+                            Dirección: {{sucursalActual.dirSuc }} <br>
+                            Atención a clientes ó informes: {{sucursalActual.telSuc }} 
+                        </address>
                     </div>
                 </div>
             </div>

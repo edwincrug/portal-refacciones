@@ -48,7 +48,7 @@ class ModalAprobacionComponent {
                             console.log(data)
 
                             data.unshift({
-                                RUT_IDRUTA: 0,
+                                RUT_IDRUTA: '',
                                 RUT_NOMBRERT: "Selecciona ..."
                             })
 
@@ -65,7 +65,7 @@ class ModalAprobacionComponent {
                             }, function(data) {
 
                                 data.unshift({
-                                    per_idpersona: 0,
+                                    per_idpersona: '',
                                     nombre: "Selecciona ..."
                                 })
 
@@ -129,6 +129,8 @@ class ModalAprobacionComponent {
             $scope.muestraComprobante = function() {
 
                 //$scope.idDireccion
+                //alert(document.pressed);
+
                 window.open('http://192.168.20.9/GA_Centralizacion/CuentasXCobrar/Refacciones/DireccionesCliente/' +  $scope.direccion.RTD_IDPERSONA + '/' + $stateParams.id + '/' + $stateParams.id + '_comprobante.pdf', 'Comprobante de domicilio', 'height=400,width=600');
 
             }
@@ -136,7 +138,6 @@ class ModalAprobacionComponent {
             $scope.Procesar = function(operacion) {
 
                     console.log('Procesar')
-
 
                     var operacionCadena = (operacion == 2) ? 'Aprobar' : 'Rechazar';
 
@@ -158,10 +159,10 @@ class ModalAprobacionComponent {
 
                             var direccion = {
                                 idUsuario: $scope.user.per_idpersona,
-                                idRuta: $scope.rutaActual.RUT_IDRUTA,
+                                idRuta: ($scope.rutaActual.RUT_IDRUTA == '') ? '0' : $scope.rutaActual.RUT_IDRUTA,//$scope.rutaActual.RUT_IDRUTA,
                                 idDireccion: $stateParams.id,
                                 operacionP: operacion,
-                                idVendedor: $scope.vendedorActual.per_idpersona
+                                idVendedor: ($scope.vendedorActual.per_idpersona == '') ? '0' : $scope.vendedorActual.per_idpersona//$scope.vendedorActual.per_idpersona
                             }
 
                             console.log('$scope.rutaActual')

@@ -264,40 +264,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="control-label" for="demo-email-input">Correo electronico general de sucursal</label>
-                                                <input type="email" class="form-control" ng-model="direccion.RTD_EMAILGENERAL" readonly="true">
+                                    <form name="mainForm" ng-submit="Procesar(2)">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="demo-email-input">Correo electronico general de sucursal</label>
+                                                    <input type="email" class="form-control" ng-model="direccion.RTD_EMAILGENERAL" readonly="true">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Ruta de entrega:</label>
+                                                    <select id="selRutas" class="form-control" ng-options="ruta as ruta.RUT_NOMBRERT for ruta in rutas track by ruta.RUT_IDRUTA" ng-model="rutaActual" name="selRutas" required></select>
+                                                    <span ng-show="mainForm.selRutas.$error.required"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Vendedor:</label>
+                                                    <select id="selVendedor" class="form-control" ng-options="vendedor as vendedor.nombre for vendedor in vendedores track by vendedor.per_idpersona" ng-model="vendedorActual" required></select>
+                                                    <span ng-show="mainForm.selVendedor.$error.required"></span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="control-label">Ruta de entrega:</label>
-                                                <select id="selRutas" class="form-control" ng-options="ruta as ruta.RUT_NOMBRERT for ruta in rutas track by ruta.RUT_IDRUTA" ng-model="rutaActual"></select>
+                                        <div class="row">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <div class="form-group">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <button type="submit" class="finish btn btn-info" onclick="document.pressed=this.value" value="Aprobar">Aprobar </button>
+                                                    <!--button type="submit" class="finish btn btn-danger" onclick="document.pressed=this.value" value="Rechazar">Rechazar ggg</button-->
+                                                    <!--a ng-click="Procesar(2)" type="button" class="finish btn btn-info">Aprobar</a-->
+                                                    <a ng-click="Procesar(3)" type="button" class="finish btn btn-danger">Rechazar</a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="control-label">Vendedor:</label>
-                                                <select id="selVendedor" class="form-control" ng-options="vendedor as vendedor.nombre for vendedor in vendedores track by vendedor.per_idpersona" ng-model="vendedorActual"></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <div class="form-group">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <a ng-click="Procesar(2)" type="button" class="finish btn btn-info">Aprobar</a>
-                                                <a ng-click="Procesar(3)" type="button" class="finish btn btn-danger">Rechazar</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                     <div class="panel-footer text-right" style="background-color: #FFFFFF;">
                                     </div>
                                 </div>
